@@ -1,27 +1,33 @@
 volumes:
-    postgres-data:
-        external: true
+  postgres-data:
+    external: true
 services:
   postgres:
-        build:
-            context: ./relational-data
-            dockerfile: ./Dockerfile.dev
-        volumes:
-            - postgres-data:/var/lib/postgresql/data
-        environment:
-            - POSTGRES_MULTIPLE_DATABASES=
-            - POSTGRES_PASSWORD=test-databases
-        ports:
-            - 15432:5432
+    build:
+      context: ./relational-data
+      dockerfile: ./Dockerfile.dev
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_MULTIPLE_DATABASES=swapshop
+      - POSTGRES_PASSWORD=password
+    ports:
+      - 15432:5432
   fastapi:
     build:
-      context: sample_service
-      dockerfile: Dockerfile.dev
+      context: ./swapshop
+      dockerfile: ./Dockerfile.dev
     ports:
       - 8000:8000
     volumes:
-      - ./sample_service:/app
-      
+      - ./swapshop:/app
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://swapshop:password@postgres/swapshop
+      WAIT_HOSTS: postgres:5432
+      PGUSER: swapshop
+
   ghi:
     image: node:lts-bullseye
     command: /bin/bash run.sh
@@ -35,5 +41,4 @@ services:
       NODE_ENV: development
       HOST: "0.0.0.0"
       PUBLIC_URL: http://localhost:3000
-      REACT_APP_SAMPLE_SERVICE_API_HOST: http://localhost:8000
-            
+      REACT_APP_swapshop_API_HOST: http://localhost:8000
