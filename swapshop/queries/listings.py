@@ -43,9 +43,7 @@ class ListingQueries:
                         FROM listings
                         WHERE id = %s
                         """,
-                        [
-                            listing_id
-                        ],
+                        [listing_id],
                     )
                     record = result.fetchone()
                     if record is None:
@@ -81,6 +79,78 @@ class ListingQueries:
         except Exception:
             return {"message":"Create did not work"}
 
+    def get_listings(self) -> Union[Error, List[ListingOut]]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        SELECT id
+                            , image_url
+                            , name
+                            , category
+                            , condition
+                            , price
+                            , description
+                        FROM listings
+                        """
+                    )
+
+                    return [self.record_to_listing_out(record)
+                    for record in result
+                    ]
+        except Exception as e:
+            print(e)
+            return {'message':'Could not get all listings'}
+
+
+    def delete(self, listing_id: int):
+        try:
+            with pool.connection()as conn:
+                with conn.cursor()as db:
+                    db.execute(
+                        """
+                        DELETE FROM listings
+                        WHERE id = %s
+                        """,
+                        [listing_id]
+                    )
+                    return True
+        except Exception as e:
+            print(e)
+            return False
+
+    def update(self, listing_id: int, listing: ListingIn) -> Union[ListingOut, Error]:
+        try:
+            with pool.connection()as conn:
+                with conn.cursor()as db:
+                    db.execute(
+                        """
+                        UPDATE listings
+                        SET image_url = %s
+                            , name = %s
+                            , category = %s
+                            , condition = %s
+                            , price = %s
+                            , description = %s
+                        WHERE id = %s
+                        """,
+                        [
+                            listing.image_url,
+                            listing.name,
+                            listing.category,
+                            listing.condition,
+                            listing.price,
+                            listing.description,
+                            listing_id
+                        ]
+                    )
+                    return self.listing_in_to_out(listing_id, listing)
+        except Exception as e:
+            print(e)
+            return {"message": "Could not update listing"}
+
+
     def listing_in_to_out(self, id:int, listing:ListingIn):
         old_data = listing.dict()
         return ListingOut(id=id, **old_data)
@@ -95,6 +165,7 @@ class ListingQueries:
             price=record[5],
             description=record[6]
         )
+
 
 
 
