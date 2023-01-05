@@ -27,6 +27,7 @@ services:
       DATABASE_URL: postgresql://swapshop:password@postgres/swapshop
       WAIT_HOSTS: postgres:5432
       PGUSER: swapshop
+      SIGNING_KEY: ${SIGNING_KEY}
 
   ghi:
     image: node:lts-bullseye

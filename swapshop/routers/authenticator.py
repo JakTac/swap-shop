@@ -1,8 +1,8 @@
 import os
-from fastapi import Depends
+from fastapi import APIRouter, Depends
 from jwtdown_fastapi.authentication import Authenticator
 from queries.accounts import AccountQueries, AccountOut, AccountOutWithPassword
-
+router = APIRouter()
 
 class Auth(Authenticator):
     async def get_account_data(
