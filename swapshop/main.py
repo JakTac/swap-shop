@@ -1,7 +1,12 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from routers import listings, authenticator, accounts
-import os
+from routers import  accounts, listings
+from routers.authenticator import authenticator
+# from fastapi.middleware.cors import CORSMiddleware
+# import os
+
+app = FastAPI()
+app.include_router(authenticator.router)
+app.include_router(accounts.router)
 
 app = FastAPI()
 app.include_router(listings.router)

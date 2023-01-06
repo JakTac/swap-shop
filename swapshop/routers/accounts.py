@@ -50,37 +50,40 @@ async def get_token(
         }
 
 
-@router.post("/swapshop/accounts", response_model=AccountToken | HttpError)
-async def create_account(
-    info: AccountIn,
-    request: Request,
-    response: Response,
-    accounts: AccountQueries = Depends(),
-    # repo?
-):
-    hashed_password = authenticator.hash_password(info.password)
-    account = accounts.create(info, hashed_password)
-    form = AccountForm(username=info.email, password=info.password)
-    token = await authenticator.login(response, request, form, accounts)
-    return AccountToken(account=account, **token.dict())
-
-
 # @router.post("/swapshop/accounts", response_model=AccountToken | HttpError)
 # async def create_account(
 #     info: AccountIn,
 #     request: Request,
 #     response: Response,
 #     accounts: AccountQueries = Depends(),
+#     # repo?
 # ):
 #     hashed_password = authenticator.hash_password(info.password)
-#     try:
-#         account = accounts.create(info, hashed_password)
-#     except DuplicateAccountError:
-#         raise HTTPException(
-#             status_code=status.HTTP_400_BAD_REQUEST,
-#             detail="Cannot create an account with those credentials",
-
-#         )
-#     form = AccountForm(email=info.email, password=info.password)
+#     account = accounts.create(info, hashed_password)
+#     form = AccountForm(username=info.email, password=info.password)
 #     token = await authenticator.login(response, request, form, accounts)
 #     return AccountToken(account=account, **token.dict())
+
+
+@router.post("/swapshop/accounts", response_model=AccountToken | HttpError)
+async def create_account(
+    info: AccountIn,
+    request: Request,
+    response: Response,
+    accounts: AccountQueries = Depends(),
+):
+    try:
+        hashed_password = authenticator.hash_password(info.password)
+    except Exception as e:
+        print(e)
+    try:
+        account = accounts.create(info, hashed_password)
+    except DuplicateAccountError:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Cannot create an account with those credentials",
+
+        )
+    form = AccountForm(username=info.email, password=info.password)
+    token = await authenticator.login(response, request, form, accounts)
+    return AccountToken(account=account, **token.dict())
