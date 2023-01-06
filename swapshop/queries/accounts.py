@@ -25,7 +25,11 @@ class AccountOut(BaseModel):
     last_name: str
 
 
-class AccountOutWithPassword(AccountOut):
+class AccountOutWithPassword(BaseModel):
+    id: str
+    email: str
+    first_name: str
+    last_name: str
     hashed_password: str
 
 
@@ -34,7 +38,7 @@ class AccountQueries(ListingQueries):
     DB_NAME = "swapshop"
     COLLECTION = "accounts"
 
-    def get_one(self, email: str) -> AccountOut:
+    def get_one(self, email: str) -> AccountOutWithPassword:
         # connect the database
         with pool.connection() as conn:
             # get a cursor (something to run SQL with)
@@ -55,7 +59,7 @@ class AccountQueries(ListingQueries):
                 record = result.fetchone()
                 if record is None:
                     return None
-                return AccountOut(
+                return AccountOutWithPassword(
                     id=record[0],
                     email=record[1],
                     hashed_password=record[2],
