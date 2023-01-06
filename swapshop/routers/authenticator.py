@@ -7,10 +7,10 @@ router = APIRouter()
 class Auth(Authenticator):
     async def get_account_data(
         self,
-        username: str,
+        email: str,
         accounts: AccountQueries,
     ):
-        return accounts.get(username)
+        return accounts.get_one(email)
 
     def get_account_getter(
         self,
@@ -27,9 +27,9 @@ class Auth(Authenticator):
 
     def get_account_data_for_cookie(
         self,
-        account: AccountOut
+        account: AccountOutWithPassword
     ):
-        return account.username, AccountOut(**account.dict())
+        return account.email, AccountOut(**account.dict())
 
 
 authenticator = Auth(os.environ["SIGNING_KEY"])

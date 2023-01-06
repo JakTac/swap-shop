@@ -64,12 +64,12 @@ class AccountQueries(ListingQueries):
                 )
 
 
-    def get(self, email : str) -> AccountOutWithPassword:
-        props = self.collection.find_one({"email": email})
-        if not props:
-            return None
-        props["id"] = str(props["_id"])
-        return AccountOutWithPassword(**props)
+    # def get(self, email : str) -> AccountOutWithPassword:
+    #     props = self.collection.find_one({"email": email})
+    #     if not props:
+    #         return None
+    #     props["id"] = str(props["_id"])
+    #     return AccountOutWithPassword(**props)
 
 
     def create(self, account: AccountIn, hashed_password: str) -> AccountOutWithPassword:
@@ -81,7 +81,7 @@ class AccountQueries(ListingQueries):
                 result = db.execute(
                     """
                     INSERT INTO accounts (email, hashed_password, first_name, last_name)
-                    VALUES(%s, %s, %s)
+                    VALUES(%s, %s, %s, %s)
                     RETURNING id;
                     """,
                     [account.email, hashed_password, account.first_name, account.last_name]
