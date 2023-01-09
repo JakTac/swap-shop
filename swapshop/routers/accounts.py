@@ -17,6 +17,8 @@ from queries.accounts import (
     AccountQueries,
     DuplicateAccountError,
 )
+from queries.listings import ListingQueries
+
 
 class AccountForm(BaseModel):
     username: str
@@ -75,3 +77,10 @@ async def create_account(
     form = AccountForm(username=info.email, password=info.password)
     token = await authenticator.login(response, request, form, accounts)
     return AccountToken(account=account, **token.dict())
+
+@router.get("/swapshop/listings", response_model=bool)
+async def get_protected(
+    listings:ListingQueries = Depends(),
+    account_data: dict = Depends[authenticator.get_account_data],
+):
+    return listings.get_listings(account_data)
