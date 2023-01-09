@@ -98,14 +98,3 @@ class AccountQueries(ListingQueries):
                     first_name=account.first_name,
                     last_name=account.last_name,
                 )
-
-
-    # def create(self, info: AccountIn, hashed_password : str) -> AccountOutWithPassword:
-    #     props = info.dict()
-    #     props["password"] = hashed_password
-    #     try:
-    #         self.collection.insert_one(props)
-    #     except DuplicateAccountError:
-    #         raise DuplicateAccountError()
-    #     props["id"] = str(props["_id"])
-    #     return Account(**props)

@@ -7,7 +7,7 @@ from fastapi import (
     Request
 )
 from jwtdown_fastapi.authentication import Token
-from .authenticator import authenticator
+from authenticator import authenticator
 
 from pydantic import BaseModel
 
@@ -33,9 +33,12 @@ class HttpError(BaseModel):
 
 router = APIRouter()
 
-@router.get("swapshop/protected", response_model=bool)
-async def get_protected():
-    pass
+
+@router.get("/swapshop/protected", response_model=bool)
+async def get_protected(
+    account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    return True
 
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
@@ -48,21 +51,6 @@ async def get_token(
             "type": "Bearer",
             "account": account,
         }
-
-
-# @router.post("/swapshop/accounts", response_model=AccountToken | HttpError)
-# async def create_account(
-#     info: AccountIn,
-#     request: Request,
-#     response: Response,
-#     accounts: AccountQueries = Depends(),
-#     # repo?
-# ):
-#     hashed_password = authenticator.hash_password(info.password)
-#     account = accounts.create(info, hashed_password)
-#     form = AccountForm(username=info.email, password=info.password)
-#     token = await authenticator.login(response, request, form, accounts)
-#     return AccountToken(account=account, **token.dict())
 
 
 @router.post("/swapshop/accounts", response_model=AccountToken | HttpError)
