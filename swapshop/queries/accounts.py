@@ -41,36 +41,6 @@ class AccountQueries:
     DB_NAME = "swapshop"
     COLLECTION = "accounts"
 
-    def get_one(self, id: int) -> AccountOutWithPassword:
-        # connect the database
-        with pool.connection() as conn:
-            # get a cursor (something to run SQL with)
-            with conn.cursor() as db:
-                # Run our SELECT statement
-                result = db.execute(
-                    """
-                    SELECT id
-                            , email
-                            , hashed_password
-                            , first_name
-                            , last_name
-                    FROM accounts
-                    WHERE id = %s;
-                    """,
-                    [id]
-                )
-                record = result.fetchone()
-                print(record)
-                if record is None:
-                    return None
-                return AccountOutWithPassword(
-                    id=record[0],
-                    email=record[1],
-                    hashed_password=record[2],
-                    first_name=record[3],
-                    last_name=record[4],
-                )
-
 
     def create(self, account: AccountIn, hashed_password: str) -> AccountOutWithPassword:
         # connect the database
@@ -112,7 +82,84 @@ class AccountQueries:
                 return [self.record_to_account_out(record)
                 for record in db.fetchall()
                 ]
-                
+
+
+    def get_one(self, email: str) -> AccountOutWithPassword:
+        # connect the database
+        with pool.connection() as conn:
+            # get a cursor (something to run SQL with)
+            with conn.cursor() as db:
+                # Run our SELECT statement
+                result = db.execute(
+                    """
+                    SELECT id
+                            , email
+                            , hashed_password
+                            , first_name
+                            , last_name
+                    FROM accounts
+                    WHERE email = %s
+                    """,
+                    [email],
+                )
+                record = result.fetchone()
+                print(record)
+                if record is None:
+                    return None
+                return AccountOutWithPassword(
+                    id=record[0],
+                    email=record[1],
+                    hashed_password=record[2],
+                    first_name=record[3],
+                    last_name=record[4],
+                )
+
+    def get_one_id(self, account_id: int) -> AccountOutWithPassword:
+        print(account_id)
+        # connect the database
+        with pool.connection() as conn:
+            # get a cursor (something to run SQL with)
+            with conn.cursor() as db:
+                # Run our SELECT statement
+                result = db.execute(
+                    """
+                    SELECT id
+                            , email
+                            , hashed_password
+                            , first_name
+                            , last_name
+                    FROM accounts
+                    WHERE id = %s
+                    """,
+                    [account_id],
+                )
+                record = result.fetchone()
+                print(record)
+                if record is None:
+                    return None
+                return AccountOutWithPassword(
+                    id=record[0],
+                    email=record[1],
+                    hashed_password=record[2],
+                    first_name=record[3],
+                    last_name=record[4],
+                )
+
+    def delete(self, account_id: int):
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        DELETE FROM accounts
+                        WHERE id = %s
+                        """,
+                        [account_id]
+                    )
+                    return True
+        except Exception as e:
+            print(e)
+            return False
 
     def record_to_account_out(self, record):
         return AccountOut(

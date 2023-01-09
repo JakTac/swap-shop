@@ -57,10 +57,7 @@ async def create_account(
     response: Response,
     accounts: AccountQueries = Depends(),
 ):
-    try:
-        hashed_password = authenticator.hash_password(info.password)
-    except Exception as e:
-        print(e)
+    hashed_password = authenticator.hash_password(info.password)
     try:
         account = accounts.create(info, hashed_password)
     except DuplicateAccountError:
@@ -85,7 +82,11 @@ def get_one(
     response: Response,
     repo: AccountQueries = Depends(),
 ) -> AccountOutWithPassword:
-    account = repo.get_one(account_id)
+    account = repo.get_one_id(account_id)
     if account is None:
         response.status_code = 404
     return account
+
+@router.delete('/swapshop/accounts/{account_id}', response_model=bool)
+def delete_account(account_id: int, repo: AccountQueries = Depends(), account_data: dict = Depends(authenticator.get_current_account_data)) -> bool:
+    return repo.delete(account_id)
