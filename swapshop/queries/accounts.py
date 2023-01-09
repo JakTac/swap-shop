@@ -2,13 +2,16 @@ from pydantic import BaseModel
 from .listings import ListingQueries
 import os
 from psycopg_pool import ConnectionPool
+from typing import List, Union
 
 
 pool = ConnectionPool(conninfo=os.environ["DATABASE_URL"])
 
+class Error(BaseModel):
+    message: str
 
 class DuplicateAccountError(ValueError):
-    pass
+    message: str
 
 
 class AccountIn(BaseModel):
@@ -19,26 +22,26 @@ class AccountIn(BaseModel):
 
 
 class AccountOut(BaseModel):
-    id: str
+    id: int
     email: str
     first_name: str
     last_name: str
 
 
 class AccountOutWithPassword(BaseModel):
-    id: str
+    id: int
     email: str
     first_name: str
     last_name: str
     hashed_password: str
 
 
-class AccountQueries(ListingQueries):
+class AccountQueries:
     #Region properties
     DB_NAME = "swapshop"
     COLLECTION = "accounts"
 
-    def get_one(self, email: str) -> AccountOutWithPassword:
+    def get_one(self, id: int) -> AccountOutWithPassword:
         # connect the database
         with pool.connection() as conn:
             # get a cursor (something to run SQL with)
@@ -52,11 +55,12 @@ class AccountQueries(ListingQueries):
                             , first_name
                             , last_name
                     FROM accounts
-                    WHERE email = %s;
+                    WHERE id = %s;
                     """,
-                    [email]
+                    [id]
                 )
                 record = result.fetchone()
+                print(record)
                 if record is None:
                     return None
                 return AccountOutWithPassword(
@@ -66,14 +70,6 @@ class AccountQueries(ListingQueries):
                     first_name=record[3],
                     last_name=record[4],
                 )
-
-
-    # def get(self, email : str) -> AccountOutWithPassword:
-    #     props = self.collection.find_one({"email": email})
-    #     if not props:
-    #         return None
-    #     props["id"] = str(props["_id"])
-    #     return AccountOutWithPassword(**props)
 
 
     def create(self, account: AccountIn, hashed_password: str) -> AccountOutWithPassword:
@@ -98,3 +94,30 @@ class AccountQueries(ListingQueries):
                     first_name=account.first_name,
                     last_name=account.last_name,
                 )
+
+
+    def get_accounts(self) -> list[AccountOut]:
+        with pool.connection() as conn:
+            with conn.cursor() as db:
+                db.execute(
+                    """
+                    SELECT id
+                        , email
+                        , first_name
+                        , last_name
+                    FROM accounts
+                    """
+                )
+                
+                return [self.record_to_account_out(record)
+                for record in db.fetchall()
+                ]
+                
+
+    def record_to_account_out(self, record):
+        return AccountOut(
+            id=record[0],
+            email=record[1],
+            first_name=record[2],
+            last_name=record[3]
+        )

@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, Response
 from typing import Union,List, Optional
 from queries.listings import Error, ListingIn, ListingOut, ListingQueries
+from authenticator import authenticator
 router = APIRouter()
 
 @router.get('/listings', response_model=Union[List[ListingOut], Error])
@@ -21,7 +22,7 @@ def get_one(
     return listing
 
 @router.post('/listings', response_model=Union[ListingOut, Error])
-def create_listing(listing: ListingIn, response:Response, repo: ListingQueries = Depends()):
+def create_listing(listing: ListingIn, response:Response, repo: ListingQueries = Depends(), account_data: dict = Depends(authenticator.get_current_account_data)):
     # if response.ok:
     response.status_code = 200
     return repo.create(listing)
@@ -30,9 +31,9 @@ def create_listing(listing: ListingIn, response:Response, repo: ListingQueries =
     #     return {"message": "Failed to create"}
 
 @router.put('/listings/{listing_id}', response_model=Union[ListingOut, Error])
-def update_listing(listing_id:int, listing:ListingIn, repo:ListingQueries=Depends(),) -> Union[Error, ListingQueries]:
+def update_listing(listing_id:int, listing:ListingIn, repo:ListingQueries=Depends(), account_data: dict = Depends(authenticator.get_current_account_data)) -> Union[Error, ListingQueries]:
     return repo.update(listing_id, listing)
 
 @router.delete('/listings/{listing_id}', response_model=bool)
-def delete_listing(listing_id: int, repo: ListingQueries = Depends(),) -> bool:
+def delete_listing(listing_id: int, repo: ListingQueries = Depends(), account_data: dict = Depends(authenticator.get_current_account_data)) -> bool:
     return repo.delete(listing_id)

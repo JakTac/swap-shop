@@ -8,12 +8,13 @@ from fastapi import (
 )
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
-
+from typing import Union, List, Optional
 from pydantic import BaseModel
 
 from queries.accounts import (
     AccountIn,
     AccountOut,
+    AccountOutWithPassword,
     AccountQueries,
     DuplicateAccountError,
 )
@@ -35,12 +36,6 @@ class HttpError(BaseModel):
 
 router = APIRouter()
 
-
-@router.get("/swapshop/protected", response_model=bool)
-async def get_protected(
-    account_data: dict = Depends(authenticator.get_current_account_data),
-):
-    return True
 
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
@@ -78,9 +73,19 @@ async def create_account(
     token = await authenticator.login(response, request, form, accounts)
     return AccountToken(account=account, **token.dict())
 
-@router.get("/swapshop/listings", response_model=bool)
-async def get_protected(
-    listings:ListingQueries = Depends(),
-    account_data: dict = Depends[authenticator.get_account_data],
+@router.get('/swapshop/accounts', response_model=list[AccountOut])
+def get_accounts(
+    repo: AccountQueries = Depends(),
 ):
-    return listings.get_listings(account_data)
+    return repo.get_accounts()
+
+@router.get('/swapshop/accounts/{account_id}', response_model=Optional[AccountOutWithPassword])
+def get_one(
+    account_id: int,
+    response: Response,
+    repo: AccountQueries = Depends(),
+) -> AccountOutWithPassword:
+    account = repo.get_one(account_id)
+    if account is None:
+        response.status_code = 404
+    return account
