@@ -1,5 +1,5 @@
-import React, { useState } from "React";
-import Carousel from "react-bootstrap/Carousel";
+import React, { useState } from "react";
+import Carousel from 'react-bootstrap/Carousel';
 
 function ControlledCarousel() {
   const [index, setIndex] = useState(0);
