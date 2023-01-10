@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-const apiUrl = "https://fakestoreapi.com/products";
-
 function Cards() {
   //   const [loaded, setLoaded] = useState([]);
   //   const [error, setError] = useState(false);
@@ -20,28 +18,28 @@ function Cards() {
   //   useEffect(() => {
   //     LoadProducts();
   //   }, []);
-  const [productData, setProductData] = useState({});
+  // const [productData, setProductData] = useState({});
 
-  useEffect(() => {
-    getProductUserWithFetch();
-  }, []);
+  // useEffect(() => {
+  //   getProductUserWithFetch();
+  // }, []);
 
-  const getProductUserWithFetch = async () => {
-    const response = await fetch(apiUrl);
-    const jsonData = await response.json();
-    setProductData(jsonData);
-  };
+  // const getProductUserWithFetch = async () => {
+  //   const response = await fetch(apiUrl);
+  //   const jsonData = await response.json();
+  //   setProductData(jsonData);
+  // };
 
   return (
     <div className="card" style={{ width: "18rem" }}>
       <img
         className="card-img-top"
-        src={productData.img}
+        src="..."
         alt="Card image Kappa"
       />
       <div className="card-body">
-        <h5 className="card-title">{productData.name}</h5>
-        <p className="card-text">{productData.name}</p>
+        <h5 className="card-title">Title</h5>
+        <p className="card-text">Category</p>
       </div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item">This is a group uitem</li>
