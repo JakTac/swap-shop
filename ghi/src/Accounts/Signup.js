@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export const Signup = (props) => {
-  const [name, setName] = useState("");
+  const [firstName, setfirstName] = useState("");
+  const [lastName, setlastName] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
@@ -20,16 +21,29 @@ export const Signup = (props) => {
                 <h1>Signup</h1>
               </div>
               <form onSubmit={handleSubmit}>
-                <label style={{ color: "black" }} htmlFor="name">
-                  Full name
+                <label style={{ color: "black" }} htmlFor="firstName">
+                  First Name
                 </label>
                 <div className="form-floating mb-3">
                   <input
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    name="name"
-                    id="name"
-                    placeholder="Full name"
+                    value={firstName}
+                    onChange={(e) => setfirstName(e.target.value)}
+                    name="firstName"
+                    id="firstName"
+                    placeholder="First name"
+                    className="form-control"
+                  />
+                </div>
+                <label style={{ color: "black" }} htmlFor="lastName">
+                  Last Name
+                </label>
+                <div className="form-floating mb-3">
+                  <input
+                    value={lastName}
+                    onChange={(e) => setlastName(e.target.value)}
+                    name="lastName"
+                    id="lastName"
+                    placeholder="Last name"
                     className="form-control"
                   />
                 </div>
@@ -55,7 +69,7 @@ export const Signup = (props) => {
                     value={pass}
                     onChange={(e) => setPass(e.target.value)}
                     type="password"
-                    placeholder="*******"
+                    placeholder="****"
                     id="password"
                     name="password"
                     className="form-control"
