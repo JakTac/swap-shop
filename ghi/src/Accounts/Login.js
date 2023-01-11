@@ -15,6 +15,7 @@ import { useToken } from "./Token";
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
 //   };
+
 function LoginComponent() {
   const [token, login] = useToken();
 
@@ -61,6 +62,7 @@ async function Login(email, password) {
                 <h1>Login</h1>
               </div>
               {/* <form onSubmit={handleSubmit}> */}
+              <form onSubmit="return Login()">
                 <label style={{ color: "black" }} htmlFor="email">
                   Email
                 </label>
@@ -93,7 +95,7 @@ async function Login(email, password) {
                 <button className="btn btn-dark" type="submit">
                   Login
                 </button>
-              {/* </form> */}
+              </form>
               &nbsp;&nbsp;&nbsp;
               <div>
                 <button type="button" className="btn btn-dark">

@@ -1,16 +1,49 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import Login from "./Login";
 
-export const Signup = (props) => {
+
+const initialState = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        pass: "",
+};
+
+export const Signup = () => {
+  let Navigate = useNavigate();
+
+  const [ formData, setFormData ] = useState(initialState)
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  };
+
+    const SignupUrl = 'http://localhost:8000/swapshop/accounts';
+    // dynamic or static URL?
+    const fetchConfig = {
+        method: "post",
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const response = await fetch(SignupUrl, fetchConfig);
+      if (response.ok) {
+          setFormData(initialState);
+          Navigate("/")
+      }
+      if (response.ok) {
+        await Login(email, pass);
+      }
+      return false;
+      }
+
+
   return (
     <div className="auth-form-container">
       <div className="col-md-12 text-center">
@@ -98,3 +131,5 @@ export const Signup = (props) => {
     </div>
   );
 };
+
+// export default Signup?
