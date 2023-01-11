@@ -31,6 +31,9 @@ Day 5 - January 10
 
     So that seemed like the natural place to start!
 
+    This took a LOT longer than originally thought. We switched off drivers, and while we intended to finish all of the API and filtering functions together today, we didn't get that far. We got hung up especially on the API integration for product items and pictures. We'll keep plugging away.
+
+Day 6 - January 11
     Afterwards, we split up into our respective groups. Based on our order of importance (which page needed to be developed when), my first page was being Alonso's second pair of eyes on the Men's Page, and being primary programmer on the user Sale History Page. These pages however are later in our development timeline and Alonso was tied up being second for other pages, so I spent time reviewing Project Beta's functional components, and Candace's Redux and React Hooks lectures to allow me to more efficiently implement them when the time comes. I also looked ahead towards Websockets.
 
     Today's review focus was helpful and really increased my understanding. It was also a nice change of pace after a couple days of pushing hard through backend group work.
