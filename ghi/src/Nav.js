@@ -24,7 +24,7 @@ function Nav() {
             style={{ color: "black" }}
             className="nav-link"
             aria-current="page"
-            to="..."
+            to="/signup/"
           >
             Signup
           </NavLink>
@@ -35,7 +35,7 @@ function Nav() {
             style={{ color: "black" }}
             className="nav-link"
             aria-current="page"
-            to="..."
+            to="/login/"
           >
             Login
           </NavLink>
