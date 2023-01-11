@@ -1,16 +1,51 @@
+import React, { useEffect, useState } from "react";
+
 function Cards() {
+  //   const [loaded, setLoaded] = useState([]);
+  //   const [error, setError] = useState(false);
+
+  //   const LoadProducts = async () => {
+  //     const response = await fetch(
+  //       `$process.env.REACT_APP_swapshop_API_HOST}/https://fakestoreapi.com/products`
+  //     );
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       setLoaded(data.loaded);
+  //     } else {
+  //       console.setError({ error: true });
+  //     }
+  //   };
+  //   useEffect(() => {
+  //     LoadProducts();
+  //   }, []);
+  // const [productData, setProductData] = useState({});
+
+  // useEffect(() => {
+  //   getProductUserWithFetch();
+  // }, []);
+
+  // const getProductUserWithFetch = async () => {
+  //   const response = await fetch(apiUrl);
+  //   const jsonData = await response.json();
+  //   setProductData(jsonData);
+  // };
+
   return (
     <div className="card" style={{ width: "18rem" }}>
-      <img className="card-img-top" src="..." alt="Card image Kappa" />
+      <img
+        className="card-img-top"
+        src="https://images.squarespace-cdn.com/content/v1/61dcd32b3fb8bb4b5af9b560/0c9c14c4-6437-44d7-b5d5-c69ab3a31ef2/sustainable-mens-clothing.jpeg"
+        alt="Card image Kappa"
+      />
       <div className="card-body">
-        <h5 className="card-title">Card TItle</h5>
-        <p className="card-text">PLease work and dont fail us</p>
+        <h5 className="card-title">Men's</h5>
+        <p className="card-text">Items</p>
       </div>
-      <ul className="list-group list-group-flush">
+      {/* <ul className="list-group list-group-flush">
         <li className="list-group-item">This is a group uitem</li>
         <li className="list-group-item">This is a group uitem</li>
         <li className="list-group-item">This is a group uitem</li>
-      </ul>
+      </ul> */}
       <div className="card-body">
         <a href="#" className="card-link">
           Card link
