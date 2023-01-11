@@ -1,64 +1,142 @@
-import React, { useState } from "react";
-import Carousel from 'react-bootstrap/Carousel';
+import React from 'react';
+import { Carousel } from 'react-bootstrap';
+import { NavLink } from "react-router-dom";
 
-function ControlledCarousel() {
-  const [index, setIndex] = useState(0);
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
 
+const CarouselContainer = () => {
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect}>
-      <Carousel.Item>
-        {/* INSERT API HERE? */}
+    <Carousel fade={true} pause={false}>
+      <Carousel.Item interval={3000}>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=373940"
-          alt="First Slide"
+          src="https://media.istockphoto.com/id/504742864/photo/stylish-business-clothing-for-businessman.jpg?s=612x612&w=0&k=20&c=AsGrhEMNkmpwqaJPBSACPthMuBsmsDIecRkdFXKSnl0="
+          alt="First slide"
         />
         <Carousel.Caption>
-          <h3>First Slide Label</h3>
-          <p>Hi im a slide</p>
+        <h3>Mens Clothing</h3>
+          &nbsp;&nbsp;&nbsp;
+        <button type="button" className="btn btn-light">
+          <NavLink
+            style={{ color: "black" }}
+            className="nav-link"
+            aria-current="page"
+            to="..."
+          >
+            Shop
+          </NavLink>
+        </button>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
-        {/* INSERT API HERE? */}
+      <Carousel.Item interval={3000}>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=373940"
-          alt="second slide"
+          src="https://media.istockphoto.com/id/916092484/photo/women-clothes-hanging-on-hangers-clothing-rails-fashion-design.jpg?s=612x612&w=0&k=20&c=fUpcbOITkQqitglZfgJkWO3py-jsbuhc8eZfb4sdrfE="
+          alt="Third slide"
         />
         <Carousel.Caption>
-          <h3>Second Slide Label</h3>
-          <p>Hi im a slide</p>
+          <h3>Womens Clothing</h3>
+          &nbsp;&nbsp;&nbsp;
+        <button type="button" className="btn btn-light">
+          <NavLink
+            style={{ color: "black" }}
+            className="nav-link"
+            aria-current="page"
+            to="..."
+          >
+            Shop
+          </NavLink>
+        </button>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
-        {/* INSERT API HERE? */}
+      <Carousel.Item interval={3000}>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=373940"
-          alt="Third Slide"
+          src="https://static01.nyt.com/images/2022/04/13/t-magazine/13tmag-raymond-slide-K086/13tmag-raymond-slide-K086-articleLarge.jpg?quality=75&auto=webp&disable=upscale"
+          alt="Third slide"
         />
         <Carousel.Caption>
-          <h3>Third Slide Label</h3>
-          <p>Hi im a slide</p>
+          <h3>Jewelry</h3>
+          &nbsp;&nbsp;&nbsp;
+        <button type="button" className="btn btn-light">
+          <NavLink
+            style={{ color: "black" }}
+            className="nav-link"
+            aria-current="page"
+            to="..."
+          >
+            Shop
+          </NavLink>
+        </button>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
-        {/* INSERT API HERE? */}
+      <Carousel.Item interval={3000}>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=373940"
-          alt="fourth Slide"
+          src="https://www.fcgov.com/recycling-item-images/img/electronics.jpg"
+          alt="First slide"
         />
         <Carousel.Caption>
-          <h3>fourth Slide Label</h3>
-          <p>Hi im a slide</p>
+        <h3>Electronics</h3>
+          &nbsp;&nbsp;&nbsp;
+        <button type="button" className="btn btn-light">
+          <NavLink
+            style={{ color: "black" }}
+            className="nav-link"
+            aria-current="page"
+            to="..."
+          >
+            Shop
+          </NavLink>
+        </button>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-  );
+  )
 }
 
-export default ControlledCarousel;
+export default CarouselContainer;
+// import React, { useState } from "react";
+// import Carousel from "react-bootstrap/Carousel";
+// import Cards from "./Cards";
+
+// function ControlledCarousel() {
+//   const [index, setIndex] = useState(0);
+//   const handleSelect = (selectedIndex, e) => {
+//     setIndex(selectedIndex);
+//   };
+
+//   return (
+//     <Carousel activeIndex={index} onSelect={handleSelect}>
+//       <Carousel.Item>
+//         <Cards />
+//         <Carousel.Caption>
+//           <h3>First Slide Label</h3>
+//           <p>Hi im a slide</p>
+//         </Carousel.Caption>
+//       </Carousel.Item>
+//       <Carousel.Item>
+//         <Cards />
+//         <Carousel.Caption>
+//           <h3>2nd Slide Label</h3>
+//           <p>Hi im a slide</p>
+//         </Carousel.Caption>
+//       </Carousel.Item>
+//       <Carousel.Item>
+//         <Cards />
+//         <Carousel.Caption>
+//           <h3>third Slide Label</h3>
+//           <p>Hi im a slide</p>
+//         </Carousel.Caption>
+//       </Carousel.Item>
+//       <Carousel.Item>
+//         <Cards />
+//         <Carousel.Caption>
+//           <h3>4th Slide Label</h3>
+//           <p>Hi im a slide</p>
+//         </Carousel.Caption>
+//       </Carousel.Item>
+//     </Carousel>
+//   );
+// }
+
+// export default ControlledCarousel;
