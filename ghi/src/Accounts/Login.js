@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useToken } from "./Token";
 
-
-function LoginComponent({login}) {
-  // const [token, login] = useToken();
+function LoginComponent({ login }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -12,54 +9,12 @@ function LoginComponent({login}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(formData.email, formData.password)
+    await login(formData.email, formData.password);
     setFormData({
-          email: "",
-          password: "",
-    })
-  }
-
-// async function Login(email, password) {
-//   const url = `${process.env.REACT_APP_swapshop_API_HOST}/token`;
-
-//   const form = new FormData();
-//   form.append("email", email);
-//   form.append("password", password);
-
-//     const loginUrl = 'http://localhost:8000/token'
-//     const fetchConfig = {
-//       method: "post",
-//       body: JSON.stringify(formData),
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     };
-
-//   const response = await fetch(url, {
-//     headers: { Authorization: `Bearer ${token}`},
-//     method: "post",
-//     credentials: "include",
-//     body: form,
-//   });
-//   if (response.ok) {
-//     const tokenUrl = `${process.env.REACT_APP_swapshop_API_HOST}/token`;
-
-//     try {
-//       const response = await fetch(tokenUrl, {
-//         credentials: "include",
-//       });
-//       if (response.ok) {
-//         const data = await response.json();
-//         const token = data.access_token;
-//         // DO SOMETHING WITH THE TOKEN SO YOU CAN USE IT
-//         // IN REQUESTS TO YOUR NON-ACCOUNTS SERVICES
-//       }
-//     } catch (e) {}
-//     return false;
-//   }
-//   let error = await response.json();
-//   // DO SOMETHING WITH THE ERROR, IF YOU WANT
-// }
+      email: "",
+      password: "",
+    });
+  };
 
   return (
     <div className="auth-form-container">
@@ -77,7 +32,9 @@ function LoginComponent({login}) {
                 <div className="form-floating mb-3">
                   <input
                     value={formData.email}
-                    onChange={(event) => setFormData({...formData, email: event.target.value})}
+                    onChange={(event) =>
+                      setFormData({ ...formData, email: event.target.value })
+                    }
                     type="email"
                     placeholder="example@gmail.com"
                     id="email"
@@ -91,7 +48,9 @@ function LoginComponent({login}) {
                 <div className="form-floating mb-3">
                   <input
                     value={formData.password}
-                    onChange={(event) => setFormData({...formData, password: event.target.value})}
+                    onChange={(event) =>
+                      setFormData({ ...formData, password: event.target.value })
+                    }
                     type="password"
                     placeholder="*******"
                     required
@@ -107,14 +66,15 @@ function LoginComponent({login}) {
               &nbsp;&nbsp;&nbsp;
               <div>
                 <button type="button" className="btn btn-dark">
-                <NavLink
-                    style={{"color": "white"}}
+                  <NavLink
+                    style={{ color: "white" }}
                     className="nav-link"
                     aria-current="page"
-                    to="/signup/">
+                    to="/signup/"
+                  >
                     Don't have an account? Signup here.
-                </NavLink>
-                 </button>
+                  </NavLink>
+                </button>
               </div>
             </div>
           </div>
@@ -122,6 +82,6 @@ function LoginComponent({login}) {
       </div>
     </div>
   );
-};
+}
 
 export default LoginComponent;
