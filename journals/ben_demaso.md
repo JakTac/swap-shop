@@ -43,6 +43,14 @@ Day 6 - January 11
     It was another day of really solid work as a team, and I continue to be grateful for the talent of our group and our group dynamics. Folks are smart, willing to put in the work, and are investted in our success. That makes this 4 week project WAY more enjoyable. Things are coming along nicely!
 
 Day 7 - January 12
+    Today started with revamping our kanban/Trello board to get all of the team on the same page with future building of, well, pages. THe last two days we continued with a lot more one driver, four pairs of eyes, work than we thought we would originally. The decision to drop the API (way too hard to use to populate user data), hiccups in the auth process, and higher complexity of pages like signup and product filtering.
+
+    But it was good to keep working together!
+
+    After our standup, we put the finishing touches on the frontend signup and decided to punt filtering/search for the weekend and Monday. It feels like we're still in a good spot in terms of finishing on time.
+
+    Once we'd had lunch, we XXX
+
     Afterwards, we split up into our respective groups. Based on our order of importance (which page needed to be developed when), my first page was being Alonso's second pair of eyes on the Men's Page, and being primary programmer on the user Sale History Page. These pages however are later in our development timeline and Alonso was tied up being second for other pages, so I spent time reviewing Project Beta's functional components, and Candace's Redux and React Hooks lectures to allow me to more efficiently implement them when the time comes. I also looked ahead towards Websockets.
 
     Today's review focus was helpful and really increased my understanding. It was also a nice change of pace after a couple days of pushing hard through backend group work.
