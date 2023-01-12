@@ -21,3 +21,6 @@ adding these routes to main.py and the routes appeared on swagger.
 
 **1/11/23**
 - We started the day off great, finished the skeleton of the mainpage and continued working on frontend Auth. We had a skeleton of the login and signup form for React, however, implementing the Front-end auth cookbook was pretty challenging. Thankfully after consulting with a SEIR, we made really good headway and our login page worked! The plan for tomorrow is the complete the signup page, then move forward with our other functionalities.
+
+**1/12/23**
+- We started off the day with a group stand up, redistributing the workload between group members on our Kanban.

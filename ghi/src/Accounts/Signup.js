@@ -1,69 +1,33 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import Login from "./Login";
+import { NavLink } from "react-router-dom";
 
 function Signup({ signup }) {
-  // const [token, signup] = useToken();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
   });
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await signup(
-      formData.firstname,
-      formData.lastName,
-      formData.email,
-      formData.password
-    );
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-    });
+    console.log(formData);
+    try {
+      await signup(
+        formData.firstName,
+        formData.lastName,
+        formData.email,
+        formData.password
+      );
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+      });
+    } catch (e) {
+      console.log(formData);
+    }
   };
-  // const initialState = {
-  //         firstName: "",
-  //         lastName: "",
-  //         email: "",
-  //         pass: "",
-  // };
-
-  // export const Signup = () => {
-  //   let Navigate = useNavigate();
-
-  //   const [ formData, setFormData ] = useState(initialState)
-  //   const [firstName, setfirstName] = useState("");
-  //   const [lastName, setlastName] = useState("");
-  //   const [email, setEmail] = useState("");
-  //   const [pass, setPass] = useState("");
-
-  //   const handleSubmit = async (e) => {
-  //     e.preventDefault();
-
-  //     const SignupUrl = 'http://localhost:8000/swapshop/accounts';
-  //     // dynamic or static URL?
-  //     const fetchConfig = {
-  //         method: "post",
-  //         body: JSON.stringify(formData),
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //       };
-  //       const response = await fetch(SignupUrl, fetchConfig);
-  //       if (response.ok) {
-  //           setFormData(initialState);
-  //           Navigate("/")
-  //       }
-  //       if (response.ok) {
-  //         await Login(email, pass);
-  //       }
-  //       return false;
-  //       }
 
   return (
     <div className="auth-form-container">

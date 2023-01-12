@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useToken } from "./Token";
 
 function LoginComponent({ login }) {
-  // const [token, login] = useToken();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,48 +15,6 @@ function LoginComponent({ login }) {
       password: "",
     });
   };
-
-  // async function Login(email, password) {
-  //   const url = `${process.env.REACT_APP_swapshop_API_HOST}/token`;
-
-  //   const form = new FormData();
-  //   form.append("email", email);
-  //   form.append("password", password);
-
-  //     const loginUrl = 'http://localhost:8000/token'
-  //     const fetchConfig = {
-  //       method: "post",
-  //       body: JSON.stringify(formData),
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     };
-
-  //   const response = await fetch(url, {
-  //     headers: { Authorization: `Bearer ${token}`},
-  //     method: "post",
-  //     credentials: "include",
-  //     body: form,
-  //   });
-  //   if (response.ok) {
-  //     const tokenUrl = `${process.env.REACT_APP_swapshop_API_HOST}/token`;
-
-  //     try {
-  //       const response = await fetch(tokenUrl, {
-  //         credentials: "include",
-  //       });
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         const token = data.access_token;
-  //         // DO SOMETHING WITH THE TOKEN SO YOU CAN USE IT
-  //         // IN REQUESTS TO YOUR NON-ACCOUNTS SERVICES
-  //       }
-  //     } catch (e) {}
-  //     return false;
-  //   }
-  //   let error = await response.json();
-  //   // DO SOMETHING WITH THE ERROR, IF YOU WANT
-  // }
 
   return (
     <div className="auth-form-container">
