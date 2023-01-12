@@ -4,8 +4,6 @@ import MainPage from "./Main";
 import { AuthProvider, useToken } from "./Accounts/Token";
 import LoginComponent from "./Accounts/Login";
 import Signup from "./Accounts/Signup";
-// import WomensPage from "./Womens";
-// import SearchBar from "./SearchBar/SearchBar";
 import Nav from "./Nav";
 import "./App.css";
 
@@ -22,7 +20,6 @@ function App() {
     <AuthProvider>
       <GetToken />
       <Nav />
-      {/* <SearchBar /> */}
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
@@ -30,12 +27,7 @@ function App() {
           <Route path="/signup/" element={<Signup signup={signup} />} />
         </Routes>
       </div>
-      {/* <div className="container">
-        <Routes>
-          <Route path="/womenspage" element={<WomensPage />} />
-        </Routes>
-      </div> */}
-    </BrowserRouter>
+    </AuthProvider>
   );
 }
 export default App;
