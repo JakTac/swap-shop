@@ -44,3 +44,9 @@ def get_listings_by_category(
     repo: ListingQueries = Depends(),):
 
     return repo.get_by_category(category_id)
+
+@router.get("/categories", response_model=Union[List[CategoryOut], Error])
+def get_categories(
+    repo: ListingQueries = Depends(),
+):
+    return repo.get_categories()
