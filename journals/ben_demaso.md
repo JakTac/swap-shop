@@ -49,7 +49,11 @@ Day 7 - January 12
 
     After our standup, we put the finishing touches on the frontend signup and decided to punt filtering/search for the weekend and Monday. It feels like we're still in a good spot in terms of finishing on time.
 
-    Once we'd had lunch, we XXX
+    Once we had lunch, we hopped in a SEIR room because the signup page frontend was continuing to vex us. After an hour we found the capitalization error and things worked well. Once we came back from the hour long Google info session we made great headway on the Create Listing page. This isn't yet totally done, but 95% of the way there.
+
+    Tomorrow we'll really (finally, I've had many false assumptions of how quickly we'd get through the backend and auth) dive into individual work. Definitely looking forward to that.
+
+Day 8 - January 13
 
     Afterwards, we split up into our respective groups. Based on our order of importance (which page needed to be developed when), my first page was being Alonso's second pair of eyes on the Men's Page, and being primary programmer on the user Sale History Page. These pages however are later in our development timeline and Alonso was tied up being second for other pages, so I spent time reviewing Project Beta's functional components, and Candace's Redux and React Hooks lectures to allow me to more efficiently implement them when the time comes. I also looked ahead towards Websockets.
 
