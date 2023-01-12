@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import MainPage from "./Main";
 import { AuthProvider, useToken } from "./Accounts/Token";
 import LoginComponent from "./Accounts/Login";
-import { Signup } from "./Accounts/Signup";
+import Signup from "./Accounts/Signup";
 import Nav from "./Nav";
 import "./App.css";
 
@@ -24,7 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/login/" element={<LoginComponent login={login}/>} />
-          <Route path="/signup/" element={<Signup />} />
+          <Route path="/signup/" element={<Signup signup={signup}/>} />
         </Routes>
       </div>
     </AuthProvider>
