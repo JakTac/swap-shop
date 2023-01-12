@@ -1,7 +1,6 @@
-import React from 'react';
-import { Carousel } from 'react-bootstrap';
+import React from "react";
+import { Carousel } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-
 
 const CarouselContainer = () => {
   return (
@@ -13,18 +12,18 @@ const CarouselContainer = () => {
           alt="First slide"
         />
         <Carousel.Caption>
-        <h3>Mens Clothing</h3>
+          <h3>Mens Clothing</h3>
           &nbsp;&nbsp;&nbsp;
-        <button type="button" className="btn btn-light">
-          <NavLink
-            style={{ color: "black" }}
-            className="nav-link"
-            aria-current="page"
-            to="..."
-          >
-            Shop
-          </NavLink>
-        </button>
+          <button type="button" className="btn btn-light">
+            <NavLink
+              style={{ color: "black" }}
+              className="nav-link"
+              aria-current="page"
+              to="..."
+            >
+              Shop
+            </NavLink>
+          </button>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={3000}>
@@ -36,16 +35,16 @@ const CarouselContainer = () => {
         <Carousel.Caption>
           <h3>Womens Clothing</h3>
           &nbsp;&nbsp;&nbsp;
-        <button type="button" className="btn btn-light">
-          <NavLink
-            style={{ color: "black" }}
-            className="nav-link"
-            aria-current="page"
-            to="..."
-          >
-            Shop
-          </NavLink>
-        </button>
+          <button type="button" className="btn btn-light">
+            <NavLink
+              style={{ color: "black" }}
+              className="nav-link"
+              aria-current="page"
+              to="..."
+            >
+              Shop
+            </NavLink>
+          </button>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={3000}>
@@ -57,16 +56,16 @@ const CarouselContainer = () => {
         <Carousel.Caption>
           <h3>Jewelry</h3>
           &nbsp;&nbsp;&nbsp;
-        <button type="button" className="btn btn-light">
-          <NavLink
-            style={{ color: "black" }}
-            className="nav-link"
-            aria-current="page"
-            to="..."
-          >
-            Shop
-          </NavLink>
-        </button>
+          <button type="button" className="btn btn-light">
+            <NavLink
+              style={{ color: "black" }}
+              className="nav-link"
+              aria-current="page"
+              to="..."
+            >
+              Shop
+            </NavLink>
+          </button>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={3000}>
@@ -76,67 +75,22 @@ const CarouselContainer = () => {
           alt="First slide"
         />
         <Carousel.Caption>
-        <h3>Electronics</h3>
+          <h3>Electronics</h3>
           &nbsp;&nbsp;&nbsp;
-        <button type="button" className="btn btn-light">
-          <NavLink
-            style={{ color: "black" }}
-            className="nav-link"
-            aria-current="page"
-            to="..."
-          >
-            Shop
-          </NavLink>
-        </button>
+          <button type="button" className="btn btn-light">
+            <NavLink
+              style={{ color: "black" }}
+              className="nav-link"
+              aria-current="page"
+              to="..."
+            >
+              Shop
+            </NavLink>
+          </button>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-  )
-}
+  );
+};
 
 export default CarouselContainer;
-// import React, { useState } from "react";
-// import Carousel from "react-bootstrap/Carousel";
-// import Cards from "./Cards";
-
-// function ControlledCarousel() {
-//   const [index, setIndex] = useState(0);
-//   const handleSelect = (selectedIndex, e) => {
-//     setIndex(selectedIndex);
-//   };
-
-//   return (
-//     <Carousel activeIndex={index} onSelect={handleSelect}>
-//       <Carousel.Item>
-//         <Cards />
-//         <Carousel.Caption>
-//           <h3>First Slide Label</h3>
-//           <p>Hi im a slide</p>
-//         </Carousel.Caption>
-//       </Carousel.Item>
-//       <Carousel.Item>
-//         <Cards />
-//         <Carousel.Caption>
-//           <h3>2nd Slide Label</h3>
-//           <p>Hi im a slide</p>
-//         </Carousel.Caption>
-//       </Carousel.Item>
-//       <Carousel.Item>
-//         <Cards />
-//         <Carousel.Caption>
-//           <h3>third Slide Label</h3>
-//           <p>Hi im a slide</p>
-//         </Carousel.Caption>
-//       </Carousel.Item>
-//       <Carousel.Item>
-//         <Cards />
-//         <Carousel.Caption>
-//           <h3>4th Slide Label</h3>
-//           <p>Hi im a slide</p>
-//         </Carousel.Caption>
-//       </Carousel.Item>
-//     </Carousel>
-//   );
-// }
-
-// export default ControlledCarousel;

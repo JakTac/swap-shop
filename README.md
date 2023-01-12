@@ -8,6 +8,9 @@
     A simple redesigned e-commerce site similar to eBay or Facebook marketplace that lets guest users browse popular product categories. The user can add their own listings to their profile page after creating an account and logging in.
 </div>
 
+## Kanban
+https://ben-demaso.notion.site/Kanban-Trello-Board-5a52a971c1e044b08b134cf47313dbf5
+
 ## About SwapShop
 
 ## Functionality

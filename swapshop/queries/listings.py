@@ -188,6 +188,25 @@ class ListingQueries:
             print(e)
             return {'message':'Could not get that listing'}
 
+    def get_categories(self) -> Union[Error, List[CategoryOut]]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        SELECT id
+                        , category
+                        FROM categories
+                        """
+                    )
+
+                    return [self.record_to_category_out(record)
+                    for record in result
+                    ]
+        except Exception as e:
+            print(e)
+            return {"message": "Could not get all categories"}
+
 
 
 
@@ -208,6 +227,11 @@ class ListingQueries:
             description=record[6]
         )
 
+    def record_to_category_out(self, record):
+        return CategoryOut(
+            id=record[0],
+            category=record[1]
+        )
 
 
 
