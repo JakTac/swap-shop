@@ -2,46 +2,64 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Login from "./Login";
 
-
-const initialState = {
-        firstName: "",
-        lastName: "",
-        email: "",
-        pass: "",
-};
-
-export const Signup = () => {
-  let Navigate = useNavigate();
-
-  const [ formData, setFormData ] = useState(initialState)
-  const [firstName, setfirstName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-
+function Signup({signup}) {
+  // const [token, signup] = useToken();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    await signup(formData.firstname, formData.lastName, formData.email, formData.password)
+    setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+    })
+  }
+// const initialState = {
+//         firstName: "",
+//         lastName: "",
+//         email: "",
+//         pass: "",
+// };
 
-    const SignupUrl = 'http://localhost:8000/swapshop/accounts';
-    // dynamic or static URL?
-    const fetchConfig = {
-        method: "post",
-        body: JSON.stringify(formData),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      };
-      const response = await fetch(SignupUrl, fetchConfig);
-      if (response.ok) {
-          setFormData(initialState);
-          Navigate("/")
-      }
-      if (response.ok) {
-        await Login(email, pass);
-      }
-      return false;
-      }
+// export const Signup = () => {
+//   let Navigate = useNavigate();
+
+//   const [ formData, setFormData ] = useState(initialState)
+//   const [firstName, setfirstName] = useState("");
+//   const [lastName, setlastName] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [pass, setPass] = useState("");
+
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     const SignupUrl = 'http://localhost:8000/swapshop/accounts';
+//     // dynamic or static URL?
+//     const fetchConfig = {
+//         method: "post",
+//         body: JSON.stringify(formData),
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//       };
+//       const response = await fetch(SignupUrl, fetchConfig);
+//       if (response.ok) {
+//           setFormData(initialState);
+//           Navigate("/")
+//       }
+//       if (response.ok) {
+//         await Login(email, pass);
+//       }
+//       return false;
+//       }
 
 
   return (
@@ -59,8 +77,8 @@ export const Signup = () => {
                 </label>
                 <div className="form-floating mb-3">
                   <input
-                    value={firstName}
-                    onChange={(e) => setfirstName(e.target.value)}
+                    value={formData.firstName}
+                    onChange={(event) => setFormData({...formData, firstName: event.target.value})}
                     name="firstName"
                     id="firstName"
                     placeholder="First name"
@@ -72,8 +90,8 @@ export const Signup = () => {
                 </label>
                 <div className="form-floating mb-3">
                   <input
-                    value={lastName}
-                    onChange={(e) => setlastName(e.target.value)}
+                    value={formData.lastName}
+                    onChange={(event) => setFormData({...formData, lastName: event.target.value})}
                     name="lastName"
                     id="lastName"
                     placeholder="Last name"
@@ -85,8 +103,8 @@ export const Signup = () => {
                 </label>
                 <div className="form-floating mb-3">
                   <input
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={formData.email}
+                    onChange={(event) => setFormData({...formData, email: event.target.value})}
                     type="email"
                     placeholder="example@gmail.com"
                     id="email"
@@ -99,10 +117,11 @@ export const Signup = () => {
                 </label>
                 <div className="form-floating mb-3">
                   <input
-                    value={pass}
-                    onChange={(e) => setPass(e.target.value)}
+                    value={formData.password}
+                    onChange={(event) => setFormData({...formData, password: event.target.value})}
                     type="password"
                     placeholder="****"
+                    required
                     id="password"
                     name="password"
                     className="form-control"
@@ -132,4 +151,4 @@ export const Signup = () => {
   );
 };
 
-// export default Signup?
+export default Signup;
