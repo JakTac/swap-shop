@@ -28,3 +28,12 @@ As a group, the backend FastAPI work was carried out via paired programming, wit
 - queries -> accounts.py: get_accounts, delete, get_one_id.
 - routers -> accounts.py: get_accounts, delete_account, get_one.
 - Started splitting up Team tasks for frontend in our Kanban/trello board on notion.
+
+**1/10/23**
+- Worked on Mainpage.js React.
+
+**1/11/23**
+- Continued working on Auth and Mainpage.js.
+
+**1/12/23**
+- We started off the day with a group stand up, redistributing the workload between group members on our Kanban. We then continued working on the signup page.
