@@ -98,19 +98,20 @@ export function useToken() {
       setToken(token);
       return;
     }
-    let error = await response.json();
+    let error = await response.json()
     return handleErrorMessage(error);
   }
 
-  async function signup(email, password, firstName, lastName) {
-    const url = `${process.env.REACT_APP_swapshop_API_HOST}/swapshop/accounts/`;
+  async function signup(firstName, lastName, email, password,) {
+    const url = `${process.env.REACT_APP_swapshop_API_HOST}/swapshop/accounts`;
+    console.log(firstName, lastName, email, password)
     const response = await fetch(url, {
       method: "post",
       body: JSON.stringify({
-        email,
-        password,
-        first_name: firstName,
-        last_name: lastName,
+        'first_name': firstName,
+        'last_name': lastName,
+        'email': email,
+        'password': password,
       }),
       headers: {
         "Content-Type": "application/json",

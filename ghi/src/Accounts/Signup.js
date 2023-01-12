@@ -1,26 +1,33 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Login from "./Login";
+import {useToken} from "./Token";
 
 function Signup({signup}) {
-  // const [token, signup] = useToken();
+//   const [token, , ,signup] = useToken();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
   });
-
+  console.log('hello')
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await signup(formData.firstname, formData.lastName, formData.email, formData.password)
-    setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-    })
-  }
+    console.log(formData)
+    try {
+        await signup(formData.firstName, formData.lastName, formData.email, formData.password)
+        setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+        })
+        }
+    catch(e) {
+        console.log(formData)
+    }
+}
 // const initialState = {
 //         firstName: "",
 //         lastName: "",
