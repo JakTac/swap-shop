@@ -83,10 +83,10 @@ export function useToken() {
     }
   }
 
-  async function login(email, password) {
+  async function login(username, password) {
     const url = `${process.env.REACT_APP_swapshop_API_HOST}/token/`;
     const form = new FormData();
-    form.append("email", email);
+    form.append("username", username);
     form.append("password", password);
     const response = await fetch(url, {
       method: "post",

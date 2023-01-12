@@ -14,6 +14,8 @@ function GetToken() {
 }
 
 function App() {
+  const [token, login, logout, signup, update] = useToken()
+
   return (
     <AuthProvider>
       <GetToken />
@@ -21,7 +23,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/login/" element={<LoginComponent />} />
+          <Route path="/login/" element={<LoginComponent login={login}/>} />
           <Route path="/signup/" element={<Signup />} />
         </Routes>
       </div>
