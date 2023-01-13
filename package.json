@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "react-bootstrap": "^2.7.0",
+    "react-bootstrap-validation": "^0.1.11",
+    "react-router-dom": "^6.6.2",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.6",
+    "@types/react-bootstrap": "^0.32.32"
+  }
+}

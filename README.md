@@ -1,4 +1,38 @@
-# Module3 Project Gamma
+# SwapShop
+
+<br />
+<div align="center">
+<h3 align="center">SwapShop</h3>
+
+  <p align="center">
+    A simple redesigned e-commerce site similar to eBay or Facebook marketplace that lets guest users browse popular product categories. The user can add their own listings to their profile page after creating an account and logging in.
+</div>
+
+## Kanban
+https://ben-demaso.notion.site/Kanban-Trello-Board-5a52a971c1e044b08b134cf47313dbf5
+
+## About SwapShop
+
+## Functionality
+
+### Homepage
+
+### Listings
+
+### Account
+
+### Profile page
+
+## Getting Started
+To install and run this application on your local computer, please follow these steps:
+
+1. Fork and clone repository to your local machine.
+2. CD into the project directory
+3. Run `docker volume create post-gres data`
+4. Run `docker compose up`
+
+## Testing
+
 
 ## Getting started
 
@@ -96,7 +130,7 @@ deployment, but it just consists of these steps:
 * make sure this project is in a group. If it isn't, stop
   now and move it to a GitLab group
 * remove the fork relationship: In GitLab go to:
-  
+
   Settings -> General -> Advanced -> Remove fork relationship
 
 * add these GitLab CI/CD variables:

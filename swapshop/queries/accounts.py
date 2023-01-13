@@ -15,10 +15,11 @@ class DuplicateAccountError(ValueError):
 
 
 class AccountIn(BaseModel):
-    email: str
-    password: str
     first_name: str
     last_name: str
+    email: str
+    password: str
+
 
 
 class AccountOut(BaseModel):
@@ -50,19 +51,19 @@ class AccountQueries:
                 # run our SELECT statement
                 result = db.execute(
                     """
-                    INSERT INTO accounts (email, hashed_password, first_name, last_name)
+                    INSERT INTO accounts (first_name, last_name, email, hashed_password)
                     VALUES(%s, %s, %s, %s)
                     RETURNING id;
                     """,
-                    [account.email, hashed_password, account.first_name, account.last_name]
+                    [account.first_name, account.last_name, account.email, hashed_password]
                 )
                 id=result.fetchone()[0]
                 return AccountOutWithPassword(
                     id=id,
-                    email=account.email,
-                    hashed_password=hashed_password,
                     first_name=account.first_name,
                     last_name=account.last_name,
+                    email=account.email,
+                    hashed_password=hashed_password,
                 )
 
 
@@ -78,7 +79,7 @@ class AccountQueries:
                     FROM accounts
                     """
                 )
-                
+
                 return [self.record_to_account_out(record)
                 for record in db.fetchall()
                 ]

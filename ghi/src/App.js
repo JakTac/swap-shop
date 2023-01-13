@@ -1,38 +1,35 @@
-import { useEffect, useState } from 'react';
-import Construct from './Construct.js'
-import ErrorNotification from './ErrorNotification';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
+import MainPage from "./Main";
+import { AuthProvider, useToken } from "./Accounts/Token";
+import LoginComponent from "./Accounts/Login";
+import Signup from "./Accounts/Signup";
+import CreateListing from "./Listings/CreateListing";
+import Nav from "./Nav";
+import "./App.css";
 
-function App() {
-  const [launch_info, setLaunchInfo] = useState([]);
-  const [error, setError] = useState(null);  
-
-  useEffect(() => {
-    async function getData() {
-      let url = `${process.env.REACT_APP_SAMPLE_SERVICE_API_HOST}/api/launch-details`;
-      console.log('fastapi url: ', url);
-      let response = await fetch(url);
-      console.log("------- hello? -------");
-      let data = await response.json();
-
-      if (response.ok) {
-        console.log("got launch data!");
-        setLaunchInfo(data.launch_details);
-      } else {
-        console.log("drat! something happened");
-        setError(data.message);
-      }
-    }
-    getData();
-  }, [])
-
-
-  return (
-    <div>
-      <ErrorNotification error={error} />
-      <Construct info={launch_info} />
-    </div>
-  );
+function GetToken() {
+  // Get token from JWT cookie (if already logged in)
+  useToken();
+  return null;
 }
 
+function App() {
+  const [token, login, logout, signup, update] = useToken();
+
+  return (
+    <AuthProvider>
+      <GetToken />
+      <Nav />
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/login/" element={<LoginComponent login={login} />} />
+          <Route path="/signup/" element={<Signup signup={signup} />} />
+          <Route path="/createlisting/" element={<CreateListing />} />
+        </Routes>
+      </div>
+    </AuthProvider>
+  );
+}
 export default App;

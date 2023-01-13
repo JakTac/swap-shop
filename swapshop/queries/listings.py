@@ -10,21 +10,27 @@ class Error(BaseModel):
 class ListingIn(BaseModel):
     image_url: str
     name: str
-    category: str
+    category_id: int
     condition: str
     price: float
     description: str
 
 
 class ListingOut(BaseModel):
-    id: int
+    listings_id: int
     image_url: str
     name: str
-    category: str
+    category_id: int
     condition: str
     price: float
     description: str
 
+class CategoryIn(BaseModel):
+    category: str
+
+class CategoryOut(BaseModel):
+    id: int
+    category: str
 
 class ListingQueries:
     def get_one(self, listing_id: int) -> Optional[ListingOut]:
@@ -33,15 +39,17 @@ class ListingQueries:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id
+                        SELECT listings_id
                             , image_url
                             , name
-                            , category
+                            , category_id
                             , condition
                             , price
                             , description
                         FROM listings
-                        WHERE id = %s
+                        INNER JOIN categories
+                        ON listings.category_id = categories.id
+                        WHERE listings_id = %s
                         """,
                         [listing_id],
                     )
@@ -60,22 +68,22 @@ class ListingQueries:
                     result = db.execute(
                         """
                         INSERT INTO listings
-                            (image_url, name, category, condition, price, description)
+                            (image_url, name, category_id, condition, price, description)
                         VALUES
                             (%s, %s, %s, %s, %s, %s)
-                        RETURNING id;
+                        RETURNING listings_id;
                         """,
                         [
                             listing.image_url,
                             listing.name,
-                            listing.category,
+                            listing.category_id,
                             listing.condition,
                             listing.price,
                             listing.description
                         ]
                     )
-                    id = result.fetchone()[0]
-                    return self.listing_in_to_out(id, listing)
+                    listings_id = result.fetchone()[0]
+                    return self.listing_in_to_out(listings_id, listing)
         except Exception:
             return {"message":"Create did not work"}
 
@@ -85,14 +93,16 @@ class ListingQueries:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id
+                        SELECT listings_id
                             , image_url
                             , name
-                            , category
+                            , category_id
                             , condition
                             , price
                             , description
                         FROM listings
+                        INNER JOIN categories
+                        ON listings.category_id = categories.id
                         """
                     )
 
@@ -111,7 +121,7 @@ class ListingQueries:
                     db.execute(
                         """
                         DELETE FROM listings
-                        WHERE id = %s
+                        WHERE listings_id = %s
                         """,
                         [listing_id]
                     )
@@ -129,16 +139,16 @@ class ListingQueries:
                         UPDATE listings
                         SET image_url = %s
                             , name = %s
-                            , category = %s
+                            , category_id = %s
                             , condition = %s
                             , price = %s
                             , description = %s
-                        WHERE id = %s
+                        WHERE listings_id = %s
                         """,
                         [
                             listing.image_url,
                             listing.name,
-                            listing.category,
+                            listing.category_id,
                             listing.condition,
                             listing.price,
                             listing.description,
@@ -150,22 +160,78 @@ class ListingQueries:
             print(e)
             return {"message": "Could not update listing"}
 
+    def get_by_category(self, category_id: int) -> Union[Error, List[ListingOut]]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        SELECT listings_id
+                            , image_url
+                            , name
+                            , category_id
+                            , condition
+                            , price
+                            , description
+                        FROM listings
+                        INNER JOIN categories
+                        ON listings.category_id = categories.id
+                        WHERE categories.id = %s
+                        """,
+                        [category_id],
+                    )
 
-    def listing_in_to_out(self, id:int, listing:ListingIn):
+                    return [self.record_to_listing_out(record)
+                    for record in result
+                    ]
+        except Exception as e:
+            print(e)
+            return {'message':'Could not get that listing'}
+
+    def get_categories(self) -> Union[Error, List[CategoryOut]]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        SELECT id
+                        , category
+                        FROM categories
+                        """
+                    )
+
+                    return [self.record_to_category_out(record)
+                    for record in result
+                    ]
+        except Exception as e:
+            print(e)
+            return {"message": "Could not get all categories"}
+
+
+
+
+
+
+    def listing_in_to_out(self, listing_id:int, listing:ListingIn):
         old_data = listing.dict()
-        return ListingOut(id=id, **old_data)
+        return ListingOut(listings_id=listing_id, **old_data)
 
     def record_to_listing_out(self, record):
         return ListingOut(
-            id=record[0],
+            listings_id=record[0],
             image_url=record[1],
             name=record[2],
-            category=record[3],
+            category_id=record[3],
             condition=record[4],
             price=record[5],
             description=record[6]
         )
 
+    def record_to_category_out(self, record):
+        return CategoryOut(
+            id=record[0],
+            category=record[1]
+        )
 
 
 
