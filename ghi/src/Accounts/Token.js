@@ -79,7 +79,7 @@ export function useToken() {
       await fetch(url, { method: "delete", credentials: "include" });
       internalToken = null;
       setToken(null);
-      navigate("/");
+      navigate("/login/");
     }
   }
 
@@ -96,7 +96,7 @@ export function useToken() {
     if (response.ok) {
       const token = await getTokenInternal();
       setToken(token);
-      return;
+      return navigate("/");
     }
     let error = await response.json();
     return handleErrorMessage(error);
@@ -119,6 +119,7 @@ export function useToken() {
     });
     if (response.ok) {
       await login(email, password);
+      return navigate("/")
     }
     return false;
   }

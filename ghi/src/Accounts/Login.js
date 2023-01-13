@@ -1,19 +1,23 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuthContext } from "./Token";
+
 
 function LoginComponent({ login }) {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(formData.email, formData.password);
-    setFormData({
-      email: "",
-      password: "",
-    });
+      await login(formData.email, formData.password);
+      setFormData({
+        email: "",
+        password: "",
+      });
   };
 
   return (

@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 import MainPage from "./Main";
 import { AuthProvider, useToken } from "./Accounts/Token";
 import LoginComponent from "./Accounts/Login";
@@ -24,7 +24,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/login/" element={<LoginComponent login={login} />} />
+          <Route path="/login/" element={<LoginComponent login={login} token={token} />} />
           <Route path="/signup/" element={<Signup signup={signup} />} />
           <Route path="/createlisting/" element={<CreateListing />} />
         </Routes>

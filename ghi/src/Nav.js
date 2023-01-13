@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
+import { useToken } from "./Accounts/Token";
 
 function Nav() {
+  const [token, , logout] = useToken()
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
       <div className="container-fluid">
@@ -50,6 +52,10 @@ function Nav() {
         >
           List Item
         </NavLink>
+      </button>
+      &nbsp;&nbsp;&nbsp;
+      <button type="button" className="btn btn-light" onClick={logout}>
+          Logout
       </button>
       &nbsp;&nbsp;&nbsp;
     </nav>
