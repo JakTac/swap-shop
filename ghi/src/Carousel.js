@@ -61,7 +61,7 @@ const CarouselContainer = () => {
               style={{ color: "black" }}
               className="nav-link"
               aria-current="page"
-              to="..."
+              to="/jewelry/"
             >
               Shop
             </NavLink>
@@ -82,7 +82,7 @@ const CarouselContainer = () => {
               style={{ color: "black" }}
               className="nav-link"
               aria-current="page"
-              to="..."
+              to="/jewelry/"
             >
               Shop
             </NavLink>
