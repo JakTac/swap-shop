@@ -5,11 +5,11 @@ import { NavLink, useSearchParams } from "react-router-dom";
 function Jewelry() {
   const [listings, setListings] = useState([]);
   const loadJewelry = async () => {
-    const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings`;
+    const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/categories/3`;
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
-      setListings(data.listings);
+      setListings(data);
     } else {
       console.error("Error in fetching jewelry, try again.");
     }
@@ -64,26 +64,24 @@ function Jewelry() {
               </tr>
             </thead>
             <tbody style={{ color: "black" }}>
-              {listings
-                ?.filter(
-                  (listings) =>
-                    listings.name.includes(search) &&
-                    listings.category_id.includes('3')
+              {listings.filter(
+                  (listing) =>
+                    listing.name.toLowerCase().includes(search.toLowerCase())
                 )
-                .map((listings) => (
-                  <tr style={{ color: "black" }} key={listings.listings_id}>
+                .map((listing) => (
+                  <tr style={{ color: "black" }} key={listing.listings_id}>
                   <td>
                       <img
-                        src={listings.image_url}
+                        src={listing.image_url}
                         height="400"
                         width="600"
                       ></img>
                     </td>
-                    <td>{listings.name}</td>
-                    <td>{listings.category_id}</td>
-                    <td>{listings.condition}</td>
-                    <td>{listings.price}</td>
-                    <td>{listings.description}</td>
+                    <td>{listing.name}</td>
+                    <td>{listing.category_id}</td>
+                    <td>{listing.condition}</td>
+                    <td>{listing.price}</td>
+                    <td>{listing.description}</td>
                   </tr>
                 ))}
             </tbody>
