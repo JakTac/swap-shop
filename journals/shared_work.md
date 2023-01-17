@@ -34,6 +34,8 @@ As a group, the backend FastAPI work was carried out via paired programming, wit
 
 **1/11/23**
 - Continued working on Auth and Mainpage.js.
+- Login page fully functional.
+- Working on signup page.
 
 **1/12/23**
 - We started off the day with a group stand up, redistributing the workload between group members on our Kanban. We then continued working on the signup page.
