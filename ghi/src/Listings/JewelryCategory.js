@@ -77,7 +77,7 @@ function Jewelry() {
                     </td>
                     <td>{listing.name}</td>
                     <td>{listing.condition}</td>
-                    <td>{listing.price}</td>
+                    <td>${listing.price}</td>
                     <td>{listing.description}</td>
                   </tr>
                 ))}
