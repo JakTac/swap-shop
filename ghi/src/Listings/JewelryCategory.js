@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from "react";
-import { NavLink, useSearchParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Jewelry() {
   const [listings, setListings] = useState([]);
@@ -64,13 +63,13 @@ function Jewelry() {
               </tr>
             </thead>
             <tbody style={{ color: "black" }}>
-              {listings.filter(
-                  (listing) =>
-                    listing.name.toLowerCase().includes(search.toLowerCase())
+              {listings
+                .filter((listing) =>
+                  listing.name.toLowerCase().includes(search.toLowerCase())
                 )
                 .map((listing) => (
                   <tr style={{ color: "black" }} key={listing.listings_id}>
-                  <td>
+                    <td>
                       <img
                         src={listing.image_url}
                         height="400"

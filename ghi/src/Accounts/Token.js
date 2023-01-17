@@ -15,7 +15,7 @@ export async function getTokenInternal() {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log(data)
+      console.log(data);
       internalToken = data.access_token;
       return internalToken;
     }
@@ -90,19 +90,18 @@ export function useToken() {
     const form = new FormData();
     form.append("username", username);
     form.append("password", password);
-    console.log({form})
+    console.log({ form });
     const response = await fetch(url, {
       method: "post",
       credentials: "include",
       body: form,
     });
-    console.log({response})
+    console.log({ response });
     if (response.ok) {
       const token = await getTokenInternal();
-      console.log(token)
+      console.log(token);
       setToken(token);
-      return
-      // return navigate("/");
+      return navigate("/");
     }
     let error = await response.json();
     return handleErrorMessage(error);
@@ -125,7 +124,7 @@ export function useToken() {
     });
     if (response.ok) {
       await login(email, password);
-      return navigate("/")
+      return navigate("/");
     }
     return false;
   }
@@ -150,5 +149,5 @@ export function useToken() {
     return false;
   }
 
-  return {token, login, logout, signup, update};
+  return { token, login, logout, signup, update };
 }
