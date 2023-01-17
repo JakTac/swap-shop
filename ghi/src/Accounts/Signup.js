@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useToken } from "./Token"
 
-function Signup({ signup }) {
+
+function Signup() {
+  const { signup, token } = useToken()
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",

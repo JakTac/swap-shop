@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuthContext } from "./Token";
+import { useToken } from "./Token";
 
 
-function LoginComponent({ login }) {
+function LoginComponent() {
+  const { login, token } = useToken()
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: "",
@@ -18,7 +19,7 @@ function LoginComponent({ login }) {
         email: "",
         password: "",
       });
-      // return navigate("/");
+      return navigate("/");
   };
 
   return (

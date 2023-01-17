@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { useAuthContext, useToken } from "./Accounts/Token";
+import { useContext } from "react";
 
 
 function Nav() {
 
   const {token} = useAuthContext()
-  const {logout} = useToken()
+  const {logout } = useToken()
   console.log({token})
   if (token) {
     return (
