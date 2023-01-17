@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useToken, useAuthContext } from "./Token";
+import { useToken } from "./Token";
 
 
 function LoginComponent() {
