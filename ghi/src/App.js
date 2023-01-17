@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import React from "react";
+import React, {useState, useEffect } from "react";
 import MainPage from "./Main";
 import { AuthProvider, useToken } from "./Accounts/Token";
 import LoginComponent from "./Accounts/Login";
@@ -15,7 +15,11 @@ function GetToken() {
 }
 
 function App() {
-  const [token, login, logout, signup, update] = useToken();
+  const {token, login, logout, signup} = useToken();
+  const [test, setTest] = useState(false)
+  if (token) {
+    setTest(true)
+  }
 
   return (
     <AuthProvider>
@@ -24,7 +28,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/login/" element={<LoginComponent login={login} token={token} />} />
+          <Route path="/login/" element={<LoginComponent login={login} />} />
           <Route path="/signup/" element={<Signup signup={signup} />} />
           <Route path="/createlisting/" element={<CreateListing />} />
         </Routes>

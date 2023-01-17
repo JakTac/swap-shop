@@ -1,18 +1,13 @@
 import { NavLink } from "react-router-dom";
-import { useToken } from "./Accounts/Token";
+import { useAuthContext, useToken } from "./Accounts/Token";
 
-function TokenHandler() {
-  const [token] = useToken()
-  if (token) {
-    return true
-  } else {
-    return false
-  }
-}
 
 function Nav() {
-  const [token, , logout] = useToken()
-  if (TokenHandler()) {
+
+  const {token} = useAuthContext()
+  const {logout} = useToken()
+  console.log({token})
+  if (token) {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-success">
       <div className="container-fluid">

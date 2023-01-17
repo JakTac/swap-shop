@@ -18,6 +18,7 @@ function LoginComponent({ login }) {
         email: "",
         password: "",
       });
+      // return navigate("/");
   };
 
   return (

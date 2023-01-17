@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 let internalToken = null;
 
 export function getToken() {
+  console.log(internalToken);
   return internalToken;
 }
 
@@ -14,6 +15,7 @@ export async function getTokenInternal() {
     });
     if (response.ok) {
       const data = await response.json();
+      console.log(data)
       internalToken = data.access_token;
       return internalToken;
     }
@@ -88,15 +90,19 @@ export function useToken() {
     const form = new FormData();
     form.append("username", username);
     form.append("password", password);
+    console.log({form})
     const response = await fetch(url, {
       method: "post",
       credentials: "include",
       body: form,
     });
+    console.log({response})
     if (response.ok) {
       const token = await getTokenInternal();
+      console.log(token)
       setToken(token);
-      return navigate("/");
+      return
+      // return navigate("/");
     }
     let error = await response.json();
     return handleErrorMessage(error);
@@ -144,5 +150,5 @@ export function useToken() {
     return false;
   }
 
-  return [token, login, logout, signup, update];
+  return {token, login, logout, signup, update};
 }
