@@ -29,6 +29,17 @@ function CreateListing(list) {
   //     console.error("Error in creating customer");
   //   }
   // };
+  const [categories, setCategory] = useState([]);
+  const loadCategories = async () => {
+    const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/categories/3`;
+    const response = await fetch(url);
+    if (response.ok) {
+      const data = await response.json();
+      setCategory(data);
+    } else {
+      console.error("Error in fetching categories");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +53,9 @@ function CreateListing(list) {
       },
     };
     const response = await fetch(listUrl, fetchConfig);
+    console.log(response);
     if (response.ok) {
+      console.log(response);
       const newListing = await response.json();
       setListData({
         image_url: "",
@@ -138,9 +151,9 @@ function CreateListing(list) {
                   name="category_id"
                   className="form-control"
                 >
-                  <option value="men">Men</option>
-                  <option value="women">Women</option>
-                  <option value="jewelry">Jewelry</option>
+                  <option value="1">Men</option>
+                  <option value="2">Women</option>
+                  <option value="3">Jewelry</option>
                 </select>
                 <div className="form-floating mb-3">
                   {/* <input
