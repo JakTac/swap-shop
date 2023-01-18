@@ -5,6 +5,7 @@ import { AuthProvider, useToken } from "./Accounts/Token";
 import LoginComponent from "./Accounts/Login";
 import Signup from "./Accounts/Signup";
 import CreateListing from "./Listings/CreateListing";
+import Jewelry from "./Listings/JewelryCategory";
 import Nav from "./Nav";
 import "./App.css";
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/login/" element={<LoginComponent login={login} />} />
           <Route path="/signup/" element={<Signup signup={signup} />} />
           <Route path="/createlisting/" element={<CreateListing />} />
+          <Route path="/jewelry/" element={<Jewelry />} />
         </Routes>
       </div>
     </AuthProvider>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useSearchParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Jewelry() {
   const [listings, setListings] = useState([]);
@@ -56,7 +56,6 @@ function Jewelry() {
               <tr style={{ color: "black" }}>
                 <th>Image</th>
                 <th>Name</th>
-                <th>Category</th>
                 <th>Condition</th>
                 <th>Price</th>
                 <th>Description</th>
@@ -77,9 +76,8 @@ function Jewelry() {
                       ></img>
                     </td>
                     <td>{listing.name}</td>
-                    <td>{listing.category_id}</td>
                     <td>{listing.condition}</td>
-                    <td>{listing.price}</td>
+                    <td>${listing.price}</td>
                     <td>{listing.description}</td>
                   </tr>
                 ))}
