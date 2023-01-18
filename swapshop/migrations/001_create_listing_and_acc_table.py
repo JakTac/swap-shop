@@ -9,7 +9,9 @@ steps = [
             category_id INT NOT NULL,
             condition TEXT NOT NULL,
             price FLOAT NOT NULL,
-            description TEXT NOT NULL
+            description TEXT NOT NULL,
+            seller_id INT NOT NULL,
+            sold BOOL NOT NULL DEFAULT FALSE
         );
         """,
         # "Down" SQL statement
