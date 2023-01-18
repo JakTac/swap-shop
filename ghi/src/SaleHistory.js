@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
         const [ sales, setSales ] = useState([])
         const [ accountUser, setAccountUser ] = useState([])
         const [ date, setDate ] = useState([])
+        const [ category, setCategory ] = useState([])
         const [ formData, setFormData ] = useState([])
 
         const getSaleHistory = async () => {
