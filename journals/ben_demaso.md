@@ -57,11 +57,18 @@ Day 8 - January 13
 
     We got started with our sign out function because auth is so freaking difficult. Jake drove at first while the rest of us watched for helpful things to point out. Then we worked with Cody on finishing touches on the Create Listings page.
 
-    Then, individual pages! I started on this right after lunch.
+Day 9 - January 17
 
 
+Day 10 - January 18
+    We worked on new routes for the backend, allowing us to display Sale History and more. I spent most of the morning reviewing Project Beta's functional components, and Candice's Redux and React Hooks lectures to allow me to more efficiently implement them.
 
-    Afterwards, we split up into our respective groups. Based on our order of importance (which page needed to be developed when), my first page was being Alonso's second pair of eyes on the Men's Page, and being primary programmer on the user Sale History Page. These pages however are later in our development timeline and Alonso was tied up being second for other pages, so I spent time reviewing Project Beta's functional components, and Candace's Redux and React Hooks lectures to allow me to more efficiently implement them when the time comes. I also looked ahead towards Websockets.
+    I crafted all of the React and JSX code for the Sale History page. That's not to say it works perfectly, of course. Up until lunch I was tweaking the filtering and React dynamic links. That's admittedly one of the newest/weirdest elements of this project for me.
+
+    I still need to add a search functionality, and I worked with Jake extensively on the backend linking to the Sale History page. We needed a boolean property for sold/not sold in our database after it was created. I wanted to add a "date sold" to populate automatically with the time and date that boolean field was clicked, but I'm considering making that a stretch goal.
+
+
+    Afterwards, we split up into our respective groups. Based on our order of importance (which page needed to be developed when), my first page was being Alonso's second pair of eyes on the Men's Page, and being primary programmer on the user Sale History Page. These pages however are later in our development timeline and Alonso was tied up being second for other pages, so I spent time  I also looked ahead towards Websockets.
 
     Today's review focus was helpful and really increased my understanding. It was also a nice change of pace after a couple days of pushing hard through backend group work.
 
