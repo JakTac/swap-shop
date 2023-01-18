@@ -23,9 +23,10 @@ def get_one(
 
 @router.post('/listings', response_model=Union[ListingOut, Error])
 def create_listing(listing: ListingIn, response:Response, repo: ListingQueries = Depends(), account_data: dict = Depends(authenticator.get_current_account_data)):
-    # if response.ok:
-
-    return repo.create(listing)
+    # if response.ok: 
+    print(account_data)
+    user_id=account_data["id"]
+    return repo.create(listing, user_id)
     # else:
     #     response.status_code = 400
     #     return {"message": "Failed to create"}
@@ -44,6 +45,13 @@ def get_listings_by_category(
     repo: ListingQueries = Depends(),):
 
     return repo.get_by_category(category_id)
+
+@router.get('/listings/sellers/{seller_id}', response_model=Union[List[ListingOut],Error])
+def get_listings_by_seller(
+    seller_id: int,
+    repo: ListingQueries = Depends(),):
+
+    return repo.get_by_seller(seller_id)
 
 @router.get("/categories", response_model=Union[List[CategoryOut], Error])
 def get_categories(
