@@ -10,14 +10,14 @@ import { Link } from 'react-router-dom';
         const [ formData, setFormData ] = useState([])
 
         const getSaleHistory = async () => {
-            const url = `${process.env.REACT_APP_swapshop_API_HOST}/salehistory/`;
+            const url = `${process.env.REACT_APP_swapshop_API_HOST}/swapshop/accounts/{account_id}`;
             const response = await fetch(url);
 
             if (response.ok) {
                 const data = await response.json();
                 setSales(data.sales);
             } else {
-                console.log("There was an error displaying sale history.")
+                console.log("There was an error displaying your sale history.")
                 // Need to add an on-screen error too
             }
         }
@@ -29,7 +29,7 @@ import { Link } from 'react-router-dom';
 
     useEffect(() => {
         const loadData = async () => {
-            const accountUserUrl = `${process.env.REACT_APP_swapshop_API_HOST}/account/`;
+            const accountUserUrl = `${process.env.REACT_APP_swapshop_API_HOST}/swapshop/accounts/{account_id}`;
             const response = await fetch(accountUserUrl);
 
             if (response.ok) {
@@ -65,12 +65,16 @@ import { Link } from 'react-router-dom';
                     console.log("// ADD A SEARCH FUNCTIONALITY //")
 
                     <div className="">
-                        <option value="">Select a date range</option>
-                        {date?.map(date) => {
-                            return(
-                                <option key={date} value={date.date}>{date.date}</option>
-                            )
-                        })}
+                        <select onChange={handleFormChange} value={formData.date} className="form-select" required name="date" id="date">
+
+                            <option value="">Select a date range</option>
+                            {date?.map(date) => {
+                                return(
+                                    <option key={date} value={date.date}>{date.date}</option>
+                                )
+                            }}
+
+                        </select>
                     </div>
 
                     <div className="">
