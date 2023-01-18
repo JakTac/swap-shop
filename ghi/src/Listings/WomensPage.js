@@ -1,30 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
-function Jewelry() {
+function WomensPage() {
   const [listings, setListings] = useState([]);
-  const loadJewelry = async () => {
-    const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/categories/3`;
+  const loadWomens = async () => {
+    const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/categories/2`;
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
       setListings(data);
     } else {
-      console.error("Error in fetching jewelry, try again.");
+      console.error("Error in loading womens items.");
     }
   };
 
   const [search, setSearch] = useState("");
-
   useEffect(() => {
-    loadJewelry();
+    loadWomens();
   }, []);
 
   return (
-    <div className="jewelry-container">
+    <div className="womens-container">
       <div className="col-md-12 text-center">
         <h2 className="display-5 fw-bold" style={{ color: "black" }}>
-          Jewelry
+          Womens Items
         </h2>
       </div>
       <div className="col-md-12 text-center">
@@ -89,4 +88,4 @@ function Jewelry() {
   );
 }
 
-export default Jewelry;
+export default WomensPage;
