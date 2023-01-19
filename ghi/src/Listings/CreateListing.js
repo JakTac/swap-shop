@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function CreateListing(list) {
   const [listData, setListData] = useState({
@@ -10,28 +10,9 @@ function CreateListing(list) {
     description: "",
   });
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   const data = { ...customer };
-  //   const customerUrl = "http://localhost:8090/api/customers/";
-  //   const fetchConfig = {
-  //     method: "post",
-  //     body: JSON.stringify(data),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   };
-  //   const response = await fetch(customerUrl, fetchConfig);
-  //   if (response.ok) {
-  //     const newCustomer = await response.json();
-  //     setCustomer({ name: "", address: "", phone_number: "" });
-  //   } else {
-  //     console.error("Error in creating customer");
-  //   }
-  // };
   const [categories, setCategory] = useState([]);
   const loadCategories = async () => {
-    const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/categories/3`;
+    const url = `${process.env.REACT_APP_swapshop_API_HOST}/categories/`;
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
@@ -40,6 +21,10 @@ function CreateListing(list) {
       console.error("Error in fetching categories");
     }
   };
+
+  useEffect(() => {
+    loadCategories();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,26 +54,6 @@ function CreateListing(list) {
       console.error("Error in creating listing");
     }
     console.log(listData);
-    // try {
-    //   await list(
-    //     listData.image_url,
-    //     listData.name,
-    //     listData.category_id,
-    //     listData.condition,
-    //     listData.price,
-    //     listData.description
-    //   );
-    //   setListData({
-    //     image_url: "",
-    //     name: "",
-    //     category_id: "",
-    //     condition: "",
-    //     price: "",
-    //     description: "",
-    //   });
-    // } catch (e) {
-    //   console.log(listData);
-    // }
   };
 
   return (
@@ -134,29 +99,8 @@ function CreateListing(list) {
                     className="form-control"
                   />
                 </div>
-                <label style={{ color: "black" }} htmlFor="category_id">
-                  Category
-                </label>
-                <select
-                  value={listData.category_id}
-                  onChange={(event) =>
-                    setListData({
-                      ...listData,
-                      category_id: event.target.value,
-                    })
-                  }
-                  type="category_id"
-                  placeholder="Select a category"
-                  id="category_id"
-                  name="category_id"
-                  className="form-control"
-                >
-                  <option value="1">Men</option>
-                  <option value="2">Women</option>
-                  <option value="3">Jewelry</option>
-                </select>
                 <div className="form-floating mb-3">
-                  {/* <input
+                  <select
                     value={listData.category_id}
                     onChange={(event) =>
                       setListData({
@@ -169,30 +113,17 @@ function CreateListing(list) {
                     id="category_id"
                     name="category_id"
                     className="form-control"
-                  /> */}
+                  >
+                    <option value="">Choose a category</option>
+                    {categories.map((category) => (
+                      <option value={category.id} key={category.id}>
+                        {category.category}
+                      </option>
+                    ))}
+                  </select>
                 </div>
-                <label style={{ color: "black" }} htmlFor="condition">
-                  Condition
-                </label>
-                <select
-                  value={listData.condition}
-                  onChange={(event) =>
-                    setListData({
-                      ...listData,
-                      condition: event.target.value,
-                    })
-                  }
-                  placeholder="What is the condition"
-                  required
-                  id="condition"
-                  name="condition"
-                  className="form-control"
-                >
-                  <option value="new">New</option>
-                  <option value="used">Used</option>
-                </select>
                 <div className="form-floating mb-3">
-                  {/* <input
+                  <select
                     value={listData.condition}
                     onChange={(event) =>
                       setListData({
@@ -205,7 +136,14 @@ function CreateListing(list) {
                     id="condition"
                     name="condition"
                     className="form-control"
-                  /> */}
+                  >
+                    <option value="new" key="new">
+                      New
+                    </option>
+                    <option value="used" key="used">
+                      Used
+                    </option>
+                  </select>
                 </div>
                 <label style={{ color: "black" }} htmlFor="price">
                   Price

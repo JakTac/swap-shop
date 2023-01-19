@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Col } from "react-bootstrap";
+import { Card, Row, Container, Col } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -79,7 +79,7 @@ function WomensPage() {
             <Col style={{ color: "black" }} key={listing.listings_id}>
               <div className="card">
                 <Card>
-                  <Card.img src={listing.image_url} height="500" width="200" />
+                  <Card.Img src={listing.image_url} height="500" width="200" />
                   <Card.Body>
                     <div className="col-md-12 text-center">
                       <div className="card-title">
