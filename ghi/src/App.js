@@ -8,6 +8,7 @@ import CreateListing from "./Listings/CreateListing";
 import Jewelry from "./Listings/JewelryCategory";
 import WomensPage from "./Listings/WomensPage";
 import SaleHistory from "./Listings/SaleHistory";
+import ProfilePage from "./Accounts/ProfilePage";
 import Nav from "./Nav";
 import "./App.css";
 
@@ -34,6 +35,7 @@ function App() {
           <Route path="/jewelry/" element={<Jewelry />} />
           <Route path="/womens/" element={<WomensPage />} />
           <Route path="/salehistory" element={<SaleHistory />} />
+          <Route path="/profile/" element={<ProfilePage />} />
         </Routes>
       </div>
     </AuthProvider>
