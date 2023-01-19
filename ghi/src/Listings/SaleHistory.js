@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import sellListing from '../Accounts/ProfilePage';
 
 
     const SaleHistory = () => {
@@ -55,7 +56,6 @@ import { Link } from 'react-router-dom';
 
     // ADD A FILTERING FUNCTION THAT ONLY DISPLAYS THE CURRENT USER'S SALES
 
-
     return (
         <div className="">
             <div className="">
@@ -107,6 +107,7 @@ import { Link } from 'react-router-dom';
                                             {/* <td>{ sale.fields.date }</td>
                                             console.log("Not sure how to tie the date the bool box was clicked to this ^ self-updating column") */}
                                             <td>{ sale.fields.price }</td>
+                                            {/* <td>sellListing()</td> */}
                                         </tr>
                                     );
                                 })
