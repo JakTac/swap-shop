@@ -21,6 +21,19 @@ import {
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
 
+
+  const sellListing = async () => {
+      const sellUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/`;
+      const response = await fetch(sellUrl);
+
+      if (response.ok) {
+          const data = await response.json();
+          data.sold = true;
+      } else {
+          console.log("There was an issue marking this item as sold.")
+      }
+  }
+
 function ProfilePage() {
   return (
     <section style={{ backgroundColor: "#eee" }}>

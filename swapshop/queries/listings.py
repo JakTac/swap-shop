@@ -28,10 +28,6 @@ class ListingOut(BaseModel):
     seller_id: int
     sold: bool
 
-class SellListing(BaseModel):
-    listings_id: int
-    seller_id: int
-    sold: bool
 
 class CategoryIn(BaseModel):
     category: str
@@ -90,7 +86,6 @@ class ListingQueries:
                         listing.price,
                         listing.description,
                         user_id
-
                     ]
                 )
                 listing_id = result.fetchone()[0]
