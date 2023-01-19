@@ -94,7 +94,7 @@ function Nav() {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="dropdown-item" to="...">
+                  <NavLink className="dropdown-item" to="/salehistory">
                     Sold
                   </NavLink>
                 </li>

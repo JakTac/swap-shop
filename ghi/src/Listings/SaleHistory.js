@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
         const [ formData, setFormData ] = useState([])
 
         const getSaleHistory = async () => {
-            const url = `${process.env.REACT_APP_swapshop_API_HOST}/swapshop/accounts/{account_id}`;
+            const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/`;
             const response = await fetch(url);
 
             if (response.ok) {
@@ -29,7 +29,7 @@ import { Link } from 'react-router-dom';
 
     useEffect(() => {
         const loadSaleHistory = async () => {
-            const accountUserUrl = `${process.env.REACT_APP_swapshop_API_HOST}/swapshop/accounts/{account_id}`;
+            const accountUserUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/`;
             const response = await fetch(accountUserUrl);
 
             if (response.ok) {
@@ -64,7 +64,7 @@ import { Link } from 'react-router-dom';
 
                     console.log("// ADD A SEARCH FUNCTIONALITY //")
 
-                    <div className="">
+                    {/* <div className="">
                         <select onChange={handleFormChange} value={formData.date} className="form-select" required name="date" id="date">
 
                             <option value="">Select a date range</option>
@@ -84,7 +84,7 @@ import { Link } from 'react-router-dom';
                                 <option key={category.id} value={category.name}>{category.name}</option>
                             )
                         })}
-                    </div>
+                    </div> */}
 
                     <table className="table">
                         <thead>
@@ -101,11 +101,11 @@ import { Link } from 'react-router-dom';
                                 sales.map(sale => {
                                     return(
                                         <tr key={ sale.id }>
-                                            <td>{ sale.fields.image }</td>
+                                            <td>{ sale.fields.image_url }</td>
                                             <td>{ sale.fields.name }</td>
-                                            <td>{ sale.fields.category }</td>
-                                            <td>{ sale.fields.date }</td>
-                                            console.log("Not sure how to tie the date the bool box was clicked to this ^ self-updating column")
+                                            <td>{ sale.fields.category_id }</td>
+                                            {/* <td>{ sale.fields.date }</td>
+                                            console.log("Not sure how to tie the date the bool box was clicked to this ^ self-updating column") */}
                                             <td>{ sale.fields.price }</td>
                                         </tr>
                                     );

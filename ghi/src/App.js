@@ -7,6 +7,7 @@ import Signup from "./Accounts/Signup";
 import CreateListing from "./Listings/CreateListing";
 import Jewelry from "./Listings/JewelryCategory";
 import WomensPage from "./Listings/WomensPage";
+import SaleHistory from "./Listings/SaleHistory";
 import Nav from "./Nav";
 import "./App.css";
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/createlisting/" element={<CreateListing />} />
           <Route path="/jewelry/" element={<Jewelry />} />
           <Route path="/womens/" element={<WomensPage />} />
+          <Route path="/salehistory" element={<SaleHistory />} />
         </Routes>
       </div>
     </AuthProvider>

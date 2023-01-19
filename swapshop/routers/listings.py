@@ -23,7 +23,7 @@ def get_one(
 
 @router.post('/listings', response_model=Union[ListingOut, Error])
 def create_listing(listing: ListingIn, response:Response, repo: ListingQueries = Depends(), account_data: dict = Depends(authenticator.get_current_account_data)):
-    # if response.ok: 
+    # if response.ok:
     print(account_data)
     user_id=account_data["id"]
     return repo.create(listing, user_id)
@@ -33,6 +33,10 @@ def create_listing(listing: ListingIn, response:Response, repo: ListingQueries =
 
 @router.put('/listings/{listing_id}', response_model=Union[ListingOut, Error])
 def update_listing(listing_id:int, listing:ListingIn, repo:ListingQueries=Depends(), account_data: dict = Depends(authenticator.get_current_account_data)) -> Union[Error, ListingQueries]:
+    return repo.update(listing_id, listing)
+
+@router.put('/listings/{listing_id}/sell', response_model=Union[ListingOut, Error])
+def sell_listing(listing_id:int, listing:ListingOut, repo:ListingQueries=Depends(), account_data: dict = Depends(authenticator.get_current_account_data)) -> Union[Error, ListingQueries]:
     return repo.update(listing_id, listing)
 
 @router.delete('/listings/{listing_id}', response_model=bool)
