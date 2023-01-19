@@ -28,7 +28,7 @@ import { Link } from 'react-router-dom';
     )
 
     useEffect(() => {
-        const loadData = async () => {
+        const loadSaleHistory = async () => {
             const accountUserUrl = `${process.env.REACT_APP_swapshop_API_HOST}/swapshop/accounts/{account_id}`;
             const response = await fetch(accountUserUrl);
 
@@ -41,7 +41,7 @@ import { Link } from 'react-router-dom';
             }
         }
 
-        loadData()
+        loadSaleHistory()
 
     }, []
     )
