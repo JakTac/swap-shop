@@ -36,6 +36,7 @@ function CreateListing(list) {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
     };
     const response = await fetch(listUrl, fetchConfig);
     console.log(response);

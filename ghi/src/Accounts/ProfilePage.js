@@ -21,24 +21,13 @@ import {
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
 
-
-  const sellListing = async () => {
-      const sellUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/`;
-      const response = await fetch(sellUrl);
-
-      if (response.ok) {
-          const data = await response.json();
-          data.sold = true;
-      } else {
-          console.log("There was an issue marking this item as sold.")
-      }
-  }
+//  credentials: "include",
 
 function ProfilePage() {
   return (
     <section style={{ backgroundColor: "#eee" }}>
       <MDBContainer className="py-5">
-        <MDBRow>
+        {/* <MDBRow>
           <MDBCol>
             <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
               <MDBBreadcrumbItem>
@@ -50,14 +39,14 @@ function ProfilePage() {
               <MDBBreadcrumbItem active>User Profile</MDBBreadcrumbItem>
             </MDBBreadcrumb>
           </MDBCol>
-        </MDBRow>
+        </MDBRow> */}
 
         <MDBRow>
           <MDBCol lg="4">
             <MDBCard className="mb-4">
               <MDBCardBody className="text-center">
                 <MDBCardImage
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                  src="https://freesvg.org/img/abstract-user-flat-4.png"
                   alt="avatar"
                   className="rounded-circle"
                   style={{ width: "150px" }}
@@ -125,9 +114,7 @@ function ProfilePage() {
                     <MDBCardText>Full Name</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">
-                      Johnatan Smith
-                    </MDBCardText>
+                    <MDBCardText className="text-muted">Simba</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -142,7 +129,7 @@ function ProfilePage() {
                   </MDBCol>
                 </MDBRow>
                 <hr />
-                <MDBRow>
+                {/* <MDBRow>
                   <MDBCol sm="3">
                     <MDBCardText>Phone</MDBCardText>
                   </MDBCol>
@@ -173,7 +160,7 @@ function ProfilePage() {
                       Bay Area, San Francisco, CA
                     </MDBCardText>
                   </MDBCol>
-                </MDBRow>
+                </MDBRow> */}
               </MDBCardBody>
             </MDBCard>
 
@@ -181,7 +168,7 @@ function ProfilePage() {
               <MDBCol md="6">
                 <MDBCard className="mb-4 mb-md-0">
                   <MDBCardBody>
-                    <MDBCardText className="mb-4">
+                    {/* <MDBCardText className="mb-4">
                       <span className="text-primary font-italic me-1">
                         assigment
                       </span>{" "}
@@ -235,7 +222,7 @@ function ProfilePage() {
                     </MDBCardText>
                     <MDBProgress className="rounded">
                       <MDBProgressBar width={66} valuemin={0} valuemax={100} />
-                    </MDBProgress>
+                    </MDBProgress> */}
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>
@@ -249,7 +236,7 @@ function ProfilePage() {
                       </span>{" "}
                       Project Status
                     </MDBCardText>
-                    <MDBCardText
+                    {/* <MDBCardText
                       className="mb-1"
                       style={{ fontSize: ".77rem" }}
                     >
@@ -297,7 +284,7 @@ function ProfilePage() {
                     </MDBCardText>
                     <MDBProgress className="rounded">
                       <MDBProgressBar width={66} valuemin={0} valuemax={100} />
-                    </MDBProgress>
+                    </MDBProgress> */}
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>

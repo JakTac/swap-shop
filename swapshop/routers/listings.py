@@ -23,13 +23,8 @@ def get_one(
 
 @router.post('/listings', response_model=Union[ListingOut, Error])
 def create_listing(listing: ListingIn, response:Response, repo: ListingQueries = Depends(), account_data: dict = Depends(authenticator.get_current_account_data)):
-    # if response.ok:
-    print(account_data)
     user_id=account_data["id"]
     return repo.create(listing, user_id)
-    # else:
-    #     response.status_code = 400
-    #     return {"message": "Failed to create"}
 
 @router.put('/listings/{listing_id}', response_model=Union[ListingOut, Error])
 def update_listing(listing_id:int, listing:ListingIn, repo:ListingQueries=Depends(), account_data: dict = Depends(authenticator.get_current_account_data)) -> Union[Error, ListingQueries]:
