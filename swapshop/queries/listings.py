@@ -27,16 +27,10 @@ class ListingOut(BaseModel):
     seller_id: int
     sold: bool
 
-# class SellListing(BaseModel):
-#     listings_id: int
-#     image_url: str
-#     name: str
-#     category_id: int
-#     condition: str
-#     price: float
-#     description: str
-#     seller_id: int
-#     sold: bool
+class SellListing(BaseModel):
+    listings_id: int
+    seller_id: int
+    sold: bool
 
 class CategoryIn(BaseModel):
     category: str
@@ -178,23 +172,22 @@ class ListingQueries:
         #     print(e)
         #     return {"message": "Could not update listing"}
 
-    def sell_listing(self, user_id: int, listing_id: int, listing: ListingOut) -> Union[ListingOut, Error]:
+    def sell_listing(self, user_id: int, listing_id: int) -> Union[SellListing, Error]:
         # try:
         with pool.connection()as conn:
             with conn.cursor()as db:
                 db.execute(
                     """
                     UPDATE listings
-                    SET sold = %s
-                    WHERE listings_id = %s
+                    SET sold = true
+                    WHERE listings_id = %s AND seller_id = %s
                     """,
                     [
-                        listing.seller_id,
-                        listing.sold,
-                        listing_id
+                        listing_id,
+                        user_id
                     ]
                 )
-                return self.listing_in_to_out(listing=listing, listing_id=listing_id, sold=listing.sold, user_id=user_id)
+                return self.listing_sold(listing_id=listing_id, user_id=user_id)
         # except Exception as e:
         #     print(e)
         #     return {"message": "Could not sell listing"}
@@ -280,7 +273,8 @@ class ListingQueries:
 
 
 
-
+    def listing_sold(self, listing_id:int, user_id: int):
+        return SellListing(listings_id=listing_id, seller_id=user_id,)
 
 
     def listing_in_to_out(self, listing_id:int, sold:bool, listing:ListingIn, user_id: int):
