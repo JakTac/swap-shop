@@ -84,7 +84,7 @@ class ListingQueries:
                         listing.price,
                         listing.description,
                         user_id
-                        
+
                     ]
                 )
                 listing_id = result.fetchone()[0]
@@ -199,7 +199,7 @@ class ListingQueries:
         except Exception as e:
             print(e)
             return {'message':'Could not get that listing'}
-        
+
     def get_by_seller(self, seller_id: int) -> Union[Error, List[ListingOut]]:
         try:
             with pool.connection() as conn:
@@ -276,9 +276,3 @@ class ListingQueries:
             id=record[0],
             category=record[1]
         )
-
-
-
-
-
-
