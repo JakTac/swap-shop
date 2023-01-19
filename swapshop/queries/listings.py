@@ -147,7 +147,7 @@ class ListingQueries:
             print(e)
             return False
 
-    def update(self, listing_id: int, user_id: int, listing: ListingIn) -> Union[ListingOut, Error]:
+    def update(self, listing_id: int, listing: ListingIn, user_id: int) -> Union[ListingOut, Error]:
         # try:
         with pool.connection()as conn:
             with conn.cursor()as db:
@@ -173,31 +173,31 @@ class ListingQueries:
                     ]
                 )
                 sold=False
-                return self.listing_in_to_out(listing_id, listing)
+                return self.listing_in_to_out(listing=listing, listing_id=listing_id, user_id=user_id, sold=sold)
         # except Exception as e:
         #     print(e)
         #     return {"message": "Could not update listing"}
 
-        def sell_listing(self, listing_id: int, listing: ListingOut) -> Union[ListingOut, Error]:
-            try:
-                with pool.connection()as conn:
-                    with conn.cursor()as db:
-                        db.execute(
-                            """
-                            UPDATE listings
-                            SET sold = %s
-                            WHERE listings_id = %s
-                            """,
-                            [
-                                listing.seller_id,
-                                listing.sold,
-                                listing_id
-                            ]
-                        )
-                        return self.listing_in_to_out(listing_id, listing)
-            except Exception as e:
-                print(e)
-                return {"message": "Could not sell listing"}
+    def sell_listing(self, user_id: int, listing_id: int, listing: ListingOut) -> Union[ListingOut, Error]:
+        # try:
+        with pool.connection()as conn:
+            with conn.cursor()as db:
+                db.execute(
+                    """
+                    UPDATE listings
+                    SET sold = %s
+                    WHERE listings_id = %s
+                    """,
+                    [
+                        listing.seller_id,
+                        listing.sold,
+                        listing_id
+                    ]
+                )
+                return self.listing_in_to_out(listing=listing, listing_id=listing_id, sold=listing.sold, user_id=user_id)
+        # except Exception as e:
+        #     print(e)
+        #     return {"message": "Could not sell listing"}
 
     def get_by_category(self, category_id: int) -> Union[Error, List[ListingOut]]:
         try:
