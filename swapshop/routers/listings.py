@@ -36,7 +36,7 @@ def update_listing(listing_id:int, listing:ListingIn, repo:ListingQueries=Depend
     user_id=account_data["id"]
     return repo.update(listing_id, listing, user_id)
 
-@router.put('/listings/sell/{listing_id}', response_model=Union[ListingOut, Error])
+@router.put('/listings/sell/{listing_id}', response_model=Union[bool, Error])
 def sell_listing(listing_id:int, repo:ListingQueries=Depends(), account_data: dict = Depends(authenticator.get_current_account_data)) -> Union[Error, ListingQueries]:
     user_id=account_data["id"]
     return repo.sell_listing(listing_id, user_id)
