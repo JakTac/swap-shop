@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useAuthContext, useToken } from "./Accounts/Token";
+import Swapshop2 from "./Swapshop2.png";
+import "./Styling.css";
 
 function Nav() {
   const { token } = useAuthContext();
@@ -7,10 +9,18 @@ function Nav() {
   console.log({ token });
   if (token) {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
-            SwapShop
+            <a href="" className="logo">
+              <img
+                className="logo"
+                height="100"
+                width="100"
+                src={Swapshop2}
+                alt=""
+              />
+            </a>
           </NavLink>
           <button
             className="navbar-toggler"
@@ -25,7 +35,7 @@ function Nav() {
           </button>
         </div>
         &nbsp;&nbsp;&nbsp;
-        <button type="button" className="btn btn-light">
+        <button type="button" className="btn btn-light custombutton">
           <NavLink
             style={{ color: "black" }}
             className="nav-link"
@@ -36,7 +46,11 @@ function Nav() {
           </NavLink>
         </button>
         &nbsp;&nbsp;&nbsp;
-        <button type="button" className="btn btn-light" onClick={logout}>
+        <button
+          type="button"
+          className="btn btn-light custombutton"
+          onClick={logout}
+        >
           Logout
         </button>
         &nbsp;&nbsp;&nbsp;
@@ -61,14 +75,14 @@ function Nav() {
                 aria-expanded="false"
               >
                 <img
-                  src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png"
-                  height="60"
-                  width="60"
+                  src="https://freesvg.org/img/abstract-user-flat-4.png"
+                  height="70"
+                  width="70"
                 />
               </a>
               <ul className="dropdown-menu">
                 <li className="nav-item">
-                  <NavLink className="dropdown-item" to="...">
+                  <NavLink className="dropdown-item" to="/profile/">
                     Profile
                   </NavLink>
                 </li>
@@ -88,7 +102,7 @@ function Nav() {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="dropdown-item" to="...">
+                  <NavLink className="dropdown-item" to="/salehistory">
                     Sold
                   </NavLink>
                 </li>
@@ -100,10 +114,18 @@ function Nav() {
     );
   } else {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
-            SwapShop
+            <a href="" className="logo">
+              <img
+                className="logo"
+                height="100"
+                width="100"
+                src={Swapshop2}
+                alt=""
+              />
+            </a>
           </NavLink>
           <button
             className="navbar-toggler"
@@ -117,7 +139,7 @@ function Nav() {
             <span className="navbar-toggler-icon"></span>
           </button>
         </div>
-        <button type="button" className="btn btn-light">
+        <button type="button" className="btn btn-light custombutton">
           <NavLink
             style={{ color: "black" }}
             className="nav-link"
@@ -128,7 +150,7 @@ function Nav() {
           </NavLink>
         </button>
         &nbsp;&nbsp;&nbsp;
-        <button type="button" className="btn btn-light">
+        <button type="button" className="btn btn-light custombutton">
           <NavLink
             style={{ color: "black" }}
             className="nav-link"
@@ -138,6 +160,7 @@ function Nav() {
             Login
           </NavLink>
         </button>
+        &nbsp;&nbsp;&nbsp;
       </nav>
     );
   }

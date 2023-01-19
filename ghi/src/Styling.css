@@ -1,0 +1,10 @@
+.custombutton {
+    length: 100px;
+    width: 100px;
+    height: 80px;
+}
+
+.carousel-caption {
+    top: 0;
+    bottom: auto;
+}

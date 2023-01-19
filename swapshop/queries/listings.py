@@ -14,6 +14,7 @@ class ListingIn(BaseModel):
     condition: str
     price: float
     description: str
+    sold: bool
 
 
 class ListingOut(BaseModel):
@@ -24,6 +25,11 @@ class ListingOut(BaseModel):
     condition: str
     price: float
     description: str
+    seller_id: int
+    sold: bool
+
+class SellListing(BaseModel):
+    listings_id: int
     seller_id: int
     sold: bool
 
@@ -88,7 +94,7 @@ class ListingQueries:
                     ]
                 )
                 listing_id = result.fetchone()[0]
-                sold =False
+                sold=False
                 return self.listing_in_to_out(listing=listing, listing_id=listing_id, sold=sold, user_id=user_id)
 
     def get_listings(self) -> Union[Error, List[ListingOut]]:
@@ -136,39 +142,39 @@ class ListingQueries:
             print(e)
             return False
 
-    def update(self, listing_id: int, listing: ListingIn) -> Union[ListingOut, Error]:
-        try:
-            with pool.connection()as conn:
-                with conn.cursor()as db:
-                    db.execute(
-                        """
-                        UPDATE listings
-                        SET image_url = %s
-                            , name = %s
-                            , category_id = %s
-                            , condition = %s
-                            , price = %s
-                            , description = %s
-                            , seller_id = %s
-                            , sold = %s
-                        WHERE listings_id = %s
-                        """,
-                        [
-                            listing.image_url,
-                            listing.name,
-                            listing.category_id,
-                            listing.condition,
-                            listing.price,
-                            listing.description,
-                            listing.seller_id,
-                            listing.sold,
-                            listing_id
-                        ]
-                    )
-                    return self.listing_in_to_out(listing_id, listing)
-        except Exception as e:
-            print(e)
-            return {"message": "Could not update listing"}
+    def update(self, listing_id: int, listing: ListingIn, user_id: int) -> Union[ListingOut, Error]:
+        # try:
+        with pool.connection()as conn:
+            with conn.cursor()as db:
+                db.execute(
+                    """
+                    UPDATE listings
+                    SET image_url = %s
+                        , name = %s
+                        , category_id = %s
+                        , condition = %s
+                        , price = %s
+                        , description = %s
+                        , sold = %s
+                    WHERE listings_id = %s
+                    """,
+                    [
+                        listing.image_url,
+                        listing.name,
+                        listing.category_id,
+                        listing.condition,
+                        listing.price,
+                        listing.description,
+                        listing.sold,
+                        listing_id
+                    ]
+                )
+                # sold=False
+                return self.listing_in_to_out(listing=listing, listing_id=listing_id, user_id=user_id)
+        # except Exception as e:
+        #     print(e)
+        #     return {"message": "Could not update listing"}
+
 
     def get_by_category(self, category_id: int) -> Union[Error, List[ListingOut]]:
         try:
@@ -249,14 +255,9 @@ class ListingQueries:
             print(e)
             return {"message": "Could not get all categories"}
 
-
-
-
-
-
-    def listing_in_to_out(self, listing_id:int, sold:bool, listing:ListingIn, user_id: int):
+    def listing_in_to_out(self, listing_id:int, listing:ListingIn, user_id: int):
         old_data = listing.dict()
-        return ListingOut(listings_id=listing_id, sold=sold, **old_data, seller_id=user_id,)
+        return ListingOut(listings_id=listing_id, **old_data, seller_id=user_id,)
 
     def record_to_listing_out(self, record):
         return ListingOut(

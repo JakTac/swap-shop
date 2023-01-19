@@ -58,7 +58,7 @@ Day 8 - January 13
     We got started with our sign out function because auth is so freaking difficult. Jake drove at first while the rest of us watched for helpful things to point out. Then we worked with Cody on finishing touches on the Create Listings page.
 
 Day 9 - January 17
-
+    The day before our three-day weekend involved a LOT of frustration.
 
 Day 10 - January 18
     We worked on new routes for the backend, allowing us to display Sale History and more. I spent most of the morning reviewing Project Beta's functional components, and Candice's Redux and React Hooks lectures to allow me to more efficiently implement them.
