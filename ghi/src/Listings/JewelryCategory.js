@@ -45,7 +45,7 @@ function Jewelry() {
   return (
     <div className="jewelry-container">
       <div className="col-md-12 text-center">
-        <h2 className="display-5 fw-bold" style={{ color: "black" }}>
+        <h2 className="display-5" style={{ color: "black" }}>
           Jewelry
         </h2>
       </div>

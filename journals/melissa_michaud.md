@@ -1,5 +1,11 @@
 **Melissa's Journal**
 
+**1/19/23**
+-
+
+**1/18/23**
+- We picked up the day with a standup, discussing what everyone has been doing on their own. I finished up the jewelry category page most of the day and adjusted the styling on the mainpage and navbar. Jake and Alonso were working on cleaning up backend data, Ben was working on sold history page and Cody was working on create a listing page.
+
 **1/17/23**
 - We picked up the day working on having the Navbar hot reload when logging in to show "List item", "Logout" and profile dropdown. Jake was the main driver for the day while the rest of us were his eyes. We were stuck on this issue for the majority of the day and it was pretty discouraging. After much appreciated help from 2 instructors, Alonso was able to successfully debug the issue which was a huge feat for the day. While simultanously helping Jake debug the auth issues, I was able to get the Jewelry page up and running. I was able to implement the search bar through filtering and getting the data to load on the page through mapping. I ran into a couple issues which Alonso was able to debug. Overall, today was a pretty successful day. At the end of the day, our group met up to reassess our Kanban and what features were left.
 
