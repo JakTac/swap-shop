@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card, Col, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "react-multi-carousel/lib/styles.css";
-import { getAccount } from "./Token";
+import { getAccountId } from "./Token";
 
 // src="https://freesvg.org/img/abstract-user-flat-4.png"
 //             alt="avatar"
@@ -29,15 +29,12 @@ import { getAccount } from "./Token";
 //  credentials: "include"
 
 function ProfilePage() {
-  const user = getAccount();
-  console.log(user);
-  // const id = user["account"]["id"];
-  // console.log(id);
   const navigate = useNavigate();
-
   const [listings, setListing] = useState([]);
   const loadListing = async () => {
-    const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/`;
+    const user = await getAccountId()
+    console.log(user)
+    const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/sellers/${user}`;
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
@@ -57,7 +54,6 @@ function ProfilePage() {
       </div>
       <Container>
         {listings
-          .filter((listing) => listing.seller_id === id)
           .map((listing) => (
             <Col style={{ color: "black" }} key={listing.listings_id}>
               <div className="card">

@@ -23,7 +23,7 @@ export async function getTokenInternal() {
   return false;
 }
 
-export async function getAccount() {
+export async function getAccountId() {
   const url = `${process.env.REACT_APP_swapshop_API_HOST}/token/`;
   try {
     const response = await fetch(url, {
@@ -31,7 +31,7 @@ export async function getAccount() {
     });
     if (response.ok) {
       const data = await response.json();
-      account = data.account;
+      const account = data.account.id;
       return account;
     }
   } catch (e) {}
