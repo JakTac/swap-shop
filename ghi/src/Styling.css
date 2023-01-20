@@ -1,10 +1,38 @@
+/* Buttons  */
 .custombutton {
-    length: 100px;
-    width: 100px;
-    height: 80px;
+  length: 100px;
+  width: 100px;
+  height: 80px;
 }
 
+/* Carousel */
 .carousel-caption {
-    top: 0;
-    bottom: auto;
+  top: 0;
+  bottom: auto;
+}
+
+/* Search Bar */
+div.search-bar {
+  margin: 25px 100px 25px 100px;
+}
+
+/* Cards */
+.card-columns {
+  column-count: 1;
+  display: inline-block;
+}
+
+.item-card {
+  position: relative;
+  background-color: var(--color-grey-primary);
+  margin: 1rem;
+  flex: 1 0 25rem;
+  max-width: 30rem;
+  max-height: 50rem;
+  transition: 0.2s;
+}
+
+.item-card:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0.5rem 0.75rem 1.5rem #bbbbbb;
 }

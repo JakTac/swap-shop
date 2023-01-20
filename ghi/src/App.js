@@ -27,19 +27,17 @@ function App() {
     <AuthProvider>
       <GetToken />
       <Nav />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/login/" element={<LoginComponent login={login} />} />
-          <Route path="/signup/" element={<Signup signup={signup} />} />
-          <Route path="/createlisting/" element={<CreateListing />} />
-          <Route path="/jewelry/" element={<Jewelry />} />
-          <Route path ="/mens/" element={<Mens />} />
-          <Route path="/womens/" element={<WomensPage />} />
-          <Route path="/salehistory" element={<SaleHistory />} />
-          <Route path="/profile/" element={<ProfilePage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/login/" element={<LoginComponent login={login} />} />
+        <Route path="/signup/" element={<Signup signup={signup} />} />
+        <Route path="/createlisting/" element={<CreateListing />} />
+        <Route path="/jewelry/" element={<Jewelry />} />
+        <Route path="/mens/" element={<Mens />} />
+        <Route path="/womens/" element={<WomensPage />} />
+        <Route path="/salehistory" element={<SaleHistory />} />
+        <Route path="/profile/" element={<ProfilePage />} />
+      </Routes>
     </AuthProvider>
   );
 }
