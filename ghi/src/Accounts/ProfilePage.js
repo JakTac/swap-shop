@@ -10,6 +10,23 @@ import { getAccount } from "./Token";
 //             style={{ width: "150px" }}
 //             fluid
 //  credentials: "include",
+// const sellListing = async() => {
+
+//   const [ sold, setSold ] = useState([])
+
+//   const sellUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/`;
+//   const soldUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/{listing_id}`;
+//   const response = await fetch(sellUrl);
+
+//   if (response.ok) {
+//     const data = await response.json();
+//     setSold(data.sold);
+//   } else {
+
+//   }
+// }
+
+//  credentials: "include"
 
 function ProfilePage() {
   const user = getAccount();
