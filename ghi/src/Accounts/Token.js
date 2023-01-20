@@ -21,6 +21,21 @@ export async function getTokenInternal() {
   return false;
 }
 
+export async function getAccountId() {
+  const url = `${process.env.REACT_APP_swapshop_API_HOST}/token/`;
+  try {
+    const response = await fetch(url, {
+      credentials: "include",
+    });
+    if (response.ok) {
+      const data = await response.json();
+      const account = data.account.id;
+      return account;
+    }
+  } catch (e) {}
+  return false;
+}
+
 function handleErrorMessage(error) {
   if ("error" in error) {
     error = error.error;
