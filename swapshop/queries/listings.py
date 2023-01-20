@@ -97,7 +97,6 @@ class ListingQueries:
                         listing.price,
                         listing.description,
                         user_id
-
                     ]
                 )
                 listing_id = result.fetchone()[0]

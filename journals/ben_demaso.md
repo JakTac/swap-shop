@@ -67,6 +67,15 @@ Day 10 - January 18
 
     I still need to add a search functionality, and I worked with Jake extensively on the backend linking to the Sale History page. We needed a boolean property for sold/not sold in our database after it was created. I wanted to add a "date sold" to populate automatically with the time and date that boolean field was clicked, but I'm considering making that a stretch goal.
 
+Day 11 - January 19
+    Today was the day of router and function struggles for the Sale History page. We tried adding the boolean field option for sold/not sold in the backend, but when we started testing things in the morning there was a lot to be fixed... ouch. Three SEIR and Riley visits, we learned to run the sold boolean through the update function instead of creating a new dedicate sell item function.
+
+    However, this broke the create listing route which then needed to be fixed.
+
+    By the end of the day, we'd made great progress but I still wouldn't say Sale History is complete. More for tomorrow!
+
+Day 12 - January 20
+
 
     Afterwards, we split up into our respective groups. Based on our order of importance (which page needed to be developed when), my first page was being Alonso's second pair of eyes on the Men's Page, and being primary programmer on the user Sale History Page. These pages however are later in our development timeline and Alonso was tied up being second for other pages, so I spent time  I also looked ahead towards Websockets.
 
