@@ -11,6 +11,8 @@ import { getAccountId } from "./Token";
 //             fluid
 //  credentials: "include"
 
+// [ state, setState ]
+
 function ProfilePage() {
   const navigate = useNavigate();
   const [listings, setListing] = useState([]);
@@ -45,8 +47,8 @@ function ProfilePage() {
         fetch(soldUrl, fetchConfig)
             .then(result => {
                 if (result.ok) {
-                    window.alert("Listing was marked sold.")
                     setListing(listings.filter(listing => listing.sold === true))
+                    loadListing()
                 } else {
                     window.alert("Something went wrong. Listing was not marked as sold.")
                 }
