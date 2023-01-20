@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 let internalToken = null;
 
 export function getToken() {
-  console.log(internalToken);
   return internalToken;
 }
 
@@ -15,7 +14,6 @@ export async function getTokenInternal() {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
       internalToken = data.access_token;
       return internalToken;
     }
@@ -90,16 +88,13 @@ export function useToken() {
     const form = new FormData();
     form.append("username", username);
     form.append("password", password);
-    console.log({ form });
     const response = await fetch(url, {
       method: "post",
       credentials: "include",
       body: form,
     });
-    console.log({ response });
     if (response.ok) {
       const token = await getTokenInternal();
-      console.log(token);
       setToken(token);
       return;
     }
@@ -109,7 +104,6 @@ export function useToken() {
 
   async function signup(firstName, lastName, email, password) {
     const url = `${process.env.REACT_APP_swapshop_API_HOST}/swapshop/accounts`;
-    console.log(firstName, lastName, email, password);
     const response = await fetch(url, {
       method: "post",
       body: JSON.stringify({
