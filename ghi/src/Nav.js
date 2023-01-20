@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useAuthContext, useToken } from "./Accounts/Token";
-import Swapshop2 from './Swapshop2.png'
+import Swapshop2 from "./Swapshop2.png";
 import "./Styling.css";
 
 function Nav() {
@@ -13,9 +13,13 @@ function Nav() {
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
             <a href="" className="logo">
-            <img className="logo" height="100" width="100"
-            src={Swapshop2}
-            alt=""/>
+              <img
+                className="logo"
+                height="100"
+                width="100"
+                src={Swapshop2}
+                alt=""
+              />
             </a>
           </NavLink>
           <button
@@ -42,7 +46,11 @@ function Nav() {
           </NavLink>
         </button>
         &nbsp;&nbsp;&nbsp;
-        <button type="button" className="btn btn-light custombutton" onClick={logout}>
+        <button
+          type="button"
+          className="btn btn-light custombutton"
+          onClick={logout}
+        >
           Logout
         </button>
         &nbsp;&nbsp;&nbsp;
@@ -74,7 +82,7 @@ function Nav() {
               </a>
               <ul className="dropdown-menu">
                 <li className="nav-item">
-                  <NavLink className="dropdown-item" to="...">
+                  <NavLink className="dropdown-item" to="/profile/">
                     Profile
                   </NavLink>
                 </li>
@@ -94,7 +102,7 @@ function Nav() {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="dropdown-item" to="...">
+                  <NavLink className="dropdown-item" to="/salehistory">
                     Sold
                   </NavLink>
                 </li>
@@ -110,9 +118,13 @@ function Nav() {
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
             <a href="" className="logo">
-            <img className="logo" height="100" width="100"
-            src={Swapshop2}
-            alt=""/>
+              <img
+                className="logo"
+                height="100"
+                width="100"
+                src={Swapshop2}
+                alt=""
+              />
             </a>
           </NavLink>
           <button

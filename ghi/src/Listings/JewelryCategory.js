@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { Card, Row, Col, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
-    items: 5
+    items: 5,
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3
+    items: 3,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 2
+    items: 2,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 1
-  }
+    items: 1,
+  },
 };
 function Jewelry() {
   const [listings, setListings] = useState([]);
@@ -45,7 +45,7 @@ function Jewelry() {
   return (
     <div className="jewelry-container">
       <div className="col-md-12 text-center">
-        <h2 className="display-5 fw-bold" style={{ color: "black" }}>
+        <h2 className="display-5" style={{ color: "black" }}>
           Jewelry
         </h2>
       </div>
@@ -72,42 +72,38 @@ function Jewelry() {
         </div>
       </div>
       &nbsp;&nbsp;&nbsp;
-        <Carousel responsive={responsive}>
-            {listings
-                .filter((listing) =>
-                  listing.name.toLowerCase().includes(search.toLowerCase())
-                )
-                .map((listing) => (
-                  <Col style={{ color: "black" }} key={listing.listings_id}>
-                    <div className="card">
-                    <Card>
-                      <Card.Img
-                        src={listing.image_url}
-                        height="500"
-                        width="200"
-                      />
-                    <Card.Body>
+      <Carousel responsive={responsive}>
+        {listings
+          .filter((listing) =>
+            listing.name.toLowerCase().includes(search.toLowerCase())
+          )
+          .map((listing) => (
+            <Col style={{ color: "black" }} key={listing.listings_id}>
+              <div className="card">
+                <Card>
+                  <Card.Img src={listing.image_url} height="500" width="200" />
+                  <Card.Body>
                     <div className="col-md-12 text-center">
-                    <div className="card-title">
-                    <Card.Title>{listing.name}</Card.Title>
-                    </div>
-                    <div className="list-group-item">
-                    <Card.Text>{listing.condition}</Card.Text>
-                    </div>
-                    <div className="list-group-item">
-                    <Card.Text>${listing.price}</Card.Text>
-                    </div>
-                    <div className="list-group-item">
-                    <Card.Text>{listing.description}</Card.Text>
-                    </div>
+                      <div className="card-title">
+                        <Card.Title>{listing.name}</Card.Title>
+                      </div>
+                      <div className="list-group-item">
+                        <Card.Text>{listing.condition}</Card.Text>
+                      </div>
+                      <div className="list-group-item">
+                        <Card.Text>${listing.price}</Card.Text>
+                      </div>
+                      <div className="list-group-item">
+                        <Card.Text>{listing.description}</Card.Text>
+                      </div>
                     </div>
                   </Card.Body>
-                  </Card>
-                  </div>
-                  </Col>
-                ))}
-        </Carousel>
-      </div>
+                </Card>
+              </div>
+            </Col>
+          ))}
+      </Carousel>
+    </div>
   );
 }
 
