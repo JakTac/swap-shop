@@ -1,5 +1,30 @@
 import React, {useState, useEffect} from "react";
 import {NavLink} from "react-router-dom";
+import { Card, Row, Col, Container } from "react-bootstrap";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
 
 function Mens() {
     const [listings, setListings] = useState([]);
@@ -48,42 +73,37 @@ function Mens() {
                 />
                 </div>
             </div>
-            <div className="container">
-                <div className="col-md-12 text-center">
-                <table className="table table-striped">
-                    <thead>
-                    <tr style={{ color: "black" }}>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Condition</th>
-                        <th>Price</th>
-                        <th>Description</th>
-                    </tr>
-                    </thead>
-                    <tbody style={{ color: "black" }}>
-                    {listings.filter(
-                        (listing) =>
-                            listing.name.toLowerCase().includes(search.toLowerCase())
-                        )
-                        .map((listing) => (
-                        <tr style={{ color: "black" }} key={listing.listings_id}>
-                        <td>
-                            <img
-                                src={listing.image_url}
-                                height="400"
-                                width="600"
-                            ></img>
-                            </td>
-                            <td>{listing.name}</td>
-                            <td>{listing.condition}</td>
-                            <td>${listing.price}</td>
-                            <td>{listing.description}</td>
-                        </tr>
-                        ))}
-                    </tbody>
-                </table>
-                </div>
-            </div>
+            &nbsp;&nbsp;&nbsp;
+            <Carousel responsive={responsive}>
+                {listings.filter((listing) =>
+                listing.name.toLowerCase().includes(search.toLowerCase())
+                )
+                .map((listing) =>(
+                    <Col style={{ color: "black" }} key={listing.listings_id}>
+                        <div className="card">
+                        <Card>
+                            <Card.Img src={listing.image_url} height="500" width="200" />
+                            <Card.Body>
+                                <div className="col-md-12 text-center">
+                                <div className="card-title">
+                                    <Card.Title>{listing.name}</Card.Title>
+                                </div>
+                                <div className="list-group-item">
+                                    <Card.Text>{listing.condition}</Card.Text>
+                                </div>
+                                <div className="list-group-item">
+                                    <Card.Text>${listing.price}</Card.Text>
+                                </div>
+                                <div className="list-group-item">
+                                    <Card.Text>{listing.description}</Card.Text>
+                                </div>
+                                </div>
+                            </Card.Body>
+                        </Card>
+                        </div>
+                    </Col>
+                ))}
+            </Carousel>
         </div>
     )
 }
