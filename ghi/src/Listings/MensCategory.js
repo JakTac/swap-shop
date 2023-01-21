@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from "react";
-import {NavLink} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { Card, Row, Col, Container } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
 
 const responsive = {
   superLargeDesktop: {
@@ -25,87 +24,87 @@ const responsive = {
   },
 };
 
-
 function Mens() {
-    const [listings, setListings] = useState([]);
-    const loadMens = async () => {
-        const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/categories/1`;
-        const response = await fetch(url)
-        if (response.ok) {
-            const data = await response.json();
-            setListings(data);
-        } else {
-            console.error("Error fetching mens")
-        }
-    };
+  const [listings, setListings] = useState([]);
+  const loadMens = async () => {
+    const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/categories/1`;
+    const response = await fetch(url);
+    if (response.ok) {
+      const data = await response.json();
+      setListings(data);
+    } else {
+      console.error("Error fetching mens");
+    }
+  };
 
-    const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
 
-    useEffect(() => {
-        loadMens();
-    }, []);
-    return (
-        <div className="mens-container">
-            <div className="col-md-12 text-center">
-                <h2 className="display-5 fw-bold" style={{ color: "black" }}>
-                Mens
-                </h2>
-            </div>
-            <div className="col-md-12 text-center">
-                &nbsp;&nbsp;&nbsp;
-                <button type="button" className="btn btn-dark">
-                <NavLink
-                    style={{ color: "white" }}
-                    className="nav-link"
-                    aria-current="page"
-                    to="/"
-                >
-                    Back to Home Page
-                </NavLink>
-                </button>
-                <div>
-                &nbsp;&nbsp;&nbsp;
-                <input
-                    type="search"
-                    placeholder="Search for item.."
-                    className="form-control"
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                </div>
-            </div>
-            &nbsp;&nbsp;&nbsp;
-            <Carousel responsive={responsive}>
-                {listings.filter((listing) =>
-                listing.name.toLowerCase().includes(search.toLowerCase())
-                )
-                .map((listing) =>(
-                    <Col style={{ color: "black" }} key={listing.listings_id}>
-                        <div className="card">
-                        <Card>
-                            <Card.Img src={listing.image_url} height="500" width="200" />
-                            <Card.Body>
-                                <div className="col-md-12 text-center">
-                                <div className="card-title">
-                                    <Card.Title>{listing.name}</Card.Title>
-                                </div>
-                                <div className="list-group-item">
-                                    <Card.Text>{listing.condition}</Card.Text>
-                                </div>
-                                <div className="list-group-item">
-                                    <Card.Text>${listing.price}</Card.Text>
-                                </div>
-                                <div className="list-group-item">
-                                    <Card.Text>{listing.description}</Card.Text>
-                                </div>
-                                </div>
-                            </Card.Body>
-                        </Card>
-                        </div>
-                    </Col>
-                ))}
-            </Carousel>
+  useEffect(() => {
+    loadMens();
+  }, []);
+  return (
+    <div className="mens-container">
+      <div className="col-md-12 text-center">
+        <h2 className="display-5 fw-bold" style={{ color: "black" }}>
+          Mens
+        </h2>
+      </div>
+      <div className="col-md-12 text-center">
+        &nbsp;&nbsp;&nbsp;
+        <button type="button" className="btn btn-dark">
+          <NavLink
+            style={{ color: "white" }}
+            className="nav-link"
+            aria-current="page"
+            to="/"
+          >
+            Back to Home Page
+          </NavLink>
+        </button>
+        <div>
+          &nbsp;&nbsp;&nbsp;
+          <input
+            type="search"
+            placeholder="Search for item.."
+            className="form-control"
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </div>
-    )
+      </div>
+      &nbsp;&nbsp;&nbsp;
+      <Carousel responsive={responsive}>
+        {listings
+          .filter((listing) =>
+            listing.name.toLowerCase().includes(search.toLowerCase())
+          )
+          .map((listing) => (
+            <Col style={{ color: "black" }} key={listing.listings_id}>
+              <div className="card">
+                <Card>
+                  <Card.Img src={listing.image_url} height="500" width="200" />
+                  <Card.Body>
+                    <div className="col-md-12 text-center">
+                      <div className="card-title">
+                        <Card.Title>{listing.name}</Card.Title>
+                      </div>
+                      <div className="list-group-item">
+                        <Card.Text>{listing.condition}</Card.Text>
+                      </div>
+                      <div className="list-group-item">
+                        <Card.Text>${listing.price}</Card.Text>
+                      </div>
+                      <div className="list-group-item">
+                        <Card.Text>{listing.description}</Card.Text>
+                      </div>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </div>
+            </Col>
+          ))}
+      </Carousel>
+    </div>
+  );
 }
 
 export default Mens;

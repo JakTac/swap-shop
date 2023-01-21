@@ -8,10 +8,10 @@ import {
   Twitter,
   Copyright,
 } from "@material-ui/icons";
-import React, { Fragment } from 'react'
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import Swapshop2 from '../Swapshop2.png'
+import Swapshop2 from "../Swapshop2.png";
 
 const Container = styled.div`
   display: flex;
@@ -80,19 +80,23 @@ const ContactItem = styled.div`
 `;
 
 const Payment = styled.img`
-    width: 50%;
+  width: 50%;
 `;
 
 const Footer = () => {
   return (
     <Container>
-    <Logo>
+      <Logo>
         <a>
-        <img className="logo" height="250" width="250"
+          <img
+            className="logo"
+            height="300"
+            width="300"
             src={Swapshop2}
-            alt=""/>
+            alt=""
+          />
         </a>
-        </Logo>
+      </Logo>
       <Left>
         <Logo>SwapShop</Logo>
         <Desc>
@@ -113,45 +117,55 @@ const Footer = () => {
           </SocialIcon>
         </SocialContainer>
         <Desc>
-        <ContactItem>
-          <Copyright style={{marginRight:"10px"}} /> Copyright 2023 MCJAB
-        </ContactItem>
+          <ContactItem>
+            <Copyright style={{ marginRight: "10px" }} /> Copyright 2023 MCJAB
+          </ContactItem>
         </Desc>
       </Left>
       <Center>
         <Title>Useful Links</Title>
         <List>
-            <ListItem>
-                <NavLink style={{ color: "black" }} to="/">Home</NavLink>
-            </ListItem>
-            <ListItem>
-                <NavLink style={{ color: "black" }} to="/mens/">Mens Items</NavLink>
-            </ListItem>
-            <ListItem>
-                <NavLink style={{ color: "black" }} to="/womens/">Womens Items</NavLink>
-            </ListItem>
-            <ListItem>
-                <NavLink style={{ color: "black" }} to="/jewelry/">Jewelry</NavLink>
-            </ListItem>
-            <ListItem>
-                <NavLink style={{ color: "black" }} to="...">Terms and Conditions</NavLink>
-            </ListItem>
+          <ListItem>
+            <NavLink style={{ color: "black" }} to="/">
+              Home
+            </NavLink>
+          </ListItem>
+          <ListItem>
+            <NavLink style={{ color: "black" }} to="/mens/">
+              Mens Items
+            </NavLink>
+          </ListItem>
+          <ListItem>
+            <NavLink style={{ color: "black" }} to="/womens/">
+              Womens Items
+            </NavLink>
+          </ListItem>
+          <ListItem>
+            <NavLink style={{ color: "black" }} to="/jewelry/">
+              Jewelry
+            </NavLink>
+          </ListItem>
+          <ListItem>
+            <NavLink style={{ color: "black" }} to="...">
+              Terms and Conditions
+            </NavLink>
+          </ListItem>
         </List>
       </Center>
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <Room style={{marginRight:"10px"}}/> 7 Seven Lane, Galvanize Way 12345
+          <Room style={{ marginRight: "10px" }} /> 7 Seven Lane, Galvanize Way
+          12345
         </ContactItem>
         <ContactItem>
-          <Phone style={{marginRight:"10px"}}/> +1 234 567 8900
+          <Phone style={{ marginRight: "10px" }} /> +1 234 567 8900
         </ContactItem>
         <ContactItem>
-          <MailOutline style={{marginRight:"10px"}} /> swapshop@example.com
+          <MailOutline style={{ marginRight: "10px" }} /> swapshop@example.com
         </ContactItem>
         <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
       </Right>
-
     </Container>
   );
 };
