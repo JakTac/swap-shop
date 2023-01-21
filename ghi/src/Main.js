@@ -2,6 +2,7 @@
 import Carouselslides from "./Carousel";
 import Newsletter from "./Components/Newsletter";
 import Footer from "./Components/Footer";
+import Cards from "./MainPage/Cards";
 import "./App.css";
 
 // function MainPage() {
@@ -15,6 +16,7 @@ const MainPage = () => {
   return (
     <div>
       <Carouselslides />
+      <Cards />
       <Newsletter />
     </div>
   );
