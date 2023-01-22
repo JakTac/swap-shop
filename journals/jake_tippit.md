@@ -1,0 +1,103 @@
+-------------------------------------------------------------------------------------------------------------------------------------
+## January 20, 2023
+Today, we worked on:
+
+*
+Finishing the profile page
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+## January 19, 2023
+Today, we worked on:
+
+*
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+## January 18, 2023
+Today, we worked on:
+
+*
+alonso and I updated backend 
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+## January 17, 2023
+Today, we worked on:
+
+*Front-end Auth Pt. 4 The Finale
+
+Today I started us off by picking where we had left off. The NavBar live reload issue ended up taKing us the almost the entire day. After getting some very appreciated help from two instructors, Alonso was able to figure out the issue. It turns out that we weren't passing the token on the login page, nor the signup page. After implementing his fix the NavBar would live refresh upon logging in, signing up, and logging out. While we were working on this Melissa managed to get the jewelry page up and running as well as the searchbar functionality.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+## January 13, 2023
+Today, we worked on:
+
+*Front-end Auth Pt. 3
+
+Today I started us off by trying to implement the logout functionality on our NavBar. This was actually pretty easy and it didn't take too long. I then started work on making the NavBar display diffferent things depending on whether or not the user is logged in. This is where things took a turn for the worse. I got the basic functionality of it to work almost immediately the issue was that it wouldn't live refresh the page when you'd log in, only when you would log out. We were stuck on this for the entire day and we met with multiple SEIR's we had to stop for Social Hack Hour and we have decided to pick up where we left off after the weekend.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+## January 12, 2023
+Today, we worked on:
+
+*Front-end Auth Cont.
+
+Today we started off by finishing up the signup page. We ran into a few problems but for the most part it was smooth sailing. Afterwards Cody started work on the create listings page while Alonso was working on the backend implementing a get all categories endpoint.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+## January 11, 2023
+Today, we worked on:
+
+*Front-end Auth
+
+Today Melissa showed off the updates she made to the main page and it's looking fabulous. We've started on front-end auth, but man is it painful. We spent quite a bit of time today talking with a SEIR trying to get the login page to cooperate. Thankfully we got it to work which just leaves us with signup and logout. We started work on the signup page and we plan to finish it tomorrow.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+## January 10, 2023
+Today, we worked on:
+
+*Front-end
+
+Today we started work on the front-end of the project namely the main page. We added a carousel with buttons that would take you to each category's page. We added a new migration to the backend with a categories table. Alonso managed to connect categories to the listings. So whenever a listing is created a category number is required, which is linked to the categories in the backend. 
+
+-------------------------------------------------------------------------------------------------------------------------------------
+## January 9, 2023
+Today, we worked on:
+
+*Crud for authentication
+
+Over the weekend I cleaned up the code in accounts removing the unfinished code from when we trying to get things to work. Today I added a fetch all accounts function, a fetch for a single account based off of their ID, and I added the delete function. I also made it so the Create, Update, and Delete functions for listings required you to be logged in before you could use said funcitons. Afterwards we started laying out the plan for the frontend. We went through the pages that we'd need and assigned 2-3 people to each page, with more complicated pages/functionalities having all of us working on them together.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+## January 6, 2023
+Today, we worked on:
+
+Rebuilding the project
+
+Today we realized that we needed to have a group that the project was attached to. I created a group and linked the project to it. We later worked on backend authentication. We were able to get the create account to work as well as the login and logout functionality.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+## January 5, 2023
+Today, we worked on:
+
+* Rebuilding the project
+
+After Riley posted his fix we tried implementing it. Unfortunately, that didn't work. I tried rebuilding the project and implementing the fix, which did work. I then went through the rest of the set up steps in this new project. Afterwards we went through and got this project to the same place th at the previous project was at. We also got to work on our backend data endpoints and our SQL queries. We began work on the get_one and create endpoints which we managed to finish today.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+## January 4, 2023
+Today, we worked on:
+
+* Setting up the project
+
+Today we started setting up the project. I started us off by following the set up direction on Learn. We had to edit the docker-compose.yml file as well as addinhg the windows-setup.js file that was provided to the react app. However, we ran into an issue on the Windows side. The react app wouldn't start. We have decided to work on the rest of the project and come back to it. Riley has tried to help us with the Windows fix and is currently looking for a solution. We started by creating the routers directory as well as the queries directory. We then began working on our tables.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+## January 3, 2023
+Today we worked on:
+
+* Designing the wireframe of the project as well as the planned endpoints.
+
+Today we started work on our wireframe and our planned data endpoints. Melissa made a really fantastic looking wireframe that we will use for designing the frontend of the site. 
