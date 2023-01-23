@@ -5,6 +5,7 @@ import { useToken } from "./Token";
 function LoginComponent() {
   const { login, token } = useToken();
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,7 +18,11 @@ function LoginComponent() {
       email: "",
       password: "",
     });
-    return navigate("/");
+    if (login.ok) {
+      return navigate("/");
+    } else {
+      setErrorMessage("Incorrect login, try again!");
+    }
   };
 
   return (
@@ -63,9 +68,17 @@ function LoginComponent() {
                     className="form-control"
                   />
                 </div>
-                <button className="btn btn-dark" type="submit">
-                  Login
-                </button>
+                <div>
+                  <button className="btn btn-dark" type="submit">
+                    Login
+                  </button>
+                  {errorMessage && (
+                    <div className="alert alert-danger" role="alert">
+                      {" "}
+                      {errorMessage}{" "}
+                    </div>
+                  )}
+                </div>
               </form>
               &nbsp;&nbsp;&nbsp;
               <div>
