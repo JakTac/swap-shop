@@ -12,11 +12,6 @@ function Cards() {
         <h5 className="card-title">Men's</h5>
         <p className="card-text">Items</p>
       </div>
-      {/* <ul className="list-group list-group-flush">
-        <li className="list-group-item">This is a group uitem</li>
-        <li className="list-group-item">This is a group uitem</li>
-        <li className="list-group-item">This is a group uitem</li>
-      </ul> */}
       <div className="card-body">
         <a href="#" className="card-link">
           Card link

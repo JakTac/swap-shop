@@ -8,7 +8,6 @@ function SaleHistory() {
   const [listings, setListing] = useState([]);
   const loadListing = async () => {
     const user = await getAccountId()
-    console.log(user)
     const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/sellers/${user}`;
     const response = await fetch(url);
     if (response.ok) {

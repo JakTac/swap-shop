@@ -12,7 +12,6 @@ function Signup() {
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     try {
       await signup(
         formData.firstName,
@@ -27,7 +26,6 @@ function Signup() {
         password: "",
       });
     } catch (e) {
-      console.log(formData);
     }
   };
 

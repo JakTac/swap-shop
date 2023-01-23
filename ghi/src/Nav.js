@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import Footer from "./Components/Footer";
 import { useAuthContext, useToken } from "./Accounts/Token";
 import Swapshop2 from "./Swapshop2.png";
 import "./Styling.css";
@@ -7,7 +6,6 @@ import "./Styling.css";
 function Nav() {
   const { token } = useAuthContext();
   const { logout } = useToken();
-  console.log({ token });
   if (token) {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -118,7 +116,6 @@ function Nav() {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
-            <a href="" className="logo">
               <img
                 className="logo"
                 height="100"
@@ -126,7 +123,6 @@ function Nav() {
                 src={Swapshop2}
                 alt=""
               />
-            </a>
           </NavLink>
           <button
             className="navbar-toggler"
