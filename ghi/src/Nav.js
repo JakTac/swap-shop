@@ -83,8 +83,8 @@ function Nav() {
               </a>
               <ul className="dropdown-menu">
                 <li className="nav-item">
-                  <NavLink className="dropdown-item" to="...">
-                    Profile
+                  <NavLink className="dropdown-item" to="/mylistings/">
+                    My Listings
                   </NavLink>
                 </li>
                 <li className="nav-item">
@@ -103,7 +103,7 @@ function Nav() {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="dropdown-item" to="...">
+                  <NavLink className="dropdown-item" to="/salehistory/">
                     Sold
                   </NavLink>
                 </li>
