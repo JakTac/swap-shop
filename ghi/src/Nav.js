@@ -116,7 +116,6 @@ function Nav() {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
-            <a href="" className="logo">
               <img
                 className="logo"
                 height="100"
@@ -124,7 +123,6 @@ function Nav() {
                 src={Swapshop2}
                 alt=""
               />
-            </a>
           </NavLink>
           <button
             className="navbar-toggler"

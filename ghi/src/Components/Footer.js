@@ -117,9 +117,7 @@ const Footer = () => {
           </SocialIcon>
         </SocialContainer>
         <Desc>
-          <ContactItem>
             <Copyright style={{ marginRight: "10px" }} /> Copyright 2023 MCJAB
-          </ContactItem>
         </Desc>
       </Left>
       <Center>
