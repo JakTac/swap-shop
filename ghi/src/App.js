@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MainPage from "./Main";
 import { AuthProvider, useToken } from "./Accounts/Token";
 import LoginComponent from "./Accounts/Login";
@@ -14,14 +14,12 @@ import Nav from "./Nav";
 import "./App.css";
 
 function GetToken() {
-  // Get token from JWT cookie (if already logged in)
   useToken();
   return null;
 }
 
 function App() {
-  const { token, login, logout, signup } = useToken();
-  const [test, setTest] = useState();
+  const {login, signup } = useToken();
 
   return (
     <AuthProvider>

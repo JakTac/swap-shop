@@ -4,7 +4,6 @@ import { useToken } from "./Token";
 
 function LoginComponent() {
   const { login, token } = useToken();
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,7 +16,6 @@ function LoginComponent() {
       email: "",
       password: "",
     });
-    return navigate("/");
   };
 
   return (

@@ -39,9 +39,7 @@ function CreateListing(list) {
       credentials: "include",
     };
     const response = await fetch(listUrl, fetchConfig);
-    console.log(response);
     if (response.ok) {
-      console.log(response);
       const newListing = await response.json();
       setListData({
         image_url: "",
@@ -54,7 +52,6 @@ function CreateListing(list) {
     } else {
       console.error("Error in creating listing");
     }
-    console.log(listData);
   };
 
   return (

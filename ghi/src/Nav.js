@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import Footer from "./Components/Footer";
 import { useAuthContext, useToken } from "./Accounts/Token";
 import Swapshop2 from "./Swapshop2.png";
 import "./Styling.css";
@@ -7,7 +6,6 @@ import "./Styling.css";
 function Nav() {
   const { token } = useAuthContext();
   const { logout } = useToken();
-  console.log({ token });
   if (token) {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
