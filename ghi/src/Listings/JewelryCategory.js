@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Card, Row, Col, Container } from "react-bootstrap";
+import { Card, Row, Col, Container, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "../Styling.css";
+import { getAccountId } from "../Accounts/Token";
 
 const responsive = {
   superLargeDesktop: {
@@ -25,6 +26,11 @@ const responsive = {
 };
 function Jewelry() {
   const [listings, setListings] = useState([]);
+  const [user, setUser] = useState([]);
+  const loaduser = async () => {
+    const data = await getAccountId()
+    setUser(data) 
+  }
   const loadJewelry = async () => {
     const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/categories/3`;
     const response = await fetch(url);
@@ -36,10 +42,34 @@ function Jewelry() {
     }
   };
 
+  const markListingSold = (listing) => {
+      const soldUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/${listing.listings_id}`;
+        listing.sold = true
+        const fetchConfig = {
+            method: "PUT",
+            body: JSON.stringify(listing),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: "include",
+        }
+        fetch(soldUrl, fetchConfig)
+            .then(result => {
+                if (result.ok) {
+                    setListings(listings.filter(listing => listing.sold === true))
+                    loadJewelry()
+                } else {
+                    window.alert("Something went wrong. Listing was not marked as sold.")
+                }
+            }
+            )
+    }
+
   const [search, setSearch] = useState("");
 
   useEffect(() => {
     loadJewelry();
+    loaduser();
   }, []);
 
   return (
@@ -77,6 +107,12 @@ function Jewelry() {
                 listing.name.toLowerCase().includes("gold")) ||
               listing.name.toLowerCase().includes("silver")
           )
+          .filter((listing) => 
+            listing.sold == false
+          )
+          .filter((listing) => 
+            listing.seller_id !== user
+          )
           .map((listing) => (
             <Col style={{ color: "black" }} key={listing.listings_id}>
               <div className="item-card">
@@ -95,6 +131,9 @@ function Jewelry() {
                       </div>
                       <div className="list-group-item list-group-item-dark">
                         <Card.Text>{listing.description}</Card.Text>
+                      </div>
+                      <div>
+                      <Button variant="primary" onClick={() => {markListingSold(listing)}}>Buy!</Button>
                       </div>
                     </div>
                   </Card.Body>
@@ -121,6 +160,12 @@ function Jewelry() {
         .filter((listing) =>
           listing.name.toLowerCase().includes(search.toLowerCase())
         )
+        .filter((listing) => 
+            listing.sold == false
+          )
+          .filter((listing) => 
+            listing.seller_id !== user
+          )
         .map((listing) => (
           <div className="card-columns">
             <div className="item-card">
@@ -144,6 +189,9 @@ function Jewelry() {
                       </div>
                       <div className="list-group-item list-group-item-dark">
                         <Card.Text>{listing.description}</Card.Text>
+                      </div>
+                      <div>
+                      <Button variant="primary" onClick={() => {markListingSold(listing)}}>Buy!</Button>
                       </div>
                     </div>
                   </Card.Body>

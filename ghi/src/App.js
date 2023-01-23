@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MainPage from "./Main";
 import { AuthProvider, useToken } from "./Accounts/Token";
 import LoginComponent from "./Accounts/Login";
@@ -8,20 +8,18 @@ import CreateListing from "./Listings/CreateListing";
 import Jewelry from "./Listings/JewelryCategory";
 import Mens from "./Listings/MensCategory";
 import WomensPage from "./Listings/WomensPage";
-import SaleHistory from "./Listings/SaleHistory";
+import SaleHistory from "./Accounts/SaleHistory";
 import ProfilePage from "./Accounts/ProfilePage";
 import Nav from "./Nav";
 import "./App.css";
 
 function GetToken() {
-  // Get token from JWT cookie (if already logged in)
   useToken();
   return null;
 }
 
 function App() {
-  const { token, login, logout, signup } = useToken();
-  const [test, setTest] = useState();
+  const {login, signup } = useToken();
 
   return (
     <AuthProvider>
@@ -36,7 +34,7 @@ function App() {
         <Route path="/mens/" element={<Mens />} />
         <Route path="/womens/" element={<WomensPage />} />
         <Route path="/salehistory" element={<SaleHistory />} />
-        <Route path="/profile/" element={<ProfilePage />} />
+        <Route path="/mylistings/" element={<ProfilePage />} />
       </Routes>
     </AuthProvider>
   );

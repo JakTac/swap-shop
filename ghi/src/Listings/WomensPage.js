@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Card, Row, Container, Col } from "react-bootstrap";
+import { Card, Row, Container, Col, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { getAccountId } from "../Accounts/Token";
 import "../Styling.css";
 
 const responsive = {
@@ -26,6 +27,11 @@ const responsive = {
 
 function WomensPage() {
   const [listings, setListings] = useState([]);
+  const [user, setUser] = useState([]);
+  const loaduser = async () => {
+    const data = await getAccountId()
+    setUser(data) 
+  }
   const loadWomens = async () => {
     const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/categories/2`;
     const response = await fetch(url);
@@ -37,9 +43,33 @@ function WomensPage() {
     }
   };
 
+  const markListingSold = (listing) => {
+      const soldUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/${listing.listings_id}`;
+        listing.sold = true
+        const fetchConfig = {
+            method: "PUT",
+            body: JSON.stringify(listing),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: "include",
+        }
+        fetch(soldUrl, fetchConfig)
+            .then(result => {
+                if (result.ok) {
+                    setListings(listings.filter(listing => listing.sold === true))
+                    loadWomens()
+                } else {
+                    window.alert("Something went wrong. Listing was not marked as sold.")
+                }
+            }
+            )
+    }
+
   const [search, setSearch] = useState("");
   useEffect(() => {
     loadWomens();
+    loaduser();
   }, []);
 
   return (
@@ -76,6 +106,12 @@ function WomensPage() {
           .filter((listing) =>
             listing.name.toLowerCase().includes(search.toLowerCase())
           )
+          .filter((listing) => 
+            listing.sold == false
+          )
+          .filter((listing) => 
+            listing.seller_id !== user
+          )
           .map((listing) => (
             <Col style={{ color: "black" }} key={listing.listings_id}>
               <div className="card">
@@ -94,6 +130,9 @@ function WomensPage() {
                       </div>
                       <div className="list-group-item">
                         <Card.Text>{listing.description}</Card.Text>
+                      </div>
+                      <div>
+                      <Button variant="primary" onClick={() => {markListingSold(listing)}}>Buy!</Button>
                       </div>
                     </div>
                   </Card.Body>

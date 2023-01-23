@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card, Col, Container } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Card, Col, Container } from "react-bootstrap";
 import "react-multi-carousel/lib/styles.css";
 import { getAccountId } from "./Token";
 
 
-function ProfilePage() {
+function SaleHistory() {
   const [listings, setListing] = useState([]);
   const loadListing = async () => {
     const user = await getAccountId()
@@ -22,39 +21,15 @@ function ProfilePage() {
     loadListing();
   }, []);
 
-
-   const markListingSold = (listing) => {
-      const soldUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/${listing.listings_id}`;
-        listing.sold = true
-        const fetchConfig = {
-            method: "PUT",
-            body: JSON.stringify(listing),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: "include",
-        }
-        fetch(soldUrl, fetchConfig)
-            .then(result => {
-                if (result.ok) {
-                    setListing(listings.filter(listing => listing.sold === true))
-                    loadListing()
-                } else {
-                    window.alert("Something went wrong. Listing was not marked as sold.")
-                }
-            }
-            )
-    }
-
   return (
     <div className="jewelry-container">
       <div className="col-md-12 text-center">
-        <h2 className="display-5" style={{ color: "black" }}>My Listings</h2>
+        <h2 className="display-5" style={{ color: "black" }}>Sale History</h2>
       </div>
       <Container>
         {listings
           .filter((listing) =>
-            listing.sold === false)
+            listing.sold === true)
 
           .map((listing) => (
             <Col style={{ color: "black" }} key={listing.listings_id}>
@@ -72,10 +47,6 @@ function ProfilePage() {
                       <div className="list-group-item">
                         <Card.Text>${listing.price}</Card.Text>
                       </div>
-                      <div className="list-group-item">
-                        <Card.Text>{listing.description}</Card.Text>
-                      </div>
-                      <Button variant="primary" onClick={() => {markListingSold(listing)}}>Mark as Sold</Button>
                     </div>
                   </Card.Body>
                 </Card>
@@ -87,4 +58,4 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage;
+export default SaleHistory;
