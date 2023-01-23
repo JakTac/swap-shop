@@ -1,6 +1,9 @@
-import ControlledCarousel from "./Carousel";
+// import ControlledCarousel from "./Carousel";
+import Carouselslides from "./Carousel";
 import Newsletter from "./Components/Newsletter";
 import Footer from "./Components/Footer";
+import Cards from "./MainPage/Cards";
+import "./App.css";
 
 // function MainPage() {
 //   return <ControlledCarousel />;
@@ -12,10 +15,10 @@ import Footer from "./Components/Footer";
 const MainPage = () => {
   return (
     <div>
-      <ControlledCarousel />
+      <Carouselslides />
+      <Cards />
       <Newsletter />
-      <Footer />
     </div>
-  )
-}
+  );
+};
 export default MainPage;

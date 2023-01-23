@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Col, Container } from "react-bootstrap";
+import { Button, Card, Col, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "react-multi-carousel/lib/styles.css";
 import { getAccountId } from "./Token";
@@ -9,24 +9,9 @@ import { getAccountId } from "./Token";
 //             className="rounded-circle"
 //             style={{ width: "150px" }}
 //             fluid
-//  credentials: "include",
-// const sellListing = async() => {
-
-//   const [ sold, setSold ] = useState([])
-
-//   const sellUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/`;
-//   const soldUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/{listing_id}`;
-//   const response = await fetch(sellUrl);
-
-//   if (response.ok) {
-//     const data = await response.json();
-//     setSold(data.sold);
-//   } else {
-
-//   }
-// }
-
 //  credentials: "include"
+
+// [ state, setState ]
 
 function ProfilePage() {
   const navigate = useNavigate();
@@ -47,6 +32,30 @@ function ProfilePage() {
     loadListing();
   }, []);
 
+
+   const markListingSold = (listing) => {
+      const soldUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/${listing.listings_id}`;
+        listing.sold = true
+        const fetchConfig = {
+            method: "PUT",
+            body: JSON.stringify(listing),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: "include",
+        }
+        fetch(soldUrl, fetchConfig)
+            .then(result => {
+                if (result.ok) {
+                    setListing(listings.filter(listing => listing.sold === true))
+                    loadListing()
+                } else {
+                    window.alert("Something went wrong. Listing was not marked as sold.")
+                }
+            }
+            )
+    }
+
   return (
     <div className="jewelry-container">
       <div className="col-md-12 text-center">
@@ -54,11 +63,14 @@ function ProfilePage() {
       </div>
       <Container>
         {listings
+          .filter((listing) =>
+            listing.sold === false)
+
           .map((listing) => (
             <Col style={{ color: "black" }} key={listing.listings_id}>
               <div className="card">
                 <Card>
-                  <Card.Img src={listing.image_url} height="500" width="200" />
+                  <Card.Img src={listing.image_url} height="500" width="500" />
                   <Card.Body>
                     <div className="col-md-12 text-center">
                       <div className="card-title">
@@ -73,6 +85,7 @@ function ProfilePage() {
                       <div className="list-group-item">
                         <Card.Text>{listing.description}</Card.Text>
                       </div>
+                      <Button variant="primary" onClick={() => {markListingSold(listing)}}>Mark as Sold</Button>
                     </div>
                   </Card.Body>
                 </Card>

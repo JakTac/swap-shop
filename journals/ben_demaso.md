@@ -75,6 +75,11 @@ Day 11 - January 19
     By the end of the day, we'd made great progress but I still wouldn't say Sale History is complete. More for tomorrow!
 
 Day 12 - January 20
+    What a great day! I got right to work on the Sale History and Profile Page, tigtening up some of the styling and trying to get the filters to cooperate. However I quickly reilized I was doing things out of order and that the Profile Page needed some love first. We needed it to display listings for just the logged in user there, and needed a "Marked as Sold" that connected to yesterday's backend fixes.
+
+    Connecting that "Mark as Sold" button proved challenging and took a couple of hours. Later in the afternoon I was finally able move into specific filtering and automatic refreshes. I also tweaked error messaging during thtis time, and my pair programmer Alonso got this across the finish line with his backend skills.
+
+Day 13 - January 23
 
 
     Afterwards, we split up into our respective groups. Based on our order of importance (which page needed to be developed when), my first page was being Alonso's second pair of eyes on the Men's Page, and being primary programmer on the user Sale History Page. These pages however are later in our development timeline and Alonso was tied up being second for other pages, so I spent time  I also looked ahead towards Websockets.

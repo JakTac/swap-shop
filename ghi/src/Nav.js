@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import Footer from "./Components/Footer";
 import { useAuthContext, useToken } from "./Accounts/Token";
 import Swapshop2 from "./Swapshop2.png";
 import "./Styling.css";
@@ -15,8 +16,8 @@ function Nav() {
             <a href="" className="logo">
               <img
                 className="logo"
-                height="100"
-                width="100"
+                height="130"
+                width="130"
                 src={Swapshop2}
                 alt=""
               />
@@ -82,7 +83,7 @@ function Nav() {
               </a>
               <ul className="dropdown-menu">
                 <li className="nav-item">
-                  <NavLink className="dropdown-item" to="/profile/">
+                  <NavLink className="dropdown-item" to="...">
                     Profile
                   </NavLink>
                 </li>
@@ -102,7 +103,7 @@ function Nav() {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="dropdown-item" to="/salehistory">
+                  <NavLink className="dropdown-item" to="...">
                     Sold
                   </NavLink>
                 </li>
