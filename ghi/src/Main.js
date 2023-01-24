@@ -1,15 +1,16 @@
 import Carouselslides from "./Carousel";
-import Newsletter from "./Components/Newsletter";
+import CreatedBy from "./Components/CreatedBy";
 import Cards from "./MainPage/Cards";
+import Cards2 from "./MainPage/Cards2";
 import "./App.css";
-
 
 const MainPage = () => {
   return (
     <div>
       <Carouselslides />
       <Cards />
-      <Newsletter />
+      <Cards2 />
+      <CreatedBy />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useAuthContext, useToken } from "./Accounts/Token";
-import Swapshop2 from "./Swapshop2.png";
+import Swapshop2 from "./Logos/Swapshop2.png";
 import "./Styling.css";
 
 function Nav() {
@@ -116,13 +116,13 @@ function Nav() {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
-              <img
-                className="logo"
-                height="100"
-                width="100"
-                src={Swapshop2}
-                alt=""
-              />
+            <img
+              className="logo"
+              height="100"
+              width="100"
+              src={Swapshop2}
+              alt=""
+            />
           </NavLink>
           <button
             className="navbar-toggler"

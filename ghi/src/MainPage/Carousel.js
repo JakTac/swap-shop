@@ -3,7 +3,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { carouselItems } from "./CarouselItems";
-import { Carousel } from "react-bootstrap";
 
 const Container = styled.div`
   width: 100%;

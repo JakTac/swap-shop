@@ -1,6 +1,8 @@
 import { Send } from "@material-ui/icons";
 import styled from "styled-components";
 
+import { Copyright } from "@material-ui/icons";
+
 const Container = styled.div`
   height: 60vh;
   background-color: lightgrey;
@@ -20,20 +22,20 @@ const Desc = styled.div`
   margin-bottom: 20px;
 `;
 
-const InputContainer = styled.div`
-  width: 50%;
-  height: 40px;
-  background-color: white;
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid lightgray;
-`;
+// const InputContainer = styled.div`
+//   width: 50%;
+//   height: 40px;
+//   background-color: white;
+//   display: flex;
+//   justify-content: space-between;
+//   border: 1px solid lightgray;
+// `;
 
-const Input = styled.input`
-  border: none;
-  flex: 8;
-  padding-left: 20px;
-`;
+// const Input = styled.input`
+//   border: none;
+//   flex: 8;
+//   padding-left: 20px;
+// `;
 
 const Button = styled.button`
   flex: 1;
@@ -42,19 +44,23 @@ const Button = styled.button`
   color: white;
 `;
 
-const Newsletter = () => {
+const CreatedBy = () => {
   return (
     <Container>
-      <Title>Newsletter</Title>
-      <Desc>Sign up to our newsletter for updates!</Desc>
-      <InputContainer>
+      <Title>7EVEN</Title>
+      <Desc>Melissa - Cody - Jake - Alonso - Ben</Desc>
+      <Desc>
+        <Copyright style={{ marginRight: "10px" }} />
+        MCJAB
+      </Desc>
+      {/* <InputContainer>
         <Input placeholder="Your email" />
         <Button>
           <Send />
         </Button>
-      </InputContainer>
+      </InputContainer> */}
     </Container>
   );
 };
 
-export default Newsletter;
+export default CreatedBy;
