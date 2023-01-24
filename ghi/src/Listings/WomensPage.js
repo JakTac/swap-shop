@@ -132,7 +132,7 @@ function WomensPage() {
                         <Card.Text>{listing.description}</Card.Text>
                       </div>
                       <div>
-                      <Button variant="primary" onClick={() => {markListingSold(listing)}}>Buy!</Button>
+                      <Button variant="primary" onClick={() => {markListingSold(listing)}}>Request</Button>
                       </div>
                     </div>
                   </Card.Body>
