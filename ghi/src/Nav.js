@@ -11,15 +11,13 @@ function Nav() {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
-            <a href="" className="logo">
-              <img
-                className="logo"
-                height="130"
-                width="130"
-                src={Swapshop2}
-                alt=""
-              />
-            </a>
+            <img
+              className="logo"
+              height="130"
+              width="130"
+              src={Swapshop2}
+              alt=""
+            />
           </NavLink>
           <button
             className="navbar-toggler"
@@ -87,13 +85,14 @@ function Nav() {
                 </li>
                 <li className="nav-item">
                   <NavLink className="dropdown-item" to="/salehistory/">
-                    Requeested
+                    Requested Items
                   </NavLink>
                 </li>
               </ul>
             </li>
           </ul>
         </div>
+        &nbsp;&nbsp;&nbsp;
       </nav>
     );
   } else {
