@@ -2,9 +2,9 @@
 ## January 24, 2023
 Today, we worked on:
 
-*
+* Small modifications to frontend and begun unit tests
 
-
+Today I started us off by changing some of the verbage on our frontend based off of the input that we recieved from Riley. Afterwards Melissa worked on the styling of the mens and womens page to look more like the jewelry page. Afterwards she changed the footer of the site. Once we finished this we began work on our unit tests. Each of us has been assigned one unit test, but I think tomorrow we're going to meet up and get a solid base for working on these unit tests, cause as of right now everyone has been making their own folders and files.
 
 -------------------------------------------------------------------------------------------------------------------------------------
 ## January 23, 2023
