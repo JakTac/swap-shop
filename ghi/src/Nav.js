@@ -86,23 +86,8 @@ function Nav() {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="dropdown-item" to="/mens/">
-                    Mens
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="dropdown-item" to="/womens/">
-                    Women's
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="dropdown-item" to="/jewelry/">
-                    Jewelry
-                  </NavLink>
-                </li>
-                <li className="nav-item">
                   <NavLink className="dropdown-item" to="/salehistory/">
-                    Sold
+                    Requeested
                   </NavLink>
                 </li>
               </ul>

@@ -1,10 +1,18 @@
 -------------------------------------------------------------------------------------------------------------------------------------
-## January 23, 2023
+## January 24, 2023
 Today, we worked on:
 
 *
 
 
+
+-------------------------------------------------------------------------------------------------------------------------------------
+## January 23, 2023
+Today, we worked on:
+
+*Sale history page and finishing touches of frontend
+
+Today we started off with Ben wokring on the Sale History Page. It didn't take him long at all and once he got the skeleton of it working I took over for the filtering. I added a filter so that way only the user's listings that had been marked as sold would appear on the page. Afterwards I went through all of the listing pages and made it so the users listings wouldn't appear for them on the page and I added a buy button which would mark the listing as sold in the database. After I got this to work properly on all of the listing pages I went through our frontend and cleaned up the code removing anything that wasn't nesecary and I fixed small issues that were on the NavBar and the footer. Overall it was a very productive day. We talked with Riley who has reccomended we change some of the verbage on the frontend. Tomorrow we start on our unit tests.
 
 -------------------------------------------------------------------------------------------------------------------------------------
 ## January 20, 2023

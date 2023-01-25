@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card, Col, Container } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import "react-multi-carousel/lib/styles.css";
 import { getAccountId } from "./Token";
 
@@ -75,7 +74,7 @@ function ProfilePage() {
                       <div className="list-group-item">
                         <Card.Text>{listing.description}</Card.Text>
                       </div>
-                      <Button variant="primary" onClick={() => {markListingSold(listing)}}>Mark as Sold</Button>
+                      <Button variant="primary" onClick={() => {markListingSold(listing)}}>Mark as Requested</Button>
                     </div>
                   </Card.Body>
                 </Card>
