@@ -149,7 +149,6 @@ class ListingQueries:
             return False
 
     def update(self, listing_id: int, listing: UpdateListing, user_id: int) -> Union[ListingOut, Error]:
-        # try:
         with pool.connection()as conn:
             with conn.cursor()as db:
                 db.execute(
@@ -175,11 +174,7 @@ class ListingQueries:
                         listing_id
                     ]
                 )
-                # sold=False
                 return self.update_listing_in_to_out(listing=listing, listing_id=listing_id, user_id=user_id)
-        # except Exception as e:
-        #     print(e)
-        #     return {"message": "Could not update listing"}
 
 
     def get_by_category(self, category_id: int) -> Union[Error, List[ListingOut]]:
