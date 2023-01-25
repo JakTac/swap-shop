@@ -1,10 +1,18 @@
 -------------------------------------------------------------------------------------------------------------------------------------
+## January 25, 2023
+Today, we worked on:
+
+* Unit Tests
+
+Today we continued work on unit tests. Alonso and Melissa finished theirs last night so they were both able to help walk us through them. I was quite confused by them and went back to rewatch Riley's lecture on them. Afterwards Alonso helped me finish up the last little bit of it and helped clear my confusion on them. Overall a pretty productive day, and tomorrow we start deployment! 
+
+-------------------------------------------------------------------------------------------------------------------------------------
 ## January 24, 2023
 Today, we worked on:
 
-*
+* Small modifications to frontend and begun unit tests
 
-
+Today I started us off by changing some of the verbage on our frontend based off of the input that we recieved from Riley. Afterwards Melissa worked on the styling of the mens and womens page to look more like the jewelry page. Afterwards she changed the footer of the site. Once we finished this we began work on our unit tests. Each of us has been assigned one unit test, but I think tomorrow we're going to meet up and get a solid base for working on these unit tests, cause as of right now everyone has been making their own folders and files.
 
 -------------------------------------------------------------------------------------------------------------------------------------
 ## January 23, 2023
