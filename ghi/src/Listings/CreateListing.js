@@ -39,11 +39,10 @@ function CreateListing(list) {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
     };
     const response = await fetch(listUrl, fetchConfig);
-    console.log(response);
     if (response.ok) {
-      console.log(response);
       const newListing = await response.json();
       setListData({
         image_url: "",
@@ -56,11 +55,10 @@ function CreateListing(list) {
     } else {
       console.error("Error in creating listing");
     }
-    console.log(listData);
   };
 
   return (
-    <div className="auth-form-container">
+    <div className="listing-form-container">
       <div className="col-md-12 text-center">
         <div className="row">
           <div className="offset-3 col-6">
@@ -70,7 +68,7 @@ function CreateListing(list) {
               </div>
               <form onSubmit={handleSubmit}>
                 <label style={{ color: "black" }} htmlFor="image_url">
-                  image_url
+                  Image URL
                 </label>
                 <div className="form-floating mb-3">
                   <input
@@ -102,6 +100,9 @@ function CreateListing(list) {
                     className="form-control"
                   />
                 </div>
+                <label style={{ color: "black" }} htmlFor="category">
+                  Category
+                </label>
                 <div className="form-floating mb-3">
                   <select
                     value={listData.category_id}
@@ -117,7 +118,7 @@ function CreateListing(list) {
                     name="category_id"
                     className="form-control"
                   >
-                    <option value="">Choose a category</option>
+                    <option value="">Choose a category...</option>
                     {categories.map((category) => (
                       <option value={category.id} key={category.id}>
                         {category.category}
@@ -125,8 +126,11 @@ function CreateListing(list) {
                     ))}
                   </select>
                 </div>
+                <label style={{ color: "black" }} htmlFor="condition">
+                  Condition
+                </label>
                 <div className="form-floating mb-3">
-                  <select
+                  <input
                     value={listData.condition}
                     onChange={(event) =>
                       setListData({
@@ -139,14 +143,7 @@ function CreateListing(list) {
                     id="condition"
                     name="condition"
                     className="form-control"
-                  >
-                    <option value="new" key="new">
-                      New
-                    </option>
-                    <option value="used" key="used">
-                      Used
-                    </option>
-                  </select>
+                  ></input>
                 </div>
                 <label style={{ color: "black" }} htmlFor="price">
                   Price

@@ -58,7 +58,7 @@ Day 8 - January 13
     We got started with our sign out function because auth is so freaking difficult. Jake drove at first while the rest of us watched for helpful things to point out. Then we worked with Cody on finishing touches on the Create Listings page.
 
 Day 9 - January 17
-    The day before our three-day weekend involved a LOT of frustration.
+    The day before our three-day weekend involved a LOT of frustration. Errors on errors, SEIR help, instructor help, no one able to find the mistake... and then Alonso finds a missing comma or out of place space. This happened at least three times over the course of the day, which is just brutal when you think you know what's actually going on and feeling good about the project.
 
 Day 10 - January 18
     We worked on new routes for the backend, allowing us to display Sale History and more. I spent most of the morning reviewing Project Beta's functional components, and Candice's Redux and React Hooks lectures to allow me to more efficiently implement them.
@@ -66,6 +66,27 @@ Day 10 - January 18
     I crafted all of the React and JSX code for the Sale History page. That's not to say it works perfectly, of course. Up until lunch I was tweaking the filtering and React dynamic links. That's admittedly one of the newest/weirdest elements of this project for me.
 
     I still need to add a search functionality, and I worked with Jake extensively on the backend linking to the Sale History page. We needed a boolean property for sold/not sold in our database after it was created. I wanted to add a "date sold" to populate automatically with the time and date that boolean field was clicked, but I'm considering making that a stretch goal.
+
+Day 11 - January 19
+    Today was the day of router and function struggles for the Sale History page. We tried adding the boolean field option for sold/not sold in the backend, but when we started testing things in the morning there was a lot to be fixed... ouch. Three SEIR and Riley visits, we learned to run the sold boolean through the update function instead of creating a new dedicate sell item function.
+
+    However, this broke the create listing route which then needed to be fixed.
+
+    By the end of the day, we'd made great progress but I still wouldn't say Sale History is complete. More for tomorrow!
+
+Day 12 - January 20
+    What a great day! I got right to work on the Sale History and Profile Page, tigtening up some of the styling and trying to get the filters to cooperate. However I quickly reilized I was doing things out of order and that the Profile Page needed some love first. We needed it to display listings for just the logged in user there, and needed a "Marked as Sold" that connected to yesterday's backend fixes.
+
+    Connecting that "Mark as Sold" button proved challenging and took a couple of hours. Later in the afternoon I was finally able move into specific filtering and automatic refreshes. I also tweaked error messaging during thtis time, and my pair programmer Alonso got this across the finish line with his backend skills.
+
+Day 13 - January 23
+    Happy Monday! 5 days until project is due and only a week until the last serious academic responsibilty of the module and final exam! This group project went by *fast.* Far more enjoyable than Module 2. Gracious that was a tough one.
+
+    I started by diving into the Sale History page and mild tweaks on the Profile Page and Nav bar. After a couple hours of work, I was happy with the Sale History page. We now have cards of sold items displayed based on a boolean tied to a button inside a function from from the My Listing page. Profile Page and Nav bar changes were mostly naming edits.
+
+    We then did a review of code cleanliness, getting rid of commented out code, console.logs, and reviewing the console while each page is rendered to see any errors. Jake added a buy button to each listing so long as the logged in user's ID and the seller ID didn't match.
+
+    We're uncertain if we need to add more in the way of a user to seller connection and will get clarity on that from an instructor. We could add contact info as a required field when creating a listing, or do a more complicated solution like a chat system Websocket... although that sounds tough. Time to get into unit tests now... not sure where to start with that other than reviewing explorations.
 
 
     Afterwards, we split up into our respective groups. Based on our order of importance (which page needed to be developed when), my first page was being Alonso's second pair of eyes on the Men's Page, and being primary programmer on the user Sale History Page. These pages however are later in our development timeline and Alonso was tied up being second for other pages, so I spent time  I also looked ahead towards Websockets.

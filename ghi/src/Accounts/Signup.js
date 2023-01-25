@@ -4,6 +4,8 @@ import { useToken } from "./Token";
 
 function Signup() {
   const { signup, token } = useToken();
+  // const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -12,7 +14,6 @@ function Signup() {
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     try {
       await signup(
         formData.firstName,
@@ -27,7 +28,7 @@ function Signup() {
         password: "",
       });
     } catch (e) {
-      console.log(formData);
+      setErrorMessage("Duplicate signup, try again!");
     }
   };
 
@@ -107,9 +108,17 @@ function Signup() {
                     className="form-control"
                   />
                 </div>
-                <button className="btn btn-dark" type="submit">
-                  Signup
-                </button>
+                <div>
+                  <button className="btn btn-dark" type="submit">
+                    Signup
+                  </button>
+                  {errorMessage && (
+                    <div className="alert alert-danger" role="alert">
+                      {" "}
+                      {errorMessage}{" "}
+                    </div>
+                  )}
+                </div>
               </form>
               &nbsp;&nbsp;&nbsp;
               <div>
