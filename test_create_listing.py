@@ -1,63 +1,51 @@
-import { CreateListing } from "ghi/src/Listings/CreateListing";
-import { create } from "swapshop/queries/listings";
-import { create_listing } from "swapshop/routers/listings";
+import json
+from fastapi.testclient import TestClient
+from queries.listings import ListingIn, ListingOut, ListingQueries
+from routers.listings import ListingIn, ListingOut, ListingQueries
+# Not sure about the routers import
+from main import app
 
-def test_image_url():
-# Arrange
-    input = image_url
 
-# Act
-    result = CreateListing.image_url(input)
+client = TestClient(app=app)
 
-# Assert
-    assert result != None
+class ListingQueriesMock:
 
-def test_name():
-# Arrange
-    input = name
+    def create_listing(self, listing: ListingIn) -> ListingOut:
+        listing_dict = listing.dict()
+        return ListingOut(id = 420, **listing_dict)
 
-# Act
-    result = CreateListing.name(input)
+    def get_listings(self):
+        return []
 
-# Assert
-    assert result != None
+    def update_listing():
+        pass
 
-def category_id():
-# Arrange
-    input = category_id
+def test_create_listing():
+    # Arrange
 
-# Act
-    result = CreateListing.category_id(input)
+    # Act
 
-# Assert
-    assert result != None
+    # Assert
 
-def test_condition():
-# Arrange
-    input = condition
+    # A cleanup
+    pass
 
-# Act
-    result = CreateListing.condition(input)
+def test_get_listings():
+    # Arrange
 
-# Assert
-    assert result != None
+    # Act
 
-def test_price():
-# Arrange
-    input = price
+    # Assert
 
-# Act
-    result = CreateListing.price(input)
+    # A cleanup
+    pass
 
-# Assert
-    assert result != None
+def test_update_listing():
+    # Arrange
 
-def test_description():
-# Arrange
-    input = description
+    # Act
 
-# Act
-    result = CreateListing.description(input)
+    # Assert
 
-# Assert
-    assert result != None
+    # A cleanup
+    pass
