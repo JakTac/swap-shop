@@ -29,9 +29,9 @@ function Mens() {
   const [listings, setListings] = useState([]);
   const [user, setUser] = useState([]);
   const loaduser = async () => {
-    const data = await getAccountId()
-    setUser(data) 
-  }
+    const data = await getAccountId();
+    setUser(data);
+  };
   const loadMens = async () => {
     const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/categories/1`;
     const response = await fetch(url);
@@ -44,27 +44,25 @@ function Mens() {
   };
 
   const markListingSold = (listing) => {
-      const soldUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/${listing.listings_id}`;
-        listing.sold = true
-        const fetchConfig = {
-            method: "PUT",
-            body: JSON.stringify(listing),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: "include",
-        }
-        fetch(soldUrl, fetchConfig)
-            .then(result => {
-                if (result.ok) {
-                    setListings(listings.filter(listing => listing.sold === true))
-                    loadMens()
-                } else {
-                    window.alert("Something went wrong. Listing was not marked as sold.")
-                }
-            }
-            )
-    }
+    const soldUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/${listing.listings_id}`;
+    listing.sold = true;
+    const fetchConfig = {
+      method: "PUT",
+      body: JSON.stringify(listing),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    };
+    fetch(soldUrl, fetchConfig).then((result) => {
+      if (result.ok) {
+        setListings(listings.filter((listing) => listing.sold === true));
+        loadMens();
+      } else {
+        window.alert("Something went wrong. Listing was not marked as sold.");
+      }
+    });
+  };
 
   const [search, setSearch] = useState("");
 
@@ -74,12 +72,8 @@ function Mens() {
   }, []);
   return (
     <div className="mens-container">
-      <div className="col-md-12 text-center">
-        <h2 className="display-5 fw-bold" style={{ color: "black" }}>
-          Mens
-        </h2>
-      </div>
-      <div className="col-md-12 text-center">
+      &nbsp;&nbsp;&nbsp;
+      <div className="col-md-12 text-left">
         &nbsp;&nbsp;&nbsp;
         <button type="button" className="btn btn-dark">
           <NavLink
@@ -91,49 +85,57 @@ function Mens() {
             Back to Home Page
           </NavLink>
         </button>
-        <div>
-          &nbsp;&nbsp;&nbsp;
-          <input
-            type="search"
-            placeholder="Search for item.."
-            className="form-control"
-            onChange={(e) => setSearch(e.target.value)}
-          />
+        <div className="col-md-12 text-center">
+          <h2 className="display-5 fw-bold" style={{ color: "black" }}>
+            Mens
+          </h2>
         </div>
       </div>
-      &nbsp;&nbsp;&nbsp;
+      <hr className="hr hr-blurry" />
+      <div className="col-md-12 text-center">
+        <h2 className="display-6" style={{ color: "black" }}>
+          Featured Items
+        </h2>
+      </div>
+      <hr className="hr hr-blurry" />
       <Carousel responsive={responsive}>
         {listings
-          .filter((listing) =>
-            listing.name.toLowerCase().includes(search.toLowerCase())
+          .filter(
+            (listing) =>
+              listing.name.toLowerCase().includes("pants") ||
+              listing.name.toLowerCase().includes("shirt")
           )
-          .filter((listing) => 
-            listing.sold == false
-          )
-          .filter((listing) => 
-            listing.seller_id !== user
-          )
+          .filter((listing) => listing.sold == false)
+          .filter((listing) => listing.seller_id !== user)
           .map((listing) => (
             <Col style={{ color: "black" }} key={listing.listings_id}>
-              <div className="card">
+              <div className="item-card">
                 <Card>
-                  <Card.Img src={listing.image_url} height="500" width="200" />
+                  <Card.Img src={listing.image_url} height="300" width="500" />
                   <Card.Body>
                     <div className="col-md-12 text-center">
                       <div className="card-title">
                         <Card.Title>{listing.name}</Card.Title>
                       </div>
-                      <div className="list-group-item">
+                      <div className="list-group-item list-group-item-dark">
                         <Card.Text>{listing.condition}</Card.Text>
                       </div>
-                      <div className="list-group-item">
+                      <div className="list-group-item list-group-item-dark">
                         <Card.Text>${listing.price}</Card.Text>
                       </div>
-                      <div className="list-group-item">
+                      <div className="list-group-item list-group-item-dark">
                         <Card.Text>{listing.description}</Card.Text>
                       </div>
+                      &nbsp;&nbsp;&nbsp;
                       <div>
-                      <Button variant="primary" onClick={() => {markListingSold(listing)}}>Buy!</Button>
+                        <Button
+                          variant="primary"
+                          onClick={() => {
+                            markListingSold(listing);
+                          }}
+                        >
+                          Request
+                        </Button>
                       </div>
                     </div>
                   </Card.Body>
@@ -142,6 +144,68 @@ function Mens() {
             </Col>
           ))}
       </Carousel>
+      <div className="search-bar">
+        <input
+          type="search"
+          placeholder="Search for item.."
+          className="form-control"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+      <div className="col-md-12 text-center">
+        <h2 className="display-6" style={{ color: "black" }}>
+          Full Collection
+        </h2>
+      </div>
+      &nbsp;&nbsp;&nbsp;
+      {listings
+        .filter((listing) =>
+          listing.name.toLowerCase().includes(search.toLowerCase())
+        )
+        .filter((listing) => listing.sold == false)
+        .filter((listing) => listing.seller_id !== user)
+        .map((listing) => (
+          <div className="card-columns">
+            <div className="item-card">
+              <Col style={{ color: "black" }} key={listing.listings_id}>
+                <Card>
+                  <Card.Body>
+                    <Card.Img
+                      src={listing.image_url}
+                      height="500"
+                      width="200"
+                    />
+                    <div className="col-md-12 text-center">
+                      <div className="card-title">
+                        <Card.Title>{listing.name}</Card.Title>
+                      </div>
+                      <div className="list-group-item list-group-item-dark">
+                        <Card.Text>{listing.condition}</Card.Text>
+                      </div>
+                      <div className="list-group-item list-group-item-dark">
+                        <Card.Text>${listing.price}</Card.Text>
+                      </div>
+                      <div className="list-group-item list-group-item-dark">
+                        <Card.Text>{listing.description}</Card.Text>
+                      </div>
+                      &nbsp;&nbsp;&nbsp;
+                      <div>
+                        <Button
+                          variant="secondary"
+                          onClick={() => {
+                            markListingSold(listing);
+                          }}
+                        >
+                          Buy!
+                        </Button>
+                      </div>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </div>
+          </div>
+        ))}
     </div>
   );
 }

@@ -8,10 +8,10 @@ import {
   Twitter,
   Copyright,
 } from "@material-ui/icons";
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import Swapshop2 from "../Swapshop2.png";
+import Swapshop2 from "../Logos/Swapshop2.png";
 
 const Container = styled.div`
   display: flex;
@@ -59,8 +59,6 @@ const List = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
 `;
 
 const ListItem = styled.li`
@@ -117,7 +115,7 @@ const Footer = () => {
           </SocialIcon>
         </SocialContainer>
         <Desc>
-            <Copyright style={{ marginRight: "10px" }} /> Copyright 2023 MCJAB
+          <Copyright style={{ marginRight: "10px" }} /> Copyright 2023 MCJAB
         </Desc>
       </Left>
       <Center>
@@ -144,7 +142,7 @@ const Footer = () => {
             </NavLink>
           </ListItem>
           <ListItem>
-            <NavLink style={{ color: "black" }} to="...">
+            <NavLink style={{ color: "black" }} to="/termsandconditions/">
               Terms and Conditions
             </NavLink>
           </ListItem>

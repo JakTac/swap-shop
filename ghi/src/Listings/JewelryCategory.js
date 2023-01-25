@@ -28,9 +28,9 @@ function Jewelry() {
   const [listings, setListings] = useState([]);
   const [user, setUser] = useState([]);
   const loaduser = async () => {
-    const data = await getAccountId()
-    setUser(data) 
-  }
+    const data = await getAccountId();
+    setUser(data);
+  };
   const loadJewelry = async () => {
     const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/categories/3`;
     const response = await fetch(url);
@@ -43,27 +43,25 @@ function Jewelry() {
   };
 
   const markListingSold = (listing) => {
-      const soldUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/${listing.listings_id}`;
-        listing.sold = true
-        const fetchConfig = {
-            method: "PUT",
-            body: JSON.stringify(listing),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: "include",
-        }
-        fetch(soldUrl, fetchConfig)
-            .then(result => {
-                if (result.ok) {
-                    setListings(listings.filter(listing => listing.sold === true))
-                    loadJewelry()
-                } else {
-                    window.alert("Something went wrong. Listing was not marked as sold.")
-                }
-            }
-            )
-    }
+    const soldUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/${listing.listings_id}`;
+    listing.sold = true;
+    const fetchConfig = {
+      method: "PUT",
+      body: JSON.stringify(listing),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    };
+    fetch(soldUrl, fetchConfig).then((result) => {
+      if (result.ok) {
+        setListings(listings.filter((listing) => listing.sold === true));
+        loadJewelry();
+      } else {
+        window.alert("Something went wrong. Listing was not marked as sold.");
+      }
+    });
+  };
 
   const [search, setSearch] = useState("");
 
@@ -88,31 +86,27 @@ function Jewelry() {
           </NavLink>
         </button>
         <div className="col-md-12 text-center">
-          <h2 className="display-5" style={{ color: "black" }}>
+          <h2 className="display-5 fw-bold" style={{ color: "black" }}>
             Jewelry
           </h2>
         </div>
       </div>
+      <hr className="hr hr-blurry" />
       <div className="col-md-12 text-center">
-        <h2 className="display-5" style={{ color: "black" }}>
+        <h2 className="display-6" style={{ color: "black" }}>
           Featured Items
         </h2>
       </div>
-      &nbsp;&nbsp;&nbsp;
+      <hr className="hr hr-blurry" />
       <Carousel responsive={responsive}>
         {listings
           .filter(
             (listing) =>
-              (listing.name.toLowerCase().includes(search.toLowerCase()) &&
-                listing.name.toLowerCase().includes("gold")) ||
+              listing.name.toLowerCase().includes("gold") ||
               listing.name.toLowerCase().includes("silver")
           )
-          .filter((listing) => 
-            listing.sold == false
-          )
-          .filter((listing) => 
-            listing.seller_id !== user
-          )
+          .filter((listing) => listing.sold == false)
+          .filter((listing) => listing.seller_id !== user)
           .map((listing) => (
             <Col style={{ color: "black" }} key={listing.listings_id}>
               <div className="item-card">
@@ -132,8 +126,16 @@ function Jewelry() {
                       <div className="list-group-item list-group-item-dark">
                         <Card.Text>{listing.description}</Card.Text>
                       </div>
+                      &nbsp;&nbsp;&nbsp;
                       <div>
-                      <Button variant="primary" onClick={() => {markListingSold(listing)}}>Buy!</Button>
+                        <Button
+                          variant="primary"
+                          onClick={() => {
+                            markListingSold(listing);
+                          }}
+                        >
+                          Request
+                        </Button>
                       </div>
                     </div>
                   </Card.Body>
@@ -151,7 +153,7 @@ function Jewelry() {
         />
       </div>
       <div className="col-md-12 text-center">
-        <h2 className="display-5" style={{ color: "black" }}>
+        <h2 className="display-6" style={{ color: "black" }}>
           Full Collection
         </h2>
       </div>
@@ -160,12 +162,8 @@ function Jewelry() {
         .filter((listing) =>
           listing.name.toLowerCase().includes(search.toLowerCase())
         )
-        .filter((listing) => 
-            listing.sold == false
-          )
-          .filter((listing) => 
-            listing.seller_id !== user
-          )
+        .filter((listing) => listing.sold == false)
+        .filter((listing) => listing.seller_id !== user)
         .map((listing) => (
           <div className="card-columns">
             <div className="item-card">
@@ -190,8 +188,16 @@ function Jewelry() {
                       <div className="list-group-item list-group-item-dark">
                         <Card.Text>{listing.description}</Card.Text>
                       </div>
+                      &nbsp;&nbsp;&nbsp;
                       <div>
-                      <Button variant="primary" onClick={() => {markListingSold(listing)}}>Buy!</Button>
+                        <Button
+                          variant="secondary"
+                          onClick={() => {
+                            markListingSold(listing);
+                          }}
+                        >
+                          Buy!
+                        </Button>
                       </div>
                     </div>
                   </Card.Body>

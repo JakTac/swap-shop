@@ -4,6 +4,7 @@ import { useToken } from "./Token";
 
 function LoginComponent() {
   const { login, token } = useToken();
+  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     email: "",
@@ -17,6 +18,11 @@ function LoginComponent() {
       email: "",
       password: "",
     });
+    if (login.ok) {
+      return navigate("/");
+    } else {
+      setErrorMessage("Incorrect login, try again!");
+    }
   };
 
   return (

@@ -6,12 +6,12 @@ export const cardData = [
   },
   {
     id: 2,
-    img: "https://img.ltwebstatic.com/images3_pi/2022/12/13/167091726755e671531a00afcdbd926ea56e3e5b1b_thumbnail_900x.webp",
-    title: "PRECIOUS METALS",
+    img: "https://img.ltwebstatic.com/images3_pi/2022/07/20/1658284110b2cfa040ff1f5152e1751ce6ea9a7482_thumbnail_900x.webp",
+    title: "SUNSHINE STYLES",
   },
   {
     id: 3,
-    img: "https://img.ltwebstatic.com/images3_pi/2021/03/27/1616816342a1776539cd293b0d6182d934ab4837fe_thumbnail_900x.webp",
-    title: "SUNSHINE STYLES",
+    img: "https://img.ltwebstatic.com/images3_pi/2022/08/11/1660200554340322f85460b62e40181eb62c24ab43_thumbnail_900x.webp",
+    title: "AUTUMN ATTIRE",
   },
 ];
