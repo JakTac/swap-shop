@@ -28,6 +28,7 @@ function Signup() {
         password: "",
       });
     } catch (e) {
+      setErrorMessage("Duplicate signup, try again!");
     }
   };
 

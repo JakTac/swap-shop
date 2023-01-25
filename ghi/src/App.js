@@ -10,6 +10,7 @@ import Mens from "./Listings/MensCategory";
 import WomensPage from "./Listings/WomensPage";
 import SaleHistory from "./Accounts/SaleHistory";
 import ProfilePage from "./Accounts/ProfilePage";
+import TermsandConditions from "./Components/TermsAndConditions";
 import Nav from "./Nav";
 import "./App.css";
 
@@ -19,7 +20,7 @@ function GetToken() {
 }
 
 function App() {
-  const {login, signup } = useToken();
+  const { login, signup } = useToken();
 
   return (
     <AuthProvider>
@@ -35,6 +36,7 @@ function App() {
         <Route path="/womens/" element={<WomensPage />} />
         <Route path="/salehistory" element={<SaleHistory />} />
         <Route path="/mylistings/" element={<ProfilePage />} />
+        <Route path="/termsandconditions/" element={<TermsandConditions />} />
       </Routes>
     </AuthProvider>
   );
