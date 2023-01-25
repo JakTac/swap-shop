@@ -18,9 +18,9 @@ def get_current_account_data_mock():
 
 class ListingQueriesMock:
 
-    def create(self, listing: ListingIn) -> ListingOut:
+    def create(self, listing: ListingIn, user_id: int) -> ListingOut:
         listing_dict = listing.dict()
-        return ListingOut(id = 420, **listing_dict)
+        return ListingOut(listings_id = 420, sold = False, seller_id=user_id, **listing_dict)
 
     def get_listings(self):
         return []
@@ -48,9 +48,9 @@ def test_create_listing():
 
     # Assert
     assert result.status_code == 200
-    assert result.json()["seller_id"] == 99
-    assert result.json()["listing_id"] == 420
-    assert result.kson()["owner_id"] == 69
+    assert result.json()["seller_id"] == 69
+    assert result.json()["listings_id"] == 420
+    assert result.json()["sold"] == False
 
     # A cleanup
 
