@@ -1,8 +1,6 @@
 from pydantic import BaseModel
-from .listings import ListingQueries
 import os
 from psycopg_pool import ConnectionPool
-from typing import List, Union
 
 
 pool = ConnectionPool(conninfo=os.environ["DATABASE_URL"])
@@ -38,17 +36,13 @@ class AccountOutWithPassword(BaseModel):
 
 
 class AccountQueries:
-    #Region properties
     DB_NAME = "swapshop"
     COLLECTION = "accounts"
 
 
     def create(self, account: AccountIn, hashed_password: str) -> AccountOutWithPassword:
-        # connect the database
         with pool.connection() as conn:
-            # get a cursor (something to run SQL with)
             with conn.cursor() as db:
-                # run our SELECT statement
                 result = db.execute(
                     """
                     INSERT INTO accounts (first_name, last_name, email, hashed_password)
@@ -86,11 +80,8 @@ class AccountQueries:
 
 
     def get_one(self, email: str) -> AccountOutWithPassword:
-        # connect the database
         with pool.connection() as conn:
-            # get a cursor (something to run SQL with)
             with conn.cursor() as db:
-                # Run our SELECT statement
                 result = db.execute(
                     """
                     SELECT id
@@ -117,11 +108,8 @@ class AccountQueries:
 
     def get_one_id(self, account_id: int) -> AccountOutWithPassword:
         print(account_id)
-        # connect the database
         with pool.connection() as conn:
-            # get a cursor (something to run SQL with)
             with conn.cursor() as db:
-                # Run our SELECT statement
                 result = db.execute(
                     """
                     SELECT id

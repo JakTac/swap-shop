@@ -1,6 +1,6 @@
 steps = [
     [
-        # "Up" SQL statement
+
         """
         CREATE TABLE listings (
             listings_id SERIAL PRIMARY KEY NOT NULL,
@@ -14,7 +14,7 @@ steps = [
             sold BOOL NOT NULL DEFAULT FALSE
         );
         """,
-        # "Down" SQL statement
+
         """
         DROP TABLE listings;
         """

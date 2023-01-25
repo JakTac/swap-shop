@@ -1,4 +1,12 @@
 -------------------------------------------------------------------------------------------------------------------------------------
+## January 25, 2023
+Today, we worked on:
+
+* Unit Tests
+
+Today we continued work on unit tests. Alonso and Melissa finished theirs last night so they were both able to help walk us through them. I was quite confused by them and went back to rewatch Riley's lecture on them. Afterwards Alonso helped me finish up the last little bit of it and helped clear my confusion on them. Overall a pretty productive day, and tomorrow we start deployment! 
+
+-------------------------------------------------------------------------------------------------------------------------------------
 ## January 24, 2023
 Today, we worked on:
 
