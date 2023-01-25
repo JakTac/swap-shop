@@ -18,7 +18,7 @@ from queries.accounts import (
     AccountQueries,
     DuplicateAccountError,
 )
-from queries.listings import ListingQueries
+
 
 
 class AccountForm(BaseModel):
@@ -66,6 +66,7 @@ async def create_account(
             detail="Cannot create an account with those credentials",
 
         )
+
     form = AccountForm(username=info.email, password=info.password)
     token = await authenticator.login(response, request, form, accounts)
     return AccountToken(account=account, **token.dict())

@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from .listings import ListingQueries
 import os
 from psycopg_pool import ConnectionPool
 from typing import List, Union
