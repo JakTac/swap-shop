@@ -129,12 +129,12 @@ function WomensPage() {
                       &nbsp;&nbsp;&nbsp;
                       <div>
                         <Button
-                          variant="secondary"
+                          variant="primary"
                           onClick={() => {
                             markListingSold(listing);
                           }}
                         >
-                          Buy!
+                          Request
                         </Button>
                       </div>
                     </div>

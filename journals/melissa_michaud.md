@@ -1,5 +1,9 @@
 **Melissa's Journal**
 
+**1/25/23**
+
+- Today we continued working on unit tests and went over deployment.
+
 **1/24/23**
 
 - Today we each began our unit tests and continued cleaning up our code a bit. I added a terms and conditions page for styling purposes and added a couple more features to the main page such as another set of cards for style.
