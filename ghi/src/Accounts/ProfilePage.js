@@ -52,7 +52,7 @@ function ProfilePage() {
         .filter((listing) => listing.sold === false)
 
         .map((listing) => (
-          <div className="card-columns">
+          <div className="card-columns" key={listing.listings_id}>
             <div className="item-card">
               <Col style={{ color: "black" }} key={listing.listings_id}>
                 <Card>
