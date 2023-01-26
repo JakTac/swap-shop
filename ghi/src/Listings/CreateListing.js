@@ -55,7 +55,7 @@ function CreateListing(list) {
   };
 
   return (
-    <div className="auth-form-container">
+    <div className="listing-form-container">
       <div className="col-md-12 text-center">
         <div className="row">
           <div className="offset-3 col-6">

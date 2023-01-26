@@ -3,11 +3,10 @@ import { Button, Card, Col, Container } from "react-bootstrap";
 import "react-multi-carousel/lib/styles.css";
 import { getAccountId } from "./Token";
 
-
 function ProfilePage() {
   const [listings, setListing] = useState([]);
   const loadListing = async () => {
-    const user = await getAccountId()
+    const user = await getAccountId();
     const url = `${process.env.REACT_APP_swapshop_API_HOST}/listings/sellers/${user}`;
     const response = await fetch(url);
     if (response.ok) {
@@ -21,67 +20,79 @@ function ProfilePage() {
     loadListing();
   }, []);
 
-
-   const markListingSold = (listing) => {
-      const soldUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/${listing.listings_id}`;
-        listing.sold = true
-        const fetchConfig = {
-            method: "PUT",
-            body: JSON.stringify(listing),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: "include",
-        }
-        fetch(soldUrl, fetchConfig)
-            .then(result => {
-                if (result.ok) {
-                    setListing(listings.filter(listing => listing.sold === true))
-                    loadListing()
-                } else {
-                    window.alert("Something went wrong. Listing was not marked as sold.")
-                }
-            }
-            )
-    }
+  const markListingSold = (listing) => {
+    const soldUrl = `${process.env.REACT_APP_swapshop_API_HOST}/listings/${listing.listings_id}`;
+    listing.sold = true;
+    const fetchConfig = {
+      method: "PUT",
+      body: JSON.stringify(listing),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    };
+    fetch(soldUrl, fetchConfig).then((result) => {
+      if (result.ok) {
+        setListing(listings.filter((listing) => listing.sold === true));
+        loadListing();
+      } else {
+        window.alert("ERROR. Listing not marked as requested, try again.");
+      }
+    });
+  };
 
   return (
-    <div className="jewelry-container">
+    <div className="profile-container">
       <div className="col-md-12 text-center">
-        <h2 className="display-5" style={{ color: "black" }}>My Listings</h2>
+        <h2 className="display-5" style={{ color: "black" }}>
+          My Listings
+        </h2>
       </div>
-      <Container>
-        {listings
-          .filter((listing) =>
-            listing.sold === false)
+      {listings
+        .filter((listing) => listing.sold === false)
 
-          .map((listing) => (
-            <Col style={{ color: "black" }} key={listing.listings_id}>
-              <div className="card">
+        .map((listing) => (
+          <div className="card-columns" key={listing.listings_id}>
+            <div className="item-card">
+              <Col style={{ color: "black" }} key={listing.listings_id}>
                 <Card>
-                  <Card.Img src={listing.image_url} height="500" width="500" />
                   <Card.Body>
+                    <Card.Img
+                      src={listing.image_url}
+                      height="500"
+                      width="200"
+                    />
                     <div className="col-md-12 text-center">
                       <div className="card-title">
                         <Card.Title>{listing.name}</Card.Title>
                       </div>
-                      <div className="list-group-item">
+                      <div className="list-group-item list-group-item-dark">
                         <Card.Text>{listing.condition}</Card.Text>
                       </div>
-                      <div className="list-group-item">
+                      <div className="list-group-item list-group-item-dark">
                         <Card.Text>${listing.price}</Card.Text>
                       </div>
-                      <div className="list-group-item">
+                      <div className="list-group-item list-group-item-dark">
                         <Card.Text>{listing.description}</Card.Text>
                       </div>
-                      <Button variant="primary" onClick={() => {markListingSold(listing)}}>Mark as Requested</Button>
+                      &nbsp;&nbsp;&nbsp;
+                      <div>
+                        <Button
+                          variant="secondary"
+                          onClick={() => {
+                            markListingSold(listing);
+                          }}
+                        >
+                          Mark As Requested
+                        </Button>
+                      </div>
                     </div>
                   </Card.Body>
                 </Card>
-              </div>
-            </Col>
-          ))}
-      </Container>
+              </Col>
+            </div>
+          </div>
+        ))}
     </div>
   );
 }
