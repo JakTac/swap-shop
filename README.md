@@ -105,13 +105,13 @@
 
 ### **Accounts Views :**
 
-| **REQUEST METHOD** |   **FUNCTION**         |              **ENDPOINT**                           |
-| :----------------: | :--------------------: | :-------------------------------------------------: |
-|       `GET`        | gets the token         | http://localhost:8080/api/token/                    |
-|       `POST`       | create an account      | http://localhost:8080/swapshop/accounts/            |
-|       `GET`        | lists accounts         | http://localhost:8080/swapshop/accounts/            |
-|       `GET`        | gets an account via id | http://localhost:8080/swapshop/accounts/:account_id |
-|       `DELETE`     | deletes an account     | http://localhost:8080/swapshop/accounts/:account_id |
+| **REQUEST METHOD** |   **FUNCTION**         |              **ENDPOINT**                            |
+| :----------------: | :--------------------: | :--------------------------------------------------: |
+|       `GET`        | gets the token         | http://localhost:8080/api/token/                     |
+|       `POST`       | create an account      | http://localhost:8080/swapshop/accounts/             |
+|       `GET`        | lists accounts         | http://localhost:8080/swapshop/accounts/             |
+|       `GET`        | gets an account via id | http://localhost:8080/swapshop/accounts/:account_id/ |
+|       `DELETE`     | deletes an account     | http://localhost:8080/swapshop/accounts/:account_id/ |
 
 <br>
 
