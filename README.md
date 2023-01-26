@@ -1,181 +1,180 @@
-# SwapShop
+# <center>**SwapShop**
 
-<br />
-<div align="center">
-<h3 align="center">SwapShop</h3>
+<center>
 
-  <p align="center">
-    A simple redesigned e-commerce site similar to eBay or Facebook marketplace that lets guest users browse popular product categories. The user can add their own listings to their profile page after creating an account and logging in.
-</div>
+# **Team**
+---
+**Melissa Michaud**
+**Jake Tippit**
+**Alonso Rodriguez**
+**Cody Torres**
+**Ben Demasso**
+---
 
-## Kanban
-https://ben-demaso.notion.site/Kanban-Trello-Board-5a52a971c1e044b08b134cf47313dbf5
-
-## About SwapShop
-
-## Functionality
-
-### Homepage
-
-### Listings
-
-### Account
-
-### Profile page
-
-## Getting Started
-To install and run this application on your local computer, please follow these steps:
-
-1. Fork and clone repository to your local machine.
-2. CD into the project directory
-3. Run `docker volume create post-gres data`
-4. Run `docker compose up`
-
-## Testing
+</center>
 
 
-## Getting started
+<br><br>
 
-You have a project repository, now what? The next section
-lists all of the deliverables that are due at the end of the
-week. Below is some guidance for getting started on the
-tasks for this week.
 
-## Install Extensions
+# <center>**Diagram of Architecture**
 
-* Prettier: <https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode>
-* Black Formatter: <https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter>
+---
 
-## Deliverables
+<br>
 
-* [ ] Wire-frame diagrams
-* [ ] API documentation
-* [ ] Project is deployed to Render.com/GitLab-pages
-* [ ] GitLab issue board is setup and in use
-* [ ] Journals
+<p allign="center">
+    <img src="https://i.imgur.com/GzK5mvc.png"/>
+</p>
+<br><br><br>
 
-## Project layout
+# <center>**swapshop api**
+---
 
-The layout of the project is just like all of the projects
-you did with `docker-compose` in module #2. You will create
-a directory in the root of the repository for each service
-that you add to your project just like those previous
-projects were setup.
+<br><br>
 
-### Directories
+## **Models**
 
-Several directories have been added to your project. The
-directories `docs` and `journals` are places for you and
-your team-mates to, respectively, put any documentation
-about your project that you create and to put your
-project-journal entries. See the _README.md_ file in each
-directory for more info.
+---
+### **Listings Table** -- (used to create a listing)
 
-The other directories, `ghi` and `sample_service`, are
-sample services, that you can start building off of or use
-as a reference point.
+>When creating a listing for the database the following properties are required: "listings_id" (this is automatically assigned a value once a listing is created), "name", "image_url", "category_id" (which is a foreign key of the Category Model), "condition", "price", "description", "seller_id"  and "sold".
 
-Inside of `ghi` is a minimal React app that has an "under
-construction" page. It is setup similarly to all of the
-other React projects that you have worked on.
 
-Inside of `sample_service` is a minimal FastAPI application.
-"Where are all the files?" you might ask? Well, the
-`main.py` file is the whole thing, and go take look inside
-of it... There's not even much in there..., hmm? That is
-FastAPI, we'll learn more about it in the coming days. Can
-you figure out what this little web-application does even
-though you haven't learned about FastAPI yet?
+| **TABLE FIELD** | **FIELD TYPE** | **OTHER ARGS**                             |
+| :-------------: | :------------: | :----------------------------------------- |
+| "listings_id"   |  `INT`         | `SERIAL PRIMARY KEY` <br> `(Not Null)`     |
+|    "name"       |  `TEXT`        | `(Not Null)`                               |
+|  "image_url"    |  `TEXT`        | `(Not Null)`                               |
+| "category_id"   |  `INT`         | `Foreign Key` <br>`(Not Null)`             |
+|  "condition"    |  `TEXT`        | `(Not Null)`                               |
+|    "price"      |  `FLOAT`       | `(Not Null)`                               |
+| "description"   |  `TEXT`        | `(Not Null)`                               |
+|  "seller_id"    |  `INT`         | `(Not Null)`                               |
+|    "sold"       |  `BOOL`        | `Default=False`<br>`(Not Null)`            |
 
-Also in `sample_service` is a directory for your migrations.
-If you choose to use PostgreSQL, then you'll want to use
-migrations to control your database. Unlike Django, where
-migrations were automatically created for you, you'll write
-yours by hand using DDL. Don't worry about not knowing what
-DDL means; we have you covered. There's a sample migration
-in there that creates two tables so you can see what they
-look like.
+<br><br>
 
-The sample Dockerfile and Dockerfile.dev run your migrations
-for you automatically.
+### **Categories Table** -- (This table holds categories that are inserted into the database directly)
 
-### Other files
+>When the following categories are directly added to the categories table: "Men", "Women" and "Jewelry"
 
-The following project files have been created as a minimal
-starting point. Please follow the guidance for each one for
-a most successful project.
+| **TABLE FIELD** |     **ID**     |
+| :-------------: | :------------: |
+|     "Men"       |      `1`       | 
+|    "Women"      |      `2`       |
+|   "Jewelry"     |      `3`       |
 
-* `docker-compose.yaml`: there isn't much in here, just a
-  **really** simple UI and FastAPI service. Add services
-  (like a database) to this file as you did with previous
-  projects in module #2.
-* `.gitlab-ci.yml`: This is your "ci/cd" file where you will
-  configure automated unit tests, code quality checks, and
-  the building and deployment of your production system.
-  Currently, all it does is deploy an "under construction"
-  page to your production UI on GitLab and a sample backend
-  to Render.com. We will learn much more about this file.
-* `.gitignore`: This is a file that prevents unwanted files
-  from getting added to your repository, files like
-  `pyc` files, `__pycache__`, etc. We've set it up so that
-  it has a good default configuration for Python projects.
+<br><br>
 
-## How to complete the initial deploy
+### **Accounts Table** -- (Used to create an account)
 
-There will be further guidance on completing the initial
-deployment, but it just consists of these steps:
+>When creating a new account the following fields are required: "id" (this is automatically assigned a value once an account is created),"email", "hashed_password", "first_name", and "last_name"
 
-### Setup GitLab repo/project
+| **MODEL FIELD** |       **FIELD TYPE**   | **OTHER ARGS**                             |
+| :-------------: | :--------------------: | :----------------------------------------- |
+|      "id"       |  `INT`                 | `SERIAL PRIMARY KEY` <br> `(Not Null)`     |
+|     "email"     |  `VARCHAR`             | `max_length: 100 (Not Null)` <br> `unique` |
+|"hashed_password"|  `TEXT`                | `(Not Null)`                               |
+| "first_name"    |  `VARCHAR`             | `max_length: 100 (Not Null)`               |
+| "last_name"     |  `VARCHAR`             | `max_length: 100 (Not Null)`               |
 
-* make sure this project is in a group. If it isn't, stop
-  now and move it to a GitLab group
-* remove the fork relationship: In GitLab go to:
 
-  Settings -> General -> Advanced -> Remove fork relationship
+<br><br>
 
-* add these GitLab CI/CD variables:
-  * PUBLIC_URL : this is your gitlab pages URL
-  * SAMPLE_SERVICE_API_HOST: enter "blank" for now
 
-#### Your GitLab pages URL
+## **API Views**
 
-You can't find this in GitLab until after you've done a deploy
-but you can figure it out yourself from your GitLab project URL.
+---
+<br>
 
-If this is your project URL
+### **Listings Views :**
 
-https://gitlab.com/GROUP_NAME/PROJECT_NAME
 
-then your GitLab pages URL will be
+| **REQUEST METHOD** |                     **FUNCTION**                |                     **ENDPOINT**                     |
+| :----------------: | :---------------------------------------------: | :--------------------------------------------------: |
+|       `GET`        |                   list listings                 | http://localhost:8000/listings/                      |
+|       `POST`       |                  create listing                 | http://localhost:8000/listings/                      |
+|       `GET`        |                   get listing                   | http://localhost:8000/listings/:listing_id/          |
+|       `PUT`        |                  update listing                 | http://localhost:8000/listings/:listing_id/          |
+|       `DELETE`     |                  delete listing                 | http://localhost:8000/listings/:listing_id/          |
+|       `GET`        |            get listing via category             | http://localhost:8000/listings/:category_id/         |
+|       `GET`        |             get listings of seller              | http://localhost:8000/listings/sellers/:seller_id/   |
+|       `GET`        |                get categories                   | http://localhost:8000/categories/                    |
+<br>
 
-https://GROUP_NAME.gitlab.io/PROJECT_NAME
+### **Accounts Views :**
 
-### Create render.com account and application
+| **REQUEST METHOD** |   **FUNCTION**         |              **ENDPOINT**                           |
+| :----------------: | :--------------------: | :-------------------------------------------------: |
+|       `GET`        | gets the token         | http://localhost:8080/api/token/                    |
+|       `POST`       | create an account      | http://localhost:8080/swapshop/accounts/            |
+|       `GET`        | lists accounts         | http://localhost:8080/swapshop/accounts/            |
+|       `GET`        | gets an account via id | http://localhost:8080/swapshop/accounts/:account_id |
+|       `DELETE`     | deletes an account     | http://localhost:8080/swapshop/accounts/:account_id |
 
-* create account on render.com
-* one person create a group and invite all other members
-* create a new "Web Service"
-  * authenticate with GitLab and choose your project
-  * Enter fields:
-    * Name: name of your service
-    * Root Directory: the directory of your service in your git repo.
-      For this example use "sample_service".
-    * Environment: Docker
-    * Plan Type: Free
-  * click the "Create Web Service" button to create it
-  * the build will succeed and it will look like the server is running,
-    most likely, in 6-10 minutes, it will fail.
-  * click "Manual Deploy" -> "Deploy latest commit" and the service
-    should deploy successfully.
+<br>
 
-### Update GitLab CI/CD variables
 
-Copy the service URL for your new render.com service and then paste
-that into the value for the SAMPLE_SERVICE_API_HOST CI/CD variable
-in GitLab.
+# <center>**Key React Features**
+---
 
-### Deploy it
+### **Create an Account**
 
-Merge a change into main to kick off the initial deploy. Once the build pipeline
-finishes you should be able to see an "under construction" page on your GitLab
-pages site.
+>This feature allows a user to create an account by inputting their name, email, and password. It then automatically logs them in
+
+### **Log into an Account**
+
+>This feature allows a user to log into an account by inputting their email and password. It will then log them in presuming the account exists.
+
+### **Updating NavBar**
+
+>When a user logs in the NavBar updates live to reflect the user being logged in.
+
+### **Create a Listing**
+
+>This feature allows a logged in user to create a listing by choose a category and inputting the name, an image, the condition, the price, and the description. Once it is created the listings seller_id will automatically be set to the user's id.
+
+### **Home Page Carousel**
+
+>The home page feautres a carousel that displays the different categories of the listings which also acts as a button that will take you to the page of that category.
+
+### **Category Pages**
+
+>These pages show all of the listings of a particular category. They feature a searchbar and all listings have the ability to be requested which will take them off of the page.
+
+### **Filtering on Category Pages**
+
+>The category pages will automatically be filtered to not show the users listing to them. It will also filter out listings that have been requested. It also features a search bar which will filter for listings that have the same name as what is being inputted. 
+
+### **User Listings Page**
+
+>This page displatys all of the users listings, and allows the user to mark a listing as sold.
+
+### **User Requested Listings**
+
+>This page shows all fo the user's listings that have been requested.
+
+
+<br>
+
+# **Getting the App Started**
+---
+
+1. Git clone into your local repository
+    `git clone <<repo>>`
+2. cd into it
+    `cd project-swap-shop`
+3. Create a volume and name it postgres-data
+    `docker volume create postgres-data`
+4. Build the image
+    `docker compose build`
+5. Run the containers
+    `dokcer compose up`
+6. Open browser to http://localhost:3000 to make sure it's running (it may take a minute or two)
+7. Once it's up and running, you can begin inputting data. You can access everything via the dropdowns on the NavBar
+
+## Inputting data through Swagger
+---
+### **Navigate to the following link**
+>  http://localhost:8000/docs#/
