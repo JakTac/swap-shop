@@ -114,8 +114,6 @@ export function useToken() {
       return navigate("/");
     }
     return false;
-    //   let error = await response.json();
-    //   return handleErrorMessage(error);
   }
 
   async function signup(firstName, lastName, email, password) {
