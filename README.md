@@ -4,10 +4,10 @@
 
 # **Team**
 ---
-**Melissa Michaud**
-**Jake Tippit**
-**Alonso Rodriguez**
-**Cody Torres**
+**Melissa Michaud,**
+**Jake Tippit,**
+**Alonso Rodriguez,**
+**Cody Torres,**
 **Ben Demasso**
 ---
 
