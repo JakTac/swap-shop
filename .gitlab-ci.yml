@@ -9,32 +9,31 @@ lint-test-job:
   stage: test
   script:
     - pip install flake8
-    - flake8 sample_service
+    - flake8 swapshop
 
 # Run the unit tests
-# api-unit-test-job:
-#   image: python:3-bullseye
-#   stage: test
-#   needs:
-#     - lint-test-job
-#   script:
-#     - cd sample_service
-#     - pip install -r requirements.txt
-#     - python -m pytest
+swap-shop-unit-test-job:
+  image: python:3-bullseye
+  stage: test
+  needs:
+    - lint-test-job
+  script:
+    - cd swapshop
+    - pip install -r requirements.txt
+    - python -m pytest
 
 # Build the React/JavaScript front-end
 build-front-end-job:
+  rules:
+    # Only run if pushing to the main branch
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   stage: build
   image: node:lts-bullseye
   needs:
     - lint-test-job
+    - swap-shop-unit-test-job
   variables:
-    # If either of these variables is defined in the GitLab
-    # CI/CD variables, that value will override the value here.
-    # You need to substitute in your real values for
-    # GROUP_NAME, PROJECT_NAME, & WEBSERVICE_NAME below.
-    PUBLIC_URL: https://GROUP_NAME.gitlab.io/PROJECT_NAME/
-    REACT_APP_SAMPLE_SERVICE_API_HOST: https://WEBSERVICE_NAME.onrender.com
+    PUBLIC_URL: https://seven30.gitlab.io/project-swap-shop/
   script:
     - cd ghi
     - npm install
@@ -43,6 +42,47 @@ build-front-end-job:
   artifacts:
     paths:
       - ghi/build/
+
+build-back-end-job:
+  rules:
+    # Only run if pushing to the main branch
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  stage: build
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  script:
+    # DO THIS FOR EACH SERVICE YOU NEED TO BUILD A DOCKER
+    # IMAGE FOR
+
+    # Builds the image CHANGE THE /app FOR EACH SERVICE
+    # Gives the image a specific name
+    # Authenticates with the GitLab image registry
+
+    # Stores your image in the GitLab image registry
+    # with two different tags, the version from the tag
+    # and the name "latest"
+
+    - cd project-swap-shop-fastapi
+    - docker build -t ${CI_REGISTRY_IMAGE}/project-swap-shop-fastapi:latest .
+    - docker tag ${CI_REGISTRY_IMAGE}/project-swap-shop-fastapi:latest ${CI_REGISTRY_IMAGE}/fastapi:$CI_JOB_ID
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    - docker push ${CI_REGISTRY_IMAGE}/fastapi:$CI_JOB_ID
+    - docker push ${CI_REGISTRY_IMAGE}/fastapi:latest
+
+    - cd node
+    - docker build -t ${CI_REGISTRY_IMAGE}/node:latest .
+    - docker tag ${CI_REGISTRY_IMAGE}/node:latest ${CI_REGISTRY_IMAGE}/node:$CI_JOB_ID
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    - docker push ${CI_REGISTRY_IMAGE}/node:$CI_JOB_ID
+    - docker push ${CI_REGISTRY_IMAGE}/node:latest
+
+    - cd project-swap-shop-postgres
+    - docker build -t ${CI_REGISTRY_IMAGE}/project-swap-shop-postgres:latest .
+    - docker tag ${CI_REGISTRY_IMAGE}/project-swap-shop-postgres:latest ${CI_REGISTRY_IMAGE}/postgres:$CI_JOB_ID
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    - docker push ${CI_REGISTRY_IMAGE}/postgres:$CI_JOB_ID
+    - docker push ${CI_REGISTRY_IMAGE}/postgres:latest
 
 # Deploy the React/JavaScript front-end to GitLab pages
 pages:
