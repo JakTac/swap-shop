@@ -47,7 +47,7 @@ def test_create_listing():
     assert result.status_code == 200
     assert result.json()["seller_id"] == 69
     assert result.json()["listings_id"] == 420
-    assert result.json()["sold"] == False
+    assert result.json()["sold"] is False
 
 
 def test_get_listings():

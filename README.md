@@ -48,11 +48,11 @@ tasks for this week.
 
 ## Deliverables
 
-* [ ] Wire-frame diagrams
+* [X] Wire-frame diagrams
 * [ ] API documentation
 * [ ] Project is deployed to Render.com/GitLab-pages
 * [ ] GitLab issue board is setup and in use
-* [ ] Journals
+* [X] Journals
 
 ## Project layout
 

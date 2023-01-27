@@ -23,6 +23,6 @@ def test_delete_listings():
 
     res = client.delete("/listings/1")
     assert res.status_code == 200
-    assert res.json() == True
+    assert res.json() is True
 
     app.dependency_overrides = {}
