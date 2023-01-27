@@ -61,7 +61,7 @@
 
 | **TABLE FIELD** |     **ID**     |
 | :-------------: | :------------: |
-|     "Men"       |      `1`       | 
+|     "Men"       |      `1`       |
 |    "Women"      |      `2`       |
 |   "Jewelry"     |      `3`       |
 
@@ -107,11 +107,11 @@
 
 | **REQUEST METHOD** |   **FUNCTION**         |              **ENDPOINT**                            |
 | :----------------: | :--------------------: | :--------------------------------------------------: |
-|       `GET`        | gets the token         | http://localhost:8080/api/token/                     |
-|       `POST`       | create an account      | http://localhost:8080/swapshop/accounts/             |
-|       `GET`        | lists accounts         | http://localhost:8080/swapshop/accounts/             |
-|       `GET`        | gets an account via id | http://localhost:8080/swapshop/accounts/:account_id/ |
-|       `DELETE`     | deletes an account     | http://localhost:8080/swapshop/accounts/:account_id/ |
+|       `GET`        | gets the token         | http://localhost:8000/api/token/                     |
+|       `POST`       | create an account      | http://localhost:8000/swapshop/accounts/             |
+|       `GET`        | lists accounts         | http://localhost:8000/swapshop/accounts/             |
+|       `GET`        | gets an account via id | http://localhost:8000/swapshop/accounts/:account_id/ |
+|       `DELETE`     | deletes an account     | http://localhost:8000/swapshop/accounts/:account_id/ |
 
 <br>
 
@@ -121,11 +121,11 @@
 
 ### **Create an Account**
 
->This feature allows a user to create an account by inputting their name, email, and password. It then automatically logs them in
+>This feature allows a user to create an account by inputting their name, email, and password. It then automatically logs them in and redirects to the main page.
 
 ### **Log into an Account**
 
->This feature allows a user to log into an account by inputting their email and password. It will then log them in presuming the account exists.
+>This feature allows a user to log into an account by inputting their email and password. It will then log them in presuming the account exists and redirects to the main page.
 
 ### **Updating NavBar**
 
@@ -133,23 +133,23 @@
 
 ### **Create a Listing**
 
->This feature allows a logged in user to create a listing by choose a category and inputting the name, an image, the condition, the price, and the description. Once it is created the listings seller_id will automatically be set to the user's id.
+>This feature allows a logged in user to create a listing by chooseing a category and inputting the name, an image, the condition, the price, and the description. Once it is created the listings seller_id will automatically be set to the user's id.
 
 ### **Home Page Carousel**
 
->The home page feautres a carousel that displays the different categories of the listings which also acts as a button that will take you to the page of that category.
+>The home page features a carousel that displays the different categories of the listings which also acts as a button that will take you to the page of that category.
 
 ### **Category Pages**
 
->These pages show all of the listings of a particular category. They feature a searchbar and all listings have the ability to be requested which will take them off of the page.
+>These pages show all of the listings of a particular category. They feature a search bar and all listings have the ability to be requested which will take them off of the page.
 
 ### **Filtering on Category Pages**
 
->The category pages will automatically be filtered to not show the users listing to them. It will also filter out listings that have been requested. It also features a search bar which will filter for listings that have the same name as what is being inputted. 
+>The category pages will automatically be filtered to not show the users listing to them. It will also filter out listings that have been requested. It also features a search bar which will filter for listings that have the same name as what is being inputted.
 
 ### **User Listings Page**
 
->This page displatys all of the users listings, and allows the user to mark a listing as sold.
+>This page displays all of the users listings, and allows the user to mark a listing as requested.
 
 ### **User Requested Listings**
 
@@ -163,7 +163,7 @@
 
 1. Git clone into your local repository
     `git clone <<repo>>`
-2. cd into it
+2. Change directory into it
     `cd project-swap-shop`
 3. Create a volume and name it postgres-data
     `docker volume create postgres-data`
