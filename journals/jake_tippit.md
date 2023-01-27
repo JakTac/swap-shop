@@ -2,6 +2,14 @@
 ## January 25, 2023
 Today, we worked on:
 
+* ReadMe
+
+Today we I completed the readme. I copied mine over from module 2 project as I was really happy with the formatting of it. Afterwards I went through and changed it to fit this project.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+## January 25, 2023
+Today, we worked on:
+
 * Unit Tests
 
 Today we continued work on unit tests. Alonso and Melissa finished theirs last night so they were both able to help walk us through them. I was quite confused by them and went back to rewatch Riley's lecture on them. Afterwards Alonso helped me finish up the last little bit of it and helped clear my confusion on them. Overall a pretty productive day, and tomorrow we start deployment! 

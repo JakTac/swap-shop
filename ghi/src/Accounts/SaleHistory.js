@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Col, Container } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 import "react-multi-carousel/lib/styles.css";
 import { getAccountId } from "./Token";
 
@@ -21,7 +21,7 @@ function SaleHistory() {
   }, []);
 
   return (
-    <div className="jewelry-container">
+    <div className="requested-container">
       <div className="col-md-12 text-center">
         <h2 className="display-5" style={{ color: "black" }}>
           Requested Items
@@ -31,7 +31,7 @@ function SaleHistory() {
         .filter((listing) => listing.sold === true)
 
         .map((listing) => (
-          <div className="card-columns">
+          <div className="card-columns" key={listing.listings_id}>
             <div className="item-card">
               <Col style={{ color: "black" }} key={listing.listings_id}>
                 <Card>

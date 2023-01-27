@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useAuthContext } from "../Accounts/Token";
+
 
 function CreateListing(list) {
+  const { token } = useAuthContext();
   const [listData, setListData] = useState({
     image_url: "",
     name: "",
@@ -55,7 +58,7 @@ function CreateListing(list) {
   };
 
   return (
-    <div className="auth-form-container">
+    <div className="listing-form-container">
       <div className="col-md-12 text-center">
         <div className="row">
           <div className="offset-3 col-6">
@@ -185,18 +188,6 @@ function CreateListing(list) {
                 </button>
               </form>
               &nbsp;&nbsp;&nbsp;
-              <div>
-                {/* <button type="button" className="btn btn-dark">
-                  <NavLink
-                    style={{ color: "white" }}
-                    className="nav-link"
-                    aria-current="page"
-                    to="/login/"
-                  >
-                    Already have an account? Login here.
-                  </NavLink>
-                </button> */}
-              </div>
             </div>
           </div>
         </div>

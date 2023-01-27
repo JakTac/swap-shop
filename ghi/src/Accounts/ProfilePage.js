@@ -52,44 +52,46 @@ function ProfilePage() {
         .filter((listing) => listing.sold === false)
 
         .map((listing) => (
-          <div className="card-columns">
-            <div className="item-card">
-              <Col style={{ color: "black" }} key={listing.listings_id}>
-                <Card>
-                  <Card.Body>
-                    <Card.Img
-                      src={listing.image_url}
-                      height="500"
-                      width="200"
-                    />
-                    <div className="col-md-12 text-center">
-                      <div className="card-title">
-                        <Card.Title>{listing.name}</Card.Title>
+          <div className="card-columns" key={listing.listings_id}>
+            <div>
+              <div className="item-card">
+                <Col style={{ color: "black" }} key={listing.listings_id}>
+                  <Card>
+                    <Card.Body>
+                      <Card.Img
+                        src={listing.image_url}
+                        height="500"
+                        width="200"
+                      />
+                      <div className="col-md-12 text-center">
+                        <div className="card-title">
+                          <Card.Title>{listing.name}</Card.Title>
+                        </div>
+                        <div className="list-group-item list-group-item-dark">
+                          <Card.Text>{listing.condition}</Card.Text>
+                        </div>
+                        <div className="list-group-item list-group-item-dark">
+                          <Card.Text>${listing.price}</Card.Text>
+                        </div>
+                        <div className="list-group-item list-group-item-dark">
+                          <Card.Text>{listing.description}</Card.Text>
+                        </div>
+                        &nbsp;&nbsp;&nbsp;
+                        <div>
+                          <Button
+                            variant="secondary"
+                            onClick={() => {
+                              markListingSold(listing);
+                            }}
+                          >
+                            Mark As Requested
+                          </Button>
+                        </div>
                       </div>
-                      <div className="list-group-item list-group-item-dark">
-                        <Card.Text>{listing.condition}</Card.Text>
-                      </div>
-                      <div className="list-group-item list-group-item-dark">
-                        <Card.Text>${listing.price}</Card.Text>
-                      </div>
-                      <div className="list-group-item list-group-item-dark">
-                        <Card.Text>{listing.description}</Card.Text>
-                      </div>
-                      &nbsp;&nbsp;&nbsp;
-                      <div>
-                        <Button
-                          variant="secondary"
-                          onClick={() => {
-                            markListingSold(listing);
-                          }}
-                        >
-                          Mark As Requested
-                        </Button>
-                      </div>
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Col>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              </div>
             </div>
           </div>
         ))}

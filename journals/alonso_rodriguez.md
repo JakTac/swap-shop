@@ -34,3 +34,18 @@ The navbar took up the most of the day with the help of two instructors and seir
 
 Jan 18th -
 I worked with Jake on the backend on creating a new path to get all listings for an account. Then i went to work on the mens page and got cards working for it. Melissa got the carousel working so ill try to set that up tomorrow.
+
+Jan 19th -
+I worked on my Mens page and helped Cody with his womens and create a listing form. The listing form had an issue with the auth. Then we switched to the update function with everyone so we can mark something as sold. Riley pointed us in the right direction and eventually we got it working.
+
+Jan 20th -
+Helped out on the profile page and added cards to Mens. It was just getting the buttons working on the profile/listings page and answering questions if i could.
+
+Jan 23rd -
+I continued to help out where was needed moving around and answering questions. I wasn't really needed much because my pages were done with the functionality.
+
+Jan 24th -
+I tried doing unit testing for create accounts but at the end of the day Riley told me not to do that one. So i switched to get listings and got it working within minutes.
+
+Jan 25th -
+I helped out everyone on testing a bit and helped touch up some code. This was a lot of minor mistakes that were  overlooked. We should have deployment next now that testing is done. Riley said we should hold off on deploying till tomorrow so we are.

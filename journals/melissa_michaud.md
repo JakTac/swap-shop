@@ -1,5 +1,9 @@
 **Melissa's Journal**
 
+**1/26/23**
+
+- Finished cleaning up the code using prettier and flake8.
+
 **1/25/23**
 
 - Today we continued working on unit tests and went over deployment. We were all randomly assigned to tests via random number generator and I was assigned to get al categories which would test if our URL would access all of our categories. I also continued editing the styling a bit.
