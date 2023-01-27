@@ -4,11 +4,11 @@ from fastapi import (
     status,
     Response,
     APIRouter,
-    Request
+    Request,
 )
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
-from typing import Union, List, Optional
+from typing import Optional
 from pydantic import BaseModel
 
 from queries.accounts import (
@@ -18,7 +18,6 @@ from queries.accounts import (
     AccountQueries,
     DuplicateAccountError,
 )
-
 
 
 class AccountForm(BaseModel):
@@ -40,7 +39,7 @@ router = APIRouter()
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
     request: Request,
-    account: AccountOut = Depends(authenticator.try_get_current_account_data)
+    account: AccountOut = Depends(authenticator.try_get_current_account_data),
 ) -> AccountToken | None:
     if account and authenticator.cookie_name in request.cookies:
         return {
@@ -64,20 +63,24 @@ async def create_account(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Cannot create an account with those credentials",
-
         )
 
     form = AccountForm(username=info.email, password=info.password)
     token = await authenticator.login(response, request, form, accounts)
     return AccountToken(account=account, **token.dict())
 
-@router.get('/swapshop/accounts', response_model=list[AccountOut])
+
+@router.get("/swapshop/accounts", response_model=list[AccountOut])
 def get_accounts(
     repo: AccountQueries = Depends(),
 ):
     return repo.get_accounts()
 
-@router.get('/swapshop/accounts/{account_id}', response_model=Optional[AccountOutWithPassword])
+
+@router.get(
+    "/swapshop/accounts/{account_id}",
+    response_model=Optional[AccountOutWithPassword],
+)
 def get_one(
     account_id: int,
     response: Response,
@@ -88,6 +91,11 @@ def get_one(
         response.status_code = 404
     return account
 
-@router.delete('/swapshop/accounts/{account_id}', response_model=bool)
-def delete_account(account_id: int, repo: AccountQueries = Depends(), account_data: dict = Depends(authenticator.get_current_account_data)) -> bool:
+
+@router.delete("/swapshop/accounts/{account_id}", response_model=bool)
+def delete_account(
+    account_id: int,
+    repo: AccountQueries = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
+) -> bool:
     return repo.delete(account_id)

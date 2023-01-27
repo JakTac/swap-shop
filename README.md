@@ -8,7 +8,7 @@
 **Jake Tippit,**
 **Alonso Rodriguez,**
 **Cody Torres,**
-**Ben Demasso**
+**Ben DeMaso**
 ---
 
 </center>
