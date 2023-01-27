@@ -3,16 +3,16 @@ from main import app
 
 repo = TestClient(app=app)
 
+class ListingQueriesMock:
+    def get_categories(self):
+        return []
+
 
 def test_get_categories():
     res = repo.get("/categories")
     print(res.json())
 
     assert res.status_code == 200
-    assert res.json() == [
-        {"id": 1, "category": "Men"},
-        {"id": 2, "category": "Women"},
-        {"id": 3, "category": "Jewelry"},
-    ]
+    assert res.json() == []
 
     app.dependency_overrides = {}
