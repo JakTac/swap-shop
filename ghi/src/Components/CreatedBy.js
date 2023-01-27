@@ -1,4 +1,3 @@
-import { Send } from "@material-ui/icons";
 import styled from "styled-components";
 
 import { Copyright } from "@material-ui/icons";
@@ -22,7 +21,7 @@ const Desc = styled.div`
   margin-bottom: 20px;
 `;
 
-const Button = styled.button`
+styled.button`
   flex: 1;
   border: none;
   background-color: gray;

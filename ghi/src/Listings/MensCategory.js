@@ -104,7 +104,7 @@ function Mens() {
               listing.name.toLowerCase().includes("pants") ||
               listing.name.toLowerCase().includes("shirt")
           )
-          .filter((listing) => listing.sold == false)
+          .filter((listing) => listing.sold === false)
           .filter((listing) => listing.seller_id !== user)
           .map((listing) => (
             <Col style={{ color: "black" }} key={listing.listings_id}>
@@ -161,10 +161,10 @@ function Mens() {
         .filter((listing) =>
           listing.name.toLowerCase().includes(search.toLowerCase())
         )
-        .filter((listing) => listing.sold == false)
+        .filter((listing) => listing.sold === false)
         .filter((listing) => listing.seller_id !== user)
         .map((listing) => (
-          <div className="card-columns">
+          <div className="card-columns" key={listing.listings_id}>
             <div className="item-card">
               <Col style={{ color: "black" }} key={listing.listings_id}>
                 <Card>

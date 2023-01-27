@@ -256,24 +256,24 @@ class ListingQueries:
             return {"message": "Could not get that listing"}
 
     def get_categories(self) -> Union[Error, List[CategoryOut]]:
-        # try:
-        with pool.connection() as conn:
-            with conn.cursor() as db:
-                result = db.execute(
-                    """
-                    SELECT id
-                    , category
-                    FROM categories
-                    """
-                )
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        SELECT id
+                        , category
+                        FROM categories
+                        """
+                    )
 
-                return [
-                    self.record_to_category_out(record)
-                    for record in result
-                ]
-        # except Exception as e:
-        #     print(e)
-        #     return {"message": "Could not get all categories"}
+                    return [
+                        self.record_to_category_out(record)
+                        for record in result
+                    ]
+        except Exception as e:
+            print(e)
+            return {"message": "Could not get all categories"}
 
     def update_listing_in_to_out(
         self, listing_id: int, listing: ListingIn, user_id: int

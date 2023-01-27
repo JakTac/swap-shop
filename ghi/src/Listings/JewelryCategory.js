@@ -105,7 +105,7 @@ function Jewelry() {
               listing.name.toLowerCase().includes("gold") ||
               listing.name.toLowerCase().includes("silver")
           )
-          .filter((listing) => listing.sold == false)
+          .filter((listing) => listing.sold === false)
           .filter((listing) => listing.seller_id !== user)
           .map((listing) => (
             <Col style={{ color: "black" }} key={listing.listings_id}>
@@ -162,10 +162,10 @@ function Jewelry() {
         .filter((listing) =>
           listing.name.toLowerCase().includes(search.toLowerCase())
         )
-        .filter((listing) => listing.sold == false)
+        .filter((listing) => listing.sold === false)
         .filter((listing) => listing.seller_id !== user)
         .map((listing) => (
-          <div className="card-columns">
+          <div className="card-columns" key={listing.listings_id}>
             <div className="item-card">
               <Col style={{ color: "black" }} key={listing.listings_id}>
                 <Card>
