@@ -1,4 +1,5 @@
 from fastapi.testclient import TestClient
+from queries.listings import ListingQueries
 from main import app
 
 repo = TestClient(app=app)
@@ -10,6 +11,9 @@ class ListingQueriesMock:
 
 
 def test_get_categories():
+
+    app.dependency_overrides[ListingQueries] = ListingQueriesMock
+
     res = repo.get("/categories")
     print(res.json())
 
