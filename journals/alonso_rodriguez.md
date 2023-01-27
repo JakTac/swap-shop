@@ -48,4 +48,4 @@ Jan 24th -
 I tried doing unit testing for create accounts but at the end of the day Riley told me not to do that one. So i switched to get listings and got it working within minutes.
 
 Jan 25th -
-I helped out everyone on testing a bit and helped touch up some code. This was a lot of minor mistakes that were  overlooked. I also had to catch up on journals, I do them in batches. We should have deployment next now that testing is done. Riley said we should hold off on deploying till tomorrow so we are.
+I helped out everyone on testing a bit and helped touch up some code. This was a lot of minor mistakes that were  overlooked. We should have deployment next now that testing is done. Riley said we should hold off on deploying till tomorrow so we are.
