@@ -1,20 +1,17 @@
 steps = [
-
-            [
-            """
+    [
+        """
             CREATE TABLE categories (
             id SERIAL PRIMARY KEY NOT NULL,
             category VARCHAR(50) NOT NULL UNIQUE
             );
             """,
-
-            """
+        """
             DROP TABLE categories;
-            """
-            ],
-
-            [
-            """
+            """,
+    ],
+    [
+        """
             INSERT INTO categories ( category)
             VALUES
             ('Men'),
@@ -22,10 +19,8 @@ steps = [
             ('Jewelry')
             RETURNING id;
             """,
-
-            """
+        """
             DELETE FROM categories;
             """,
-
-            ]
-    ]
+    ],
+]

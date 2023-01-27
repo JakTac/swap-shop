@@ -88,6 +88,14 @@ Day 13 - January 23
 
     We're uncertain if we need to add more in the way of a user to seller connection and will get clarity on that from an instructor. We could add contact info as a required field when creating a listing, or do a more complicated solution like a chat system Websocket... although that sounds tough. Time to get into unit tests now... not sure where to start with that other than reviewing explorations.
 
+Day 14 - January 24
+
+
+Day 15 - January 25
+    THE UNIT TESTS ARE COMPLETE! And we are one step closer to having this project wrapped up. Pretty wild. Feels good to be so far along and not rushing on Friday afternoon.
+
+
+
 
     Afterwards, we split up into our respective groups. Based on our order of importance (which page needed to be developed when), my first page was being Alonso's second pair of eyes on the Men's Page, and being primary programmer on the user Sale History Page. These pages however are later in our development timeline and Alonso was tied up being second for other pages, so I spent time  I also looked ahead towards Websockets.
 
