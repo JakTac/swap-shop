@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Card, Row, Col, Container, Button } from "react-bootstrap";
+import { Card, Col, Button } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { getAccountId } from "../Accounts/Token";
 
 const responsive = {
   superLargeDesktop: {
-    // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
     items: 5,
   },
@@ -111,7 +110,7 @@ function Mens() {
             <Col style={{ color: "black" }} key={listing.listings_id}>
               <div className="item-card">
                 <Card>
-                  <Card.Img src={listing.image_url} height="300" width="500" />
+                  <Card.Img src={listing.image_url} height="400" width="100" />
                   <Card.Body>
                     <div className="col-md-12 text-center">
                       <div className="card-title">

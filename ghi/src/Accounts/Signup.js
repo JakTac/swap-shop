@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useToken } from "./Token";
 
 function Signup() {
   const { signup, token } = useToken();
-  // const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Row, Col, Container, Button } from "react-bootstrap";
+import { Card, Col, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -111,7 +111,7 @@ function Jewelry() {
             <Col style={{ color: "black" }} key={listing.listings_id}>
               <div className="item-card">
                 <Card>
-                  <Card.Img src={listing.image_url} height="300" width="500" />
+                  <Card.Img src={listing.image_url} height="400" width="100" />
                   <Card.Body>
                     <div className="col-md-12 text-center">
                       <div className="card-title">

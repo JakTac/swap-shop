@@ -188,18 +188,6 @@ function CreateListing(list) {
                 </button>
               </form>
               &nbsp;&nbsp;&nbsp;
-              <div>
-                {/* <button type="button" className="btn btn-dark">
-                  <NavLink
-                    style={{ color: "white" }}
-                    className="nav-link"
-                    aria-current="page"
-                    to="/login/"
-                  >
-                    Already have an account? Login here.
-                  </NavLink>
-                </button> */}
-              </div>
             </div>
           </div>
         </div>

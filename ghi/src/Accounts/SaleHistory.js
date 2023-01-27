@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Col, Container } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 import "react-multi-carousel/lib/styles.css";
 import { getAccountId } from "./Token";
 
