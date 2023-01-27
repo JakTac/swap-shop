@@ -104,8 +104,12 @@ Day 16 - January 26
 Day 17 - January 27
     Clean up, clean up, everybody do their share! I finished the linting today with black and flake8 and did a final full verification of functionality. Would've hated to break something cleaning up our code. Not much else to report on, I'll submit via Slack after luch and we'll be good to go! I did spend some time cleaning up the .gitlab-ci.yml file and double-checking the README with Alonso. Did another pass through our #comments for code cleanliness as well. (Code) cleanliness is next to (code) godliness, after all.
 
-    Alonso and I started working on CI/CD with much frustration and confusion. We kept getting failed pipeline after failed pipeline. Add ".get" to os.environ wherever found. Change [DATABASE_URL] to (DATABASE_URL). Googled, reviewed Learn and the cookbook, etc. etc.
+    Alonso and I switched to working on CI/CD with much frustration and confusion. So much for the smooth clean up of today's first paragraph. We kept getting failed pipeline after failed pipeline. Add ".get" to os.environ wherever found. Change [DATABASE_URL] to (DATABASE_URL). Googled, reviewed Learn and the cookbook, etc. etc.
 
     Eventually, we were able to get it so close to passing. Obviously we have our unit tests in the .gitlab-ci.yml file, and 6 of them. 5 of these tests passed, leaving just an AssertionError for "test_get_categories." So we're closer, but not quite there.
 
-    After lunch we took a swing at it again.
+    After lunch we took a swing at it again. Alonso was super helpful and patient with suggestions as we worked through it. By 2:45 PM Mountain, we were finally done! 10:30 to 2:45, just to get everything cooperating with CI/CD. The biggest hidden issues were incorrect versioning for pyscopg, and a SEIR's recommended unit test edits that relied on a user's local database, thus failing during gitlab deployment. We needed to add dependency injection back in!
+
+    After that huge find, it was time to do a final sweep. Site functionality, creating a listing, and updating sales. Code cleanliness, comments, flake8, and Prettier. Turns out Black messed up some of our JSX, too.
+
+    Getting everything working and ready for submission with Alonso was a huge weight off our shoulders. Even though it took over 3 hours, we're done! Time to save, merge, push, and drop off in Slack. :-)
