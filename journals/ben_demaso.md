@@ -93,7 +93,7 @@ Day 14 - January 24
 
     Once we had these language/terminology fixes I hopped back into unit tests. Rewatching Riley's lecture, seeing what I could learn online, looking for best practices and additional suggestions of what tests to create. I eventually settled on create a listing and get all listings.
 
-    With some resources and a plan, I spent the rest of the day working on unit tests once again.
+    With some resources and a plan, I spent the rest of the day working on unit tests once again. While I didn't get everything running perfectly, I got really close. More fun for tomorrow.
 
 Day 15 - January 25
     THE UNIT TESTS ARE COMPLETE! And we are one step closer to having this project wrapped up. Pretty wild. Feels good to be so far along and not rushing on Friday afternoon. Unit tests were admittedly challenging for me. Getting everything configured properly, having everything pass, injecting the right mock data. Riley's recorded lecture was beyond helpful and I couldn't have gotten there without that resource. Alonso debugged with me at the very end (just was missing one parameter), which was obviously helpful. This group project has been a huge confidence boost and great reminder how critical being on a capable and communicative team is. It really makes a difference!
@@ -103,3 +103,9 @@ Day 16 - January 26
 
 Day 17 - January 27
     Clean up, clean up, everybody do their share! I finished the linting today with black and flake8 and did a final full verification of functionality. Would've hated to break something cleaning up our code. Not much else to report on, I'll submit via Slack after luch and we'll be good to go! I did spend some time cleaning up the .gitlab-ci.yml file and double-checking the README with Alonso. Did another pass through our #comments for code cleanliness as well. (Code) cleanliness is next to (code) godliness, after all.
+
+    Alonso and I started working on CI/CD with much frustration and confusion. We kept getting failed pipeline after failed pipeline. Add ".get" to os.environ wherever found. Change [DATABASE_URL] to (DATABASE_URL). Googled, reviewed Learn and the cookbook, etc. etc.
+
+    Eventually, we were able to get it so close to passing. Obviously we have our unit tests in the .gitlab-ci.yml file, and 6 of them. 5 of these tests passed, leaving just an AssertionError for "test_get_categories." So we're closer, but not quite there.
+
+    After lunch we took a swing at it again.
