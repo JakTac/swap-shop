@@ -2,7 +2,9 @@ import os
 from fastapi import APIRouter, Depends
 from jwtdown_fastapi.authentication import Authenticator
 from queries.accounts import AccountQueries, AccountOut, AccountOutWithPassword
+
 router = APIRouter()
+
 
 class Auth(Authenticator):
     async def get_account_data(
@@ -18,17 +20,10 @@ class Auth(Authenticator):
     ):
         return accounts
 
-    def get_hashed_password(
-        self,
-        account: AccountOutWithPassword
-    ):
+    def get_hashed_password(self, account: AccountOutWithPassword):
         return account.hashed_password
 
-
-    def get_account_data_for_cookie(
-        self,
-        account: AccountOutWithPassword
-    ):
+    def get_account_data_for_cookie(self, account: AccountOutWithPassword):
         return account.email, AccountOut(**account.dict())
 
 

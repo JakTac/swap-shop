@@ -1,9 +1,6 @@
-from queries.listings import ListingQueries, ListingOut
+from queries.listings import ListingQueries
 from main import app
 from fastapi.testclient import TestClient
-# from typing import List
-import json
-
 
 
 client = TestClient(app=app)
@@ -14,12 +11,11 @@ class ListingQueriesMock:
         return []
 
 
-
 def test_get_listings():
 
     app.dependency_overrides[ListingQueries] = ListingQueriesMock
 
-    res= client.get("/listings")
+    res = client.get("/listings")
 
     assert res.status_code == 200
     assert res.json() == []

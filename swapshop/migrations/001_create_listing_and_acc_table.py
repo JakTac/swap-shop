@@ -1,6 +1,5 @@
 steps = [
     [
-
         """
         CREATE TABLE listings (
             listings_id SERIAL PRIMARY KEY NOT NULL,
@@ -14,12 +13,10 @@ steps = [
             sold BOOL NOT NULL DEFAULT FALSE
         );
         """,
-
         """
         DROP TABLE listings;
-        """
+        """,
     ],
-
     [
         """
         CREATE TABLE accounts (
@@ -32,10 +29,6 @@ steps = [
         """,
         """
         DROP TABLE accounts;
-        """
-    ]
-
-
-
-
+        """,
+    ],
 ]
