@@ -89,7 +89,11 @@ Day 13 - January 23
     We're uncertain if we need to add more in the way of a user to seller connection and will get clarity on that from an instructor. We could add contact info as a required field when creating a listing, or do a more complicated solution like a chat system Websocket... although that sounds tough. Time to get into unit tests now... not sure where to start with that other than reviewing explorations.
 
 Day 14 - January 24
+    After discussing with Riley we decided not to include seller info and certainly not to add a chat function Websocket. We changed the language of selling and buying to "Request from Seller" and "Mark as Sold" so that we'd strictly be showing active functionalities of our app and not dumby items. Riley discouraged against this as you don't want to show perspective employers something that doesn't work.
 
+    Once we had these language/terminology fixes I hopped back into unit tests. Rewatching Riley's lecture, seeing what I could learn online, looking for best practices and additional suggestions of what tests to create. I eventually settled on create a listing and get all listings.
+
+    With some resources and a plan, I spent the rest of the day working on unit tests once again.
 
 Day 15 - January 25
     THE UNIT TESTS ARE COMPLETE! And we are one step closer to having this project wrapped up. Pretty wild. Feels good to be so far along and not rushing on Friday afternoon. Unit tests were admittedly challenging for me. Getting everything configured properly, having everything pass, injecting the right mock data. Riley's recorded lecture was beyond helpful and I couldn't have gotten there without that resource. Alonso debugged with me at the very end (just was missing one parameter), which was obviously helpful. This group project has been a huge confidence boost and great reminder how critical being on a capable and communicative team is. It really makes a difference!
