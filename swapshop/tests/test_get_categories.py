@@ -3,6 +3,7 @@ from main import app
 
 repo = TestClient(app=app)
 
+
 class ListingQueriesMock:
     def get_categories(self):
         return []
