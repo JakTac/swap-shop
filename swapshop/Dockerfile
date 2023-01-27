@@ -3,7 +3,6 @@ RUN python -m pip install --upgrade pip
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
-#  Need authenticators?
 COPY main.py main.py
 
 COPY authenticators authenticators

@@ -65,7 +65,7 @@ function Nav() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item dropdown">
-              <a
+              <div
                 className="nav-link dropdown-toggle"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -75,8 +75,9 @@ function Nav() {
                   src="https://freesvg.org/img/abstract-user-flat-4.png"
                   height="70"
                   width="70"
+                  alt="Background cover"
                 />
-              </a>
+              </div>
               <ul className="dropdown-menu">
                 <li className="nav-item">
                   <NavLink className="dropdown-item" to="/mylistings/">
