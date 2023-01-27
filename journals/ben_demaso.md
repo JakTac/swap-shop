@@ -92,13 +92,10 @@ Day 14 - January 24
 
 
 Day 15 - January 25
-    THE UNIT TESTS ARE COMPLETE! And we are one step closer to having this project wrapped up. Pretty wild. Feels good to be so far along and not rushing on Friday afternoon.
+    THE UNIT TESTS ARE COMPLETE! And we are one step closer to having this project wrapped up. Pretty wild. Feels good to be so far along and not rushing on Friday afternoon. Unit tests were admittedly challenging for me. Getting everything configured properly, having everything pass, injecting the right mock data. Riley's recorded lecture was beyond helpful and I couldn't have gotten there without that resource. Alonso debugged with me at the very end (just was missing one parameter), which was obviously helpful. This group project has been a huge confidence boost and great reminder how critical being on a capable and communicative team is. It really makes a difference!
 
+Day 16 - January 26
+    I got a later start to the coding day due to some other commitments, but was on later in the morning. Today was some code review and catching up on journaling. We decided as a group (and eventually as a class) to hold off on deploying until after the weekend, when the MVP is submitted.
 
-
-
-    Afterwards, we split up into our respective groups. Based on our order of importance (which page needed to be developed when), my first page was being Alonso's second pair of eyes on the Men's Page, and being primary programmer on the user Sale History Page. These pages however are later in our development timeline and Alonso was tied up being second for other pages, so I spent time  I also looked ahead towards Websockets.
-
-    Today's review focus was helpful and really increased my understanding. It was also a nice change of pace after a couple days of pushing hard through backend group work.
-
-    So far it feels like we've been making great progress and are on track to finish this project in time without too much work outside of class time.
+Day 17 - January 27
+    Clean up, clean up, everybody do their share! I finished the linting today with black and flake8 and did a final full verification of functionality. Would've hated to break something cleaning up our code. Not much else to report on, I'll submit via Slack after luch and we'll be good to go! I did spend some time cleaning up the .gitlab-ci.yml file and double-checking the README with Alonso. Did another pass through our #comments for code cleanliness as well. (Code) cleanliness is next to (code) godliness, after all.
