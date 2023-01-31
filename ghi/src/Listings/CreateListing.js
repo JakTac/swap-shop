@@ -43,7 +43,6 @@ function CreateListing(list) {
     };
     const response = await fetch(listUrl, fetchConfig);
     if (response.ok) {
-      const newListing = await response.json();
       setListData({
         image_url: "",
         name: "",

@@ -143,7 +143,7 @@ class ListingQueries:
                     ]
         except Exception as e:
             print(e)
-            return {"message": "Could not get all listings"}
+            return {"message": " all listings"}
 
     def delete(self, listing_id: int):
         try:
