@@ -3,6 +3,12 @@ stages:
   - build
   - deploy
 
+services:
+  - postgres:14.2-bullseye
+
+variables:
+  DATABASE_URL: postgres://postgresSS:b3d872f95c8e0ed3@http://srv-captain--swap-shop-db/
+
 # Run flake8 to check for code quality
 lint-test-job:
   image: python:3-bullseye
@@ -22,26 +28,7 @@ swap-shop-unit-test-job:
     - pip install -r requirements.txt
     - python -m pytest
 
-# Build the React/JavaScript front-end
-build-front-end-job:
-  rules:
-    # Only run if pushing to the main branch
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  stage: build
-  image: node:lts-bullseye
-  needs:
-    - lint-test-job
-    - swap-shop-unit-test-job
-  variables:
-    PUBLIC_URL: https://seven30.gitlab.io/project-swap-shop/
-  script:
-    - cd ghi
-    - npm install
-    - npm run build
-    - cp build/index.html build/404.html
-  artifacts:
-    paths:
-      - ghi/build/
+
 
 build-back-end-job:
   rules:
@@ -51,38 +38,44 @@ build-back-end-job:
   image: docker:20.10.16
   services:
     - docker:20.10.16-dind
+  before_script:
+    - export DOCKER_REGISTRY_USER=$CI_REGISTRY_USER # built-in GitLab Registry User
+    - export DOCKER_REGISTRY_PASSWORD=$CI_REGISTRY_PASSWORD # built-in GitLab Registry Password
+    - export DOCKER_REGISTRY_URL=$CI_REGISTRY # built-in GitLab Registry URL
+    - export COMMIT_HASH=$CI_COMMIT_SHA # Your current commit sha
+    - export IMAGE_NAME_WITH_REGISTRY_PREFIX=$CI_REGISTRY_IMAGE # Your repository prefixed with GitLab Registry URL
+    - docker login -u "$DOCKER_REGISTRY_USER" -p "$DOCKER_REGISTRY_PASSWORD" $DOCKER_REGISTRY_URL # Instructs GitLab to login to its registry
   script:
-    # DO THIS FOR EACH SERVICE YOU NEED TO BUILD A DOCKER
-    # IMAGE FOR
+    - cd swapshop
+    - echo "Building..." # MAKE SURE NO SPACE ON EITHER SIDE OF = IN THE FOLLOWING LINE
+    - export CONTAINER_FULL_IMAGE_NAME_WITH_TAG=$IMAGE_NAME_WITH_REGISTRY_PREFIX/project-swap-shop-fastapi:$COMMIT_HASH
+    - docker build -f ./Dockerfile --pull -t project-swap-shop-fastapi .
+    - docker tag project-swap-shop-fastapi "$CONTAINER_FULL_IMAGE_NAME_WITH_TAG"
+    - docker push "$CONTAINER_FULL_IMAGE_NAME_WITH_TAG"
+    - echo $CONTAINER_FULL_IMAGE_NAME_WITH_TAG
+    - echo "Deploying on CapRover..."
+    - docker run caprover/cli-caprover:v2.1.1 caprover deploy --caproverUrl $CAPROVER_URL --caproverPassword $CAPROVER_PASSWORD --caproverApp $CAPROVER_APP --imageName $CONTAINER_FULL_IMAGE_NAME_WITH_TAG
 
-    # Builds the image CHANGE THE /app FOR EACH SERVICE
-    # Gives the image a specific name
-    # Authenticates with the GitLab image registry
 
-    # Stores your image in the GitLab image registry
-    # with two different tags, the version from the tag
-    # and the name "latest"
+# Build the React/JavaScript front-end
+build-front-end-job:
+  stage: build
+  image: node:lts-bullseye
+  needs:
+    - lint-test-job
+    - swap-shop-unit-test-job
+  variables:
+    PUBLIC_URL: https://seven30.gitlab.io/project-swap-shop/
+    REACT_APP_swapshop_API_HOST: http://sept-ct-7.mod3projects.com/
+  script:
+    - cd ghi
+    - npm install
+    - npm run build
+    - cp build/index.html build/404.html
+  artifacts:
+    paths:
+      - ghi/build/
 
-    - cd project-swap-shop-fastapi
-    - docker build -t ${CI_REGISTRY_IMAGE}/project-swap-shop-fastapi:latest .
-    - docker tag ${CI_REGISTRY_IMAGE}/project-swap-shop-fastapi:latest ${CI_REGISTRY_IMAGE}/fastapi:$CI_JOB_ID
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-    - docker push ${CI_REGISTRY_IMAGE}/fastapi:$CI_JOB_ID
-    - docker push ${CI_REGISTRY_IMAGE}/fastapi:latest
-
-    - cd node
-    - docker build -t ${CI_REGISTRY_IMAGE}/node:latest .
-    - docker tag ${CI_REGISTRY_IMAGE}/node:latest ${CI_REGISTRY_IMAGE}/node:$CI_JOB_ID
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-    - docker push ${CI_REGISTRY_IMAGE}/node:$CI_JOB_ID
-    - docker push ${CI_REGISTRY_IMAGE}/node:latest
-
-    - cd project-swap-shop-postgres
-    - docker build -t ${CI_REGISTRY_IMAGE}/project-swap-shop-postgres:latest .
-    - docker tag ${CI_REGISTRY_IMAGE}/project-swap-shop-postgres:latest ${CI_REGISTRY_IMAGE}/postgres:$CI_JOB_ID
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-    - docker push ${CI_REGISTRY_IMAGE}/postgres:$CI_JOB_ID
-    - docker push ${CI_REGISTRY_IMAGE}/postgres:latest
 
 # Deploy the React/JavaScript front-end to GitLab pages
 pages:
