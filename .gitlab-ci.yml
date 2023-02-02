@@ -69,7 +69,7 @@ build-front-end-job:
     REACT_APP_swapshop_API_HOST: http://sept-ct-7.mod3projects.com/
   script:
     - cd ghi
-    - npm install
+    - npm install --force
     - npm run build
     - cp build/index.html build/404.html
   artifacts:
