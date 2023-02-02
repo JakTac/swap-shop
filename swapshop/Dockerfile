@@ -5,7 +5,7 @@ WORKDIR /app
 COPY requirements.txt requirements.txt
 COPY main.py main.py
 
-COPY authenticators authenticators
+COPY authenticator.py authenticator.py
 COPY migrations migrations
 COPY queries queries
 COPY routers routers
