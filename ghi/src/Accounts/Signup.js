@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useToken } from "./Token";
 
 function Signup() {
-  const { signup, token } = useToken();
+  const { signup } = useToken();
   const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",

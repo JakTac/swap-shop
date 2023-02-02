@@ -36,27 +36,6 @@ export async function getAccountId() {
   return false;
 }
 
-function handleErrorMessage(error) {
-  if ("error" in error) {
-    error = error.error;
-    try {
-      error = JSON.parse(error);
-      if ("__all__" in error) {
-        error = error.__all__;
-      }
-    } catch {}
-  }
-  if (Array.isArray(error)) {
-    error = error.join("<br>");
-  } else if (typeof error === "object") {
-    error = Object.entries(error).reduce(
-      (acc, x) => `${acc}<br>${x[0]}: ${x[1]}`,
-      ""
-    );
-  }
-  return error;
-}
-
 export const AuthContext = createContext({
   token: null,
   setToken: () => null,

@@ -85,15 +85,7 @@ const Footer = () => {
   return (
     <Container>
       <Logo>
-        <a>
-          <img
-            className="logo"
-            height="300"
-            width="300"
-            src={Swapshop2}
-            alt=""
-          />
-        </a>
+        <img className="logo" height="300" width="300" src={Swapshop2} alt="" />
       </Logo>
       <Left>
         <Logo>SwapShop</Logo>

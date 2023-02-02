@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useToken } from "./Token";
 
 function LoginComponent() {
-  const { login, token } = useToken();
+  const { login } = useToken();
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
