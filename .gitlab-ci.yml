@@ -48,7 +48,7 @@ build-back-end-job:
   script:
     - cd swapshop
     - echo "Building..." # MAKE SURE NO SPACE ON EITHER SIDE OF = IN THE FOLLOWING LINE
-    - export CONTAINER_FULL_IMAGE_NAME_WITH_TAG=$IMAGE_NAME_WITH_REGISTRY_PREFIX/project-swap-shop-fastapi:$COMMIT_HASH
+    - export CONTAINER_FULL_IMAGE_NAME_WITH_TAG=$IMAGE_NAME_WITH_REGISTRY_PREFIX/swapshop:$COMMIT_HASH
     - docker build -f ./Dockerfile --pull -t project-swap-shop-fastapi .
     - docker tag project-swap-shop-fastapi "$CONTAINER_FULL_IMAGE_NAME_WITH_TAG"
     - docker push "$CONTAINER_FULL_IMAGE_NAME_WITH_TAG"
